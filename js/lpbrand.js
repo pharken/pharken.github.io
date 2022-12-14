@@ -1,6 +1,27 @@
 'use strict';
 
 
+
+const getUrlParams = function () {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const entries = urlParams.entries();
+
+    for(const urlParm of entries) {
+        let key = urlParm[0];
+        let value = urlParm[1];
+        console.log(`${key}: ${value}`);
+
+        if (key.startsWith('p_')) {
+            let p = document.createElement("p");
+            p.innerText = '' + urlParm[0] + ': ' + urlParm[1];
+            document.body.appendChild(p);
+        }
+    }
+};
+
+
+
 const initAgentSdk = function () {
     console.log('init Agent SDK');
     lpTag.agentSDK.init({
@@ -160,6 +181,7 @@ const displayMovie = function(movie){
 
 jQuery(function($) {
     $(document).ready(function() {
+		getUrlParams();
         initAgentSdk();
         getChatConversation();
         bindAgentWorkspaceDataElement();

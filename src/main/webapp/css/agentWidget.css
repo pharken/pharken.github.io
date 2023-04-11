@@ -1,0 +1,32 @@
+#listContainer {
+    background: #d1dde9;
+    border-radius: 4px;
+    border: 2px solid #74a6da;
+    color: #1922f7;
+    height: 30vh;
+    width: 90vw;
+    max-height: 30vh;
+    max-width: 50vw;
+    overflow: auto;
+    margin: 20px;
+    padding: 20px;
+}
+#listContainer li {
+    font-size: small;
+    max-width: 90vw;
+    background: #cce5ff;
+    color: darkblue;
+    margin: 5px;
+    padding-left: 10px;
+}
+#listContainer li p {
+    font-size: small;
+    width: 80vw;
+    max-width: 90vw;
+    margin: 0;
+}
+#lpEntryPointSvg {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}

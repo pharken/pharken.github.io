@@ -1,16 +1,18 @@
 
 body {
-    background-color: #edf0f3;
-    font-size: medium;
+    background-color: #d0d5d9;
+    font-size: larger;
+    /*font-family: MS sans-serif;*/
 }
 
 
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-        BOOTSTRAP
+
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+/*
 #maintenanceBackground {
-    /*background-image: url('imgs/BG_BlueWhite_DblGrad.png');*/
+    !*background-image: url('imgs/BG_BlueWhite_DblGrad.png');*!
     background-position: center center;
     background-repeat: repeat-x;
     background-color: #f20303;
@@ -22,24 +24,9 @@ body {
     padding-right: 200px;
     margin-top: -30px;
 }
+*/
 
-#maintenanceBody {
-    color: grey;
-    margin-top: 30px;
-}
 
-#maintenanceBodyTitle {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #858585;
-}
-
-.jumbotron {
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    border: 1px dashed #cad3ff;
-}
 
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

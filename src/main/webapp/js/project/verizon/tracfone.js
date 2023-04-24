@@ -1,5 +1,5 @@
 /*
-    Tracfone stuff
+    Verizon Tracfone
 */
 
 let main = function (){
@@ -7,7 +7,7 @@ let main = function (){
     for ( let $brand of $brands) {
         console.log( 'brand: ' + $brand.attributes[1].nodeValue );
     }
-    $brands.click(function(event) {
+    $brands.click( function(event) {
         setLpTagSections(event.target.attributes[1].value);
     });
 };

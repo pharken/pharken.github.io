@@ -81,22 +81,31 @@ function checkVersion(targetVersion, minVersion) {
 
 // Parse through script url params and associated actions
 function setCampaignId(channel) {
+    try {
+        displayInfo('setCampaignId');
 
-    // If SDE and Section values were not passed, use default
-    var campaignId = "";
-    var mrktInfo = lpTag.sdes.get("mrktInfo");
-    if (mrktInfo && mrktInfo[0].info.campaignId) {campaignId="set";}
+        // If SDE and Section values were not passed, use default
+        var campaignId = "";
+        var mrktInfo = lpTag.sdes.get("mrktInfo");
+        if (mrktInfo && mrktInfo[0].info.campaignId)
+            campaignId = "set";
 
-    if (campaignId === ""){
-        if (channel == "abc")
-            sde = '{"type": "mrktInfo", "info": { "campaignId": "abc"}}';
-        else if (channel == "gbm")
-            sde = '{"type": "mrktInfo", "info": { "campaignId": "gbm"}}';
-        else
-            sde = '{"type": "mrktInfo", "info": { "campaignId": "web"}}';
+        displayInfo(`campaignId: ${campaignId}`);
 
-        lpTag.sdes.push(JSON.parse(sde));
-        displayInfo(sde);
+        if (campaignId === "") {
+            if (channel === "abc")
+                sde = '{"type": "mrktInfo", "info": { "campaignId": "abc"}}';
+            else if (channel === "gbm")
+                sde = '{"type": "mrktInfo", "info": { "campaignId": "gbm"}}';
+            else
+                sde = '{"type": "mrktInfo", "info": { "campaignId": "web"}}';
+
+            lpTag.sdes.push(JSON.parse(sde));
+            displayInfo(`sde: ${sde}`);
+        }
+    }
+    catch (e) {
+        displayInfo(`Error in setCampaignId: ${e.message}`);
     }
 
 }
@@ -186,32 +195,40 @@ function setUpEngagements() {
 
 
 let detectBrowserMain = function () {
-    let channel = CheckChannelSupport();
-    displayInfo(`Channel select: ${channel}`);
+    try {
+        let channel = CheckChannelSupport();
+        displayInfo(`Channel select: ${channel}`);
 
-    let runNewPage = false;
-    setCampaignId(channel);
-    if (channel === "abc")
-        addChannelScript("https://static.cdn-apple.com/businesschat/start-chat-button/2.0.0/index.js");
-    else if (channel === "gbm")
-        addChannelScript("https://businessmessages.google.com/widget/v2/js");
+        let runNewPage = false;
+        setCampaignId(channel);
+        if (channel === "abc")
+            addChannelScript("https://static.cdn-apple.com/businesschat/start-chat-button/2.0.0/index.js");
+        else if (channel === "gbm")
+            addChannelScript("https://businessmessages.google.com/widget/v2/js");
 
 
-    // Call newPage if URL param exists
-    if (runNewPage) {
-        setTimeout(function(){
-            var sdes = lpTag.sdes.get();
-            lpTag.newPage(document.URL, {
-                section: lpTag.section,
-                sdes: sdes
-            });
-            displayInfo('newpage complete');
-        },500);
+        // Call newPage if URL param exists
+        if (runNewPage) {
+            setTimeout(function () {
+                var sdes = lpTag.sdes.get();
+                lpTag.newPage(document.URL, {
+                    section: lpTag.section,
+                    sdes:    sdes
+                });
+                displayInfo('newpage complete');
+            }, 500);
+        }
+
+        displayInfo(`Done`);
     }
+    catch (e) {
+        displayInfo(`Error in detectBrowserMain: ${e.message}`);
+    }
+
 }
 
 /*
 document.addEventListener("DOMContentLoaded", () => {
     detectBrowserMain();
 });
-   */
+*/

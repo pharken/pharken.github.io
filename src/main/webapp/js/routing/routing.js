@@ -14,13 +14,13 @@ const ROUTING_ENGAGEMENT_ID = '3955040638';
 let main = function (){
     let $startEngagementBtn = $('#startEngagementBtn');
     $startEngagementBtn.on( "click", function() {
-        console.log( $( this ).text() );
+        displayInfo('runEngagementOpen');
         runEngagementOpen();
     });
 
     let $browserDetectBtn = $('#browserDetectBtn');
     $browserDetectBtn.on( "click", function() {
-        console.log( $( this ).text() );
+        displayInfo('detectBrowserMain');
         detectBrowserMain();
     });
 

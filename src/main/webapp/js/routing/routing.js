@@ -11,6 +11,12 @@
 
 const ROUTING_ENGAGEMENT_ID = '3955040638';
 
+const GBM = 'gbm';
+const ABC = 'abc';
+const WEB = 'web';
+
+
+
 let main = function (){
     let $startEngagementBtn = $('#startEngagementBtn');
     $startEngagementBtn.on( "click", function() {
@@ -22,11 +28,54 @@ let main = function (){
     $browserDetectBtn.on( "click", function() {
         displayInfo('detectBrowserMain');
         detectBrowserMain();
+        setButtonsActive();
     });
 
 
     runEngagementOpen();
 };
+
+
+let setButtonsActive = function () {
+
+/*
+    let sdes = lpTag.sdes;
+    displayInfo(`lpTag.sdes: ${JSON.stringify(lpTag.sdes)}`);
+*/
+
+    let mrktInfo = lpTag.sdes.get("mrktInfo");
+    let platform = mrktInfo[0].info.campaignId;
+    displayInfo(`campaignId = ${platform}`);
+
+
+    let gbmBtn = document.getElementById("gbmBtn");
+    let abcBtn = document.getElementById("abcBtn");
+    let webBtn = document.getElementById("startEngagementBtn");
+    let allBtn = document.getElementById("launchBtn");
+
+    displayInfo(`platform: ${platform}`);
+    switch (platform) {
+        case (GBM):
+            gbmBtn.disabled = false;
+            abcBtn.disabled = true;
+            startEngagementBtn.disabled = true;
+            break;
+        case (ABC):
+            gbmBtn.disabled = true;
+            abcBtn.disabled = false;
+            startEngagementBtn.disabled = true;
+            break;
+        case (WEB):
+            gbmBtn.disabled = true;
+            abcBtn.disabled = true;
+            startEngagementBtn.disabled = false;
+            break;
+        default:
+            gbmBtn.disabled = true;
+            abcBtn.disabled = true;
+            startEngagementBtn.disabled = false;
+    }
+}
 
 
 let runEngagementOpen = function () {
@@ -49,6 +98,7 @@ $(function() {
     console.log( "Routing begin" );
     lpTag.section = [ "routing" ];   // initialize lpTage sections
 
+    //TODO  do this on lpTag --- on ready or the other one
     // detectBrowserMain();
 
     main();

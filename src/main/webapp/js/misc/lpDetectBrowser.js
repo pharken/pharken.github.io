@@ -111,7 +111,7 @@ function setCampaignId(channel) {
 }
 
 
-// Add Apple script to load engagement
+// Add Apple/GBM script to load engagement
 function addChannelScript(src) {
     var s = document.createElement("script");
     s.type = "text/javascript";

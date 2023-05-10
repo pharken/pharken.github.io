@@ -71,7 +71,7 @@ ul {
     border-radius: var(--border-radius);
     background: var(--color-list-panel-background);
     overflow: auto;
-    /*list-style-type: none;*/
+    list-style-type: none;
     padding-left: 0;
 }
 ul li {

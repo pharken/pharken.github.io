@@ -1,7 +1,0 @@
-0:0:0:0:0:0:0:1 - - [03/May/2023:13:07:54 -0500] "GET / HTTP/1.1" 200 7769 http-bio-9000-exec-1 38
-0:0:0:0:0:0:0:1 - - [03/May/2023:13:07:54 -0500] "GET /css/main.css HTTP/1.1" 200 1475 http-bio-9000-exec-3 5
-0:0:0:0:0:0:0:1 - - [03/May/2023:13:08:07 -0500] "GET /view/project/verizon/fast.html HTTP/1.1" 200 5023 http-bio-9000-exec-5 2
-0:0:0:0:0:0:0:1 - - [03/May/2023:13:08:07 -0500] "GET /js/project/verizon/fast.js HTTP/1.1" 200 293 http-bio-9000-exec-7 3
-0:0:0:0:0:0:0:1 - - [03/May/2023:13:08:17 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-9 0
-0:0:0:0:0:0:0:1 - - [03/May/2023:13:08:17 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-10 1
-0:0:0:0:0:0:0:1 - - [03/May/2023:13:08:42 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-1 0

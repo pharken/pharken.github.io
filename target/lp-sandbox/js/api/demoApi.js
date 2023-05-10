@@ -1,4 +1,12 @@
 /***
+
+ For this code, i was trying to reproduce the same functionality as
+ done in Postman.
+ Postman generated this code, but I never got it working because
+ authorization is a real pain in the ass
+
+
+
  Next, I’ll call the /v2/oauth2/token endpoint to get my OAuth token.
 
  The specific parameters you’ll need to pass in will vary from API to API. For Petfinder, I need to pass in a grant_type

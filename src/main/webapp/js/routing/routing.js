@@ -18,6 +18,13 @@ let main = function (){
         runEngagementOpen();
     });
 
+    let $browserDetectBtn = $('#browserDetectBtn');
+    $browserDetectBtn.on( "click", function() {
+        console.log( $( this ).text() );
+        detectBrowserMain();
+    });
+
+
     runEngagementOpen();
 };
 
@@ -28,11 +35,10 @@ let runEngagementOpen = function () {
 
         let info = lpTag.taglets.rendererStub.getEngagementInfo( ROUTING_ENGAGEMENT_ID );
         displayInfo(`info: ${JSON.stringify( info, null, 2 )}`);
-        // displayInfo(`info: ${JSON.stringify(JSON.parse(info),null,2)}`);
 
         let clicked = lpTag.taglets.rendererStub.click(ROUTING_ENGAGEMENT_ID, { preChatLines: ["Test msg"]});
         displayInfo(`clicked: ${clicked}`);
-
+        displayInfo(' ');  // spacer
     }
     else
         displayInfo('lpTag not ready');
@@ -42,5 +48,9 @@ let runEngagementOpen = function () {
 $(function() {
     console.log( "Routing begin" );
     lpTag.section = [ "routing" ];   // initialize lpTage sections
+
+    // detectBrowserMain();
+
     main();
 });
+

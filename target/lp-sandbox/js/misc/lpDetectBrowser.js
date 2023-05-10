@@ -20,24 +20,26 @@ function CheckChannelSupport() {
     if (!!sysInfo) {
         if ('MACINTOSH' === sysInfo.type.toUpperCase()) {
             // MacOS
-            displayInfo('Detected MacOS version: ', sysInfo.version);
-            if (checkVersion(sysInfo.version, minMacOSVersion))
+            // displayInfo('Detected MacOS version: ', sysInfo.version);
+            if (checkVersion(sysInfo.version, minMacOSVersion)) {
                 return "abc";
-            else
+            } else {
                 return "web";
-
+            }
         } else if (['IPHONE', 'IPAD', 'IPOD', 'IPOD TOUCH'].includes(sysInfo.type.toUpperCase())) {
             // iOS
-            displayInfo('Detected iOS version: ', sysInfo.version);
-            if (checkVersion(sysInfo.version, minIOSVersion))
+            // displayInfo('Detected iOS version: ', sysInfo.version);
+            if (checkVersion(sysInfo.version, minIOSVersion)) {
                 return "abc";
-            else
+            } else {
                 return "web";
+            }
         }
     } else if (userAgent.indexOf('Android')>=0){
         return "gbm";
     } else {
-        displayInfo('Unknown platform!');
+        // Unknown platform
+        // displayInfo('Unknown platform!');
         return "web";
     }
 }
@@ -87,16 +89,16 @@ function setCampaignId(channel) {
     var mrktInfo = lpTag.sdes.get("mrktInfo");
     if (mrktInfo && mrktInfo[0].info.campaignId) {campaignId="set";}
 
-    if (campaignId === ""){
-        if (channel == "abc")
+    if (campaignId==""){
+        if (channel=="abc") {
             sde = '{"type": "mrktInfo", "info": { "campaignId": "abc"}}';
-        else if (channel == "gbm")
+        } else if (channel=="gbm") {
             sde = '{"type": "mrktInfo", "info": { "campaignId": "gbm"}}';
-        else
+        } else {
             sde = '{"type": "mrktInfo", "info": { "campaignId": "web"}}';
-
+        }
         lpTag.sdes.push(JSON.parse(sde));
-        displayInfo(sde);
+        // displayInfo(sde);
     }
 
 }
@@ -115,12 +117,12 @@ function addChannelScript(src) {
 function addUrl(abcLink) {
     var anchorParts = abcLink.href.split("?");
     if (!anchorParts) throw "Unable to break apart anchor tag";
-    displayInfo(anchorParts[0]);
-    displayInfo(anchorParts[1]);
+    // displayInfo(anchorParts[0]);
+    // displayInfo(anchorParts[1]);
     var anchorParams = anchorParts[1].split("&");
     if (!anchorParams) throw "Unable to get anchor parameters";
-    displayInfo(anchorParams[0]);
-    displayInfo(anchorParams[1]);
+    // displayInfo(anchorParams[0]);
+    // displayInfo(anchorParams[1]);
     var currentUrl = window.location.href;
     for (idx = 0; idx < anchorParams.length; ++idx) {
         if (anchorParams[idx].includes('biz-group-id')) {
@@ -179,7 +181,7 @@ function setUpEngagements() {
                 }, 500);
             }
         } else {
-            displayInfo('Timed out');
+            // displayInfo('Timed out');
         }
     }, 500);
 }
@@ -188,14 +190,15 @@ function setUpEngagements() {
 let detectBrowserMain = function () {
     let channel = CheckChannelSupport();
     displayInfo(`Channel select: ${channel}`);
+    // displayInfo("Channel select: " + channel);
 
     let runNewPage = false;
     setCampaignId(channel);
-    if (channel === "abc")
+    if (channel==="abc") {
         addChannelScript("https://static.cdn-apple.com/businesschat/start-chat-button/2.0.0/index.js");
-    else if (channel === "gbm")
+    } else if (channel==="gbm") {
         addChannelScript("https://businessmessages.google.com/widget/v2/js");
-
+    }
 
     // Call newPage if URL param exists
     if (runNewPage) {

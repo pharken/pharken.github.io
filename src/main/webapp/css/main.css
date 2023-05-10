@@ -29,6 +29,7 @@ body {
 .isOff {color: var(--color-error) }
 .btn {font-size: smaller;}
 .margin-left-10px { margin-left: 10px; }
+.margin-top-20px { margin-top: 20px; }
 
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

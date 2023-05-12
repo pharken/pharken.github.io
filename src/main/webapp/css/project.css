@@ -2,3 +2,10 @@
     height: 30vh;
     max-height: 30vh;
 }
+
+.pricelineBtn {
+    text-align: center;
+    height: 100px;
+    width: 250px;
+    margin: 20px;
+}

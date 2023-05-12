@@ -82,7 +82,7 @@ function checkVersion(targetVersion, minVersion) {
 // Parse through script url params and associated actions
 function setCampaignId(channel) {
     try {
-        displayInfo('setCampaignId');
+        displayInfo('setCampaignId ...');
 
         // If SDE and Section values were not passed, use default
         var campaignId = "";
@@ -196,6 +196,7 @@ function setUpEngagements() {
 
 let detectBrowserMain = function () {
     try {
+        displayInfo(`detect browser`);
         let channel = CheckChannelSupport();
         displayInfo(`Channel select: ${channel}`);
 
@@ -219,7 +220,7 @@ let detectBrowserMain = function () {
             }, 500);
         }
 
-        displayInfo(`Done`);
+        // displayInfo(`Done`);
     }
     catch (e) {
         displayInfo(`Error in detectBrowserMain: ${e.message}`);

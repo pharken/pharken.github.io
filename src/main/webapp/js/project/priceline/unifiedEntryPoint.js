@@ -11,13 +11,10 @@
 
 const ROUTING_CAMPAIGN = 'routing';
 const PRICELINE_WEB_CAMPAIGN = 'pricelineWeb';
-
 const campaign = {
     routing: { engagementId: '3955040638'},
     pricelineWeb : {engagementId: '4124530538'}
 }
-
-
 const GBM = 'gbm';
 const ABC = 'abc';
 const WEB = 'web';
@@ -45,7 +42,7 @@ let getPlatform = () => {
 let openWebEngagement = function (getInfo=false) {
     displayInfo('Open web engagement')
     if(lpTag && lpTag.taglets && lpTag.taglets.rendererStub) {
-        let clicked = lpTag.taglets.rendererStub.click(campaign.pricelineWeb.engagementId, { preChatLines: ["Test msg"]});
+        let clicked = lpTag.taglets.rendererStub.click( campaign.pricelineWeb.engagementId, { preChatLines: ["Test msg"]} );
         displayInfo(`Launch web messaging: ${clicked}`);
     }
     else
@@ -73,7 +70,7 @@ let launchEngagement = () => {
 
 
 $(function() {
-    console.log( "Priceline begin" );
+    console.log( "Priceline POC begin" );
     main();
 });
 

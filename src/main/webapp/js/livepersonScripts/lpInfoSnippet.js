@@ -101,7 +101,22 @@
             sections: lpTag.section
         });
 
-    } catch (e) {
+        console.log(`URL: ${document.URL}`);
+
+        let engagementNames = lpTag.events.hasFired("RENDERER_STUB","AFTER_CREATE_ENGAGEMENT_INSTANCE");
+        // remove duplicates
+        console.log(`Engagement name count (including duplicates): ${engagementNames.length}`)
+        let engagementNameSet = new Set();
+        engagementNames.forEach( en => {
+            let eName = en.data.eng.conf.name;
+            if ( !engagementNameSet.has(eName) ) {
+                engagementNameSet.add( eName );
+                console.log( eName );
+            }
+        });
+        console.log(`Sections: ${lpTag.section}`);
+    }
+    catch (e) {
         console.error(e)
     }
 })()

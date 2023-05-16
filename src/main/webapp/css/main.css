@@ -95,12 +95,12 @@ ul li p {
     margin: 0;
 }
 
-a {
-    /*all: unset;*/
+/* dont style href on index page */
+.noHrefStyling li a {
     color: inherit;
     text-decoration: inherit; /* no underline */
 }
-a:hover { all: unset; }
+.noHrefStyling li a:hover { all: unset; }
 
 .defaultSection {
     width: 100%;

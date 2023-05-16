@@ -16,6 +16,7 @@ let main = function (){
 let setLpTagSections = function(brand){
     console.log(brand);
     lpTag.section = [ brand ];
+    lpTag.newPage( document.URL, { section: lpTag.section });
 };
 
 

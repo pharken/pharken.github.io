@@ -67,7 +67,8 @@ body {
 
 ul {
     max-height: 85vh;
-    width: 30vw;
+    /*width: 30vw;*/
+    width: 95%;
     /*border: 2px solid var(--color-list-panel-border);*/
     border-radius: var(--border-radius);
     background: var(--color-list-panel-background);
@@ -76,7 +77,8 @@ ul {
     padding-left: 0;
 }
 ul li {
-    max-width: 30vw;
+    /*max-width: 30vw;*/
+    max-width: 85%;
     background: var(--color-list_item-background);
     color: var(--color-list-item);
     font-size: larger;

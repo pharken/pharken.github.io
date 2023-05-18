@@ -219,8 +219,6 @@ let detectBrowserMain = function () {
                 displayInfo('newpage complete');
             }, 500);
         }
-
-        // displayInfo(`Done`);
     }
     catch (e) {
         displayInfo(`Error in detectBrowserMain: ${e.message}`);

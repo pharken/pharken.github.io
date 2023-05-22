@@ -64,7 +64,7 @@
         var windowStateEvents = lpTag.events.hasFired("lpUnifiedWindow", "state");
         var renderEvents = lpTag.events.hasFired("RENDERER_STUB", "AFTER_CREATE_ENGAGEMENT_INSTANCE");
         var engagementClicks = lpTag.events.hasFired("LP_OFFERS", "OFFER_CLICK");
-        var eventMap = allEvents.map(function (e) {return e.appName + e.eventName})
+        var eventMap = allEvents.map( e => e.appName + '_' + e.eventName);
         var startPageIndex = eventMap.lastIndexOf("lp_monitoringSDKSP_SENT")
         var eventsAfterSP = allEvents.slice(startPageIndex)
         var engagementsAfterSP = eventsAfterSP.filter(function (e) {
@@ -115,6 +115,16 @@
             }
         });
         console.log(`Sections: ${lpTag.section}`);
+
+
+        // var allEvents = lpTag.events.hasFired("*","*");
+        let hasOnReady = allEvents.find( e => { return e.eventName ==="ON_READY" } );
+        if (hasOnReady)
+            console.log('=========== Ready');
+        else
+            console.log('not ready');
+
+
     }
     catch (e) {
         console.error(e)

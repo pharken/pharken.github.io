@@ -32,7 +32,7 @@ let refreshTracfonePage = function () {
 let launchTracfoneEngagement = function () {
 
 
-    //TODO FIX ALL THIS
+    //TODO FIX
     //TODO   WHEN YOU SEE THE CONSOLE MESSAGES, YOU'LL SEE WHAT I MEAN
     //          ITS NOT LAUNCHING THE ENGAGEMENT FOR 1 , AND THE GET ALL
     //          ENGAGEMENTS IS RETURNING MANY.

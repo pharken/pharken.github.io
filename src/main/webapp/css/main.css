@@ -6,9 +6,9 @@
     --color-font-headerInfo: #636363;
     --color-border: #e2e2e2;
     --color-list-panel:yellow;
-    --color-list-panel-background: #e7edf5;
-    --color-list-panel-hover: #ffffff;
-    --color-list-panel-hover-background: #6ea1c0;
+    --color-list-panel-background: #f7f8fb;
+    --color-list-panel-hover: #000000;
+    --color-list-panel-hover-background: #c4d2f4;
     --color-list-panel-hover-active: #3d799f;
     --color-list-panel-border: #cfd9e9;
     --color-list-item: #00004b;
@@ -67,9 +67,7 @@ body {
 
 ul {
     max-height: 85vh;
-    /*width: 30vw;*/
-    width: 95%;
-    /*border: 2px solid var(--color-list-panel-border);*/
+    border: 2px solid var(--color-list-panel-border);
     border-radius: var(--border-radius);
     background: var(--color-list-panel-background);
     overflow: auto;
@@ -77,11 +75,10 @@ ul {
     padding-left: 0;
 }
 ul li {
-    /*max-width: 30vw;*/
-    max-width: 85%;
     background: var(--color-list_item-background);
     color: var(--color-list-item);
-    font-size: larger;
+    font-size: medium;
+    border: 1px solid var(--color-list-panel-border);
 }
 ul li:hover {
     color: var(--color-list-panel-hover);
@@ -121,10 +118,6 @@ ul li p {
     height: 70vh;
 }
 #infoList {
-    /*max-height: 85vh;*/
-    /* width: 90vw; */
-    /*border: 2px solid var(--color-list-panel-border);*/
-    /*border-radius: var(--border-radius);*/
     background: var(--color-list-panel-background);
     overflow: auto;
     list-style-type: none;

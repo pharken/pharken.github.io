@@ -1,3 +1,9 @@
+
+/*  Main menu  */
+#mainMenu ul {
+    width: 30vw;
+}
+
 .section-height {
     height: 30vh;
     max-height: 30vh;

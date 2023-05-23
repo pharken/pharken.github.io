@@ -16,6 +16,8 @@ let main = function (){
     });
 
     $('#launchTracfoneEngagementBtn').click( launchTracfoneEngagement );
+    $('#getEventsBtn').click( getEvents );
+
 };
 
 
@@ -69,8 +71,20 @@ let launchTracfoneEngagement = function () {
         else
             console.log('Cant find engagementId');
     }
-
 }
+
+
+let getEvents = function () {
+    try {
+        let allEvents = lpTag.events.hasFired("*","*");
+        console.log(`allEvents: ${allEvents.length}`);
+    }
+    catch (e) {
+        console.log('checkEvents failed');
+    }
+}
+
+
 
 
 $(function() {

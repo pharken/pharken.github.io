@@ -117,8 +117,8 @@
         console.log(`Sections: ${lpTag.section}`);
 
 
-        // var allEvents = lpTag.events.hasFired("*","*");
         let hasOnReady = allEvents.find( e => { return e.eventName ==="ON_READY" } );
+
         if (hasOnReady)
             console.log('=========== Ready');
         else

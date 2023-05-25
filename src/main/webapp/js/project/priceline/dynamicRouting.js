@@ -1,12 +1,5 @@
 /*
     Routing stuff
-
-
-    have you tried using ON_STARTED lpTag.event yet? At that point new Page
-    should be ready as well as it's dependencies. I also think it's worth
-    trying ON_READY too. The event binding must happen synchronously.
-
-
 */
 
 const ROUTING_CAMPAIGN = 'routing';

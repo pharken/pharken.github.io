@@ -17,7 +17,7 @@ let main = function (){
 
     $('#launchTracfoneEngagementBtn').click( launchTracfoneEngagement );
     $('#getEventsBtn').click( getEvents );
-
+    checkLpScriptsLoaded();
 };
 
 

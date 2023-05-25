@@ -26,7 +26,6 @@
 
                     <span class="display-inline">
                         <button id="startEngagementBtn" class="btn btn-primary display-inline" type="submit">Web messaging</button>
-                        <p class="display-inline margin-left-10px">Works after sticky button rendered</p>
                     </span>
 
                     <div class="margin-top-20px">
@@ -34,33 +33,17 @@
                     </div>
 
                     <div class="margin-top-20px">
-                        <button id="gbmBtn" class="btn btn-primary display-inline"
-                                onclick="window.location.href='https://business.google.com/initiateBusinessChat?args=CigIAxIkOGIzN2Q3NTctN2U4ZC00NjU1LTk2MGItMWQ2NGM0MjZjY2VkYgd3ZWJ2aWV3aiJodHRwOi8vYnVzaW5lc3NtZXNzYWdlcy5nb29nbGUuY29tckIIAxIkOGIzN2Q3NTctN2U4ZC00NjU1LTk2MGItMWQ2NGM0MjZjY2VkGgpjYy1saXN0aW5nIgw5Njg2MTA1NTQ1NDCaAYsBChJjYy1saXN0aW5nX2NvbnRleHQSdQo4dHlwZS5nb29nbGVhcGlzLmNvbS9jaGF0LmJvdC5wbGF0Zm9ybS5CdXNpbmVzc0h1YkNvbnRleHQSOUgIWiQKGG92ZXJyaWRlX2NybV9lbnRyeV9wb2ludBIIVEVTVF9VUkxaDwoHaXNfdGVzdBIEdHJ1ZbIBOwo5SAhaJAoYb3ZlcnJpZGVfY3JtX2VudHJ5X3BvaW50EghURVNUX1VSTFoPCgdpc190ZXN0EgR0cnVl&hl=en';">
-                            GBM test link
-                        </button>
-                        <p class="display-inline margin-left-10px">( Mobile )</p>
-                    </div>
-
-                    <div class="margin-top-20px">
-                        <button id="abcBtn" class="btn btn-primary display-inline"
-                                onclick="window.location.href='https://business.google.com/message?args=CjkIAxIkOGIzN2Q3NTctN2U4ZC00NjU1LTk2MGItMWQ2NGM0MjZjY2VkGgpjYy1saXN0aW5nIgNHTU0SVAoSY2MtbGlzdGluZ19jb250ZXh0Ej4KOHR5cGUuZ29vZ2xlYXBpcy5jb20vY2hhdC5ib3QucGxhdGZvcm0uQnVzaW5lc3NIdWJDb250ZXh0EgJICFoECgJICA';">
-                            ABC test link
-                        </button>
-                        <p class="display-inline margin-left-10px">( Mobile )</p>
-                    </div>
-
-                    <div class="margin-top-20px">
-                        <button id="launchBtn" class="btn btn-primary" type="submit">All Platform-Browser</button>
+                        <div class="engagementIndicator webEngagement display-inline">Web</div>
+                        <div class="engagementIndicator gbmEngagement display-inline">GBM</div>
+                        <div class="engagementIndicator abcEngagement display-inline">ABC</div>
                     </div>
 
                     <div class="margin-top-20px">
                         <button id="lpInfoBtn" class="btn btn-outline-primary" type="submit">LP info</button>
                     </div>
 
-
                 </div>
             </div>
-
 
             <div class="col d-flex align-items-start">
                 <div class="defaultSection">
@@ -81,6 +64,7 @@
 <script type="text/javascript" src="../../js/routing/routing.js"></script>
 <script type="text/javascript" src="../../js/livepersonScripts/lpDetectBrowser.js"></script>
 <script type="text/javascript" src="../../js/util/infoPanel.js"></script>
+<script type="text/javascript" src="../../js/livepersonScripts/lpInfoDisplay.js"></script>
 
 </body>
 </html>

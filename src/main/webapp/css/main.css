@@ -128,6 +128,7 @@ ul li p {
     background: var(--color-list-panel-background);
     color: var(--color-list-item);
     font-size: smaller;
+    padding: 4px 4px 4px 8px;   /* TRBL */
 }
 #infoList li:hover {
     color: var(--color-list-panel-hover);
@@ -137,4 +138,8 @@ ul li p {
     color: var(--color-list-panel-hover);
     background-color: var(--color-list-panel-hover-background);
 }
-
+#infoList li textarea{
+    width: 100%;
+    color: var(--color-list-item);
+    resize: none;
+}

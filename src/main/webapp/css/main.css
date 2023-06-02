@@ -8,7 +8,8 @@
     --color-list-panel:yellow;
     --color-list-panel-background: #f7f8fb;
     --color-list-panel-hover: #000000;
-    --color-list-panel-hover-background: #c4d2f4;
+    /*--color-list-panel-hover-background: #d0def5;*/
+    --color-list-panel-hover-background: #dcfcf4;
     --color-list-panel-hover-active: #3d799f;
     --color-list-panel-border: #cfd9e9;
     --color-list-item: #00004b;
@@ -142,4 +143,8 @@ ul li p {
     width: 100%;
     color: var(--color-list-item);
     resize: none;
+    border: none;
+}
+#infoList li textarea:hover{
+    background-color: var(--color-list-panel-hover-background);
 }

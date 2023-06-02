@@ -208,17 +208,6 @@ let detectBrowserMain = function () {
             addChannelScript("https://businessmessages.google.com/widget/v2/js");
 
 
-        // Call newPage if URL param exists
-        if (runNewPage) {
-            setTimeout(function () {
-                var sdes = lpTag.sdes.get();
-                lpTag.newPage(document.URL, {
-                    section: lpTag.section,
-                    sdes:    sdes
-                });
-                displayInfo('newpage complete');
-            }, 500);
-        }
     }
     catch (e) {
         displayInfo(`Error in detectBrowserMain: ${e.message}`);
@@ -226,8 +215,3 @@ let detectBrowserMain = function () {
 
 }
 
-/*
-document.addEventListener("DOMContentLoaded", () => {
-    detectBrowserMain();
-});
-*/

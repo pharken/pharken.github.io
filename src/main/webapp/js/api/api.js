@@ -1,76 +1,37 @@
-const FAST = 'fast';
-const FAST_PROD = 'fast_prod';
-const VBG = 'vbg';
-const PLAYGROUND = 'playground';
-
-
 /*
-    Uncomment the account you wish to test.  Comment the rest
+    API
+
 */
-// let account = VBG;
-let account = FAST;
-// let account = FAST_PROD;
-// let account = PLAYGROUND;
-
-
-const accountId = {
-    vbg: '22209379',
-    fast: '17276385',
-    fast_prod: '88102062',
-    playground: '49985427',
-};
-
-
-//TODO  confirm the correct domains
-/*
-// original
-const baseUrl = {
-    vbg: 'https://z1.context.liveperson.net',
-    fast: 'https://va-e.c.liveperson.net',
-    fast_prod: 'https://va-e.c.liveperson.net',
-    playground: 'https://va-s.c.liveperson.net'
-}
-*/
-const baseUrl = {
-    vbg: 'https://z1.context.liveperson.net',
-    fast: 'https://z1.context.liveperson.net',
-    fast_prod: 'https://va-e.c.liveperson.net',
-    playground: 'https://va-s.c.liveperson.net'
-}
-
 
 // secret key:  maven-api-key
-const apiKey = {
-    vbg: 'kq9tMnO5BCMjIyMDkzNzk=',
-    fast: 'RsVgzBjLAeMTcyNzYzODU=',
-    fast_prod: 's3TyAVOLl4ODgxMDIwNjI=',
-    playground: 'hNzTR1BjI3NDk5ODU0Mjc='
+let accounts = {
+    SANDBOX: {
+        accountId: '49985427',
+        baseUrl: 'https://z1.context.liveperson.net',
+        'maven-api-key': 'hNzTR1BjI3NDk5ODU0Mjc='
+    },
+    VBG: {
+        accountId: '22209379',
+        baseUrl: 'https://z1.context.liveperson.net',
+        'maven-api-key': 'kq9tMnO5BCMjIyMDkzNzk='
+    },
+    FAST: {
+        accountId: '17276385',
+        baseUrl: 'https://z1.context.liveperson.net',
+        'maven-api-key': 'RsVgzBjLAeMTcyNzYzODU='
+    },
+    FAST_PROD: {
+        accountId: '88102062',
+        baseUrl: 'https://va-e.c.liveperson.net',
+        'maven-api-key': 's3TyAVOLl4ODgxMDIwNjI='
+    }
 }
 
 
-let base, acct, mvnApiKey;
-switch(account) {
-    case FAST:
-        base = baseUrl.fast;
-        acct = accountId.fast;
-        mvnApiKey = apiKey.fast;
-        break;
-    case FAST_PROD:
-        base = baseUrl.fast_prod;
-        acct = accountId.fast_prod;
-        mvnApiKey = apiKey.fast_prod;
-        break;
-    case VBG:
-        base = baseUrl.vbg;
-        acct = accountId.vbg;
-        mvnApiKey = apiKey.vbg;
-        break;
-    case PLAYGROUND:
-        base = baseUrl.playground;
-        acct = accountId.playground;
-        mvnApiKey = apiKey.playground;
-        break;
-}
+// ***********    Set the account    ***********
+let base = accounts.SANDBOX.baseUrl;
+let acct = accounts.SANDBOX.accountId;
+let mvnApiKey = accounts.SANDBOX["maven-api-key"]
 
 
 const namespace = 'messagingQueueHealth';
@@ -85,103 +46,43 @@ const lpUrl = {
     deleteNamespace: ''
 }
 
-const COMMON_HEADERS = {
-    'Content-Type': 'application/json',
-};
+const COMMON_HEADER = {
+    'maven-api-key': `${mvnApiKey}`,
+    'Content-Type': 'application/json'
+}
 
 
 
-/*
-let getBearerToken = function( accountId ) {
+const bindButtons = function () {
+    let getNamespaceBtn = document.getElementById('getNamespaceBtn');
+    getNamespaceBtn.addEventListener("click", getNamespaces );
+}
+
+
+
+
+const getNamespaces = async function () {
     try {
-        const bearerTokenURL = `https://va.agentvep.liveperson.net/api/account/${accountId}/login?v=1.3`;
-        const bodyGetBearerToken = {
-            "username": "queueHealthStatus",
-            "appKey": "aed144e8bc6a4c54bb6750794ca0fc75",
-            "secret": "42ebd15749c009fe",
-            "accessToken": "47ed01ae4acd4b998a986eb43c57ab0a",
-            "accessTokenSecret": "7b8e272234e0837d"
-        }
-        const payloadRequest = await httpClient(bearerTokenURL, {
-            method: 'POST',
-            headers: { ...COMMON_HEADERS },
-            body: bodyGetBearerToken,
-            json: true,
+        let resp = await getRequest( lpUrl.getNamespaces );
+        let namespaces = await resp.json();
+
+        displayInfo('namespaces: ');
+        displayInfo( JSON.stringify(namespaces, null, 2) );
+        let namespaceFound = false;
+        namespaces.every(ns => {
+            if (ns === namespace) {
+                namespaceFound = true
+                return false;
+            }
+            return true;
         });
-        return payloadRequest.bearer || ''
-    } catch (error) {
-        console.error(`getBearerToken > received following error message during Bearer Token: ${error.message}`)
-        return ''
-    }
-}
-*/
 
-let getBearerToken = function() {
-
-    const bearerTokenURL = `https://va.agentvep.liveperson.net/api/account/${acct}/login?v=1.3`;
-    const bodyGetBearerToken = {
-        "username": "queueHealthStatus",
-        "appKey": "aed144e8bc6a4c54bb6750794ca0fc75",
-        "secret": "42ebd15749c009fe",
-        "accessToken": "47ed01ae4acd4b998a986eb43c57ab0a",
-        "accessTokenSecret": "7b8e272234e0837d"
-    }
-    fetch(bearerTokenURL, {
-        method:  'POST',
-        body: JSON.stringify(bodyGetBearerToken),
-        headers: { ...COMMON_HEADERS }
-    })
-        .then(resp => {
-            return resp.json()
-        })
-        .then(data => {
-            console.log(`bearer token success`)
-        })
-        .catch( err => console.log('something went wrong', err) );
-}
-
-
-
-
-/*
-async getJSON() {
-    return fetch('/website/MyJsonFile.json')
-        .then((response)=>response.json())
-        .then((responseJson)=>{return responseJson});
-}
-*/
-
-async function getNamespaces() {
-
-    fetch(lpUrl.base + lpUrl.getNamespaces, {
-        method:  'GET',
-        headers: {
-            'maven-api-key': `${mvnApiKey}`,
-            'Content-Type': 'application/x-www-form-urlencoded' }
-    })
-        .then(resp => {
-            return resp.json()
-        })
-        .then(namespaces => {
-            console.log(`namespaces: ${JSON.stringify(namespaces)}`)
-            let namespaceFound = false;
-            namespaces.every(ns => {
-                if (ns === namespace) {
-                    namespaceFound = true
-                    return false;
-                }
-                return true;
-            });
-        })
-        .catch( err => {
-            console.log('something went wrong', err);
-            return false;
-        });
-}
-
-/**
- .then(namespaces => {
-                console.info('namespace list returned');
+        // this is equal to the above
+        /*
+        await resp.json()
+            .then(namespaces => {
+                displayInfo('namespaces: ');
+                displayInfo(JSON.stringify(namespaces, null, 2));
                 let namespaceFound = false;
                 namespaces.every(ns => {
                     if (ns === namespace) {
@@ -190,15 +91,27 @@ async function getNamespaces() {
                     }
                     return true;
                 });
+            });
+        */
 
-                callback(null, namespaceFound)
-            })
- .catch(err => {
-                console.error(`checkNamespaceExists API failed: ${err.message}`);
-            })
- }
+    }
+    catch (err) {
+        displayInfo(err.message);
+    }
+}
 
- */
+
+async function getRequest( url ) {
+    return fetch(lpUrl.base + url, {
+        method:  'GET',
+        headers: COMMON_HEADER
+    })
+        .catch(err => {
+            displayInfo(`Reqeust error: ${err.stack}`);
+        });
+}
+
+
 
 
 
@@ -272,13 +185,20 @@ const getNamespaceProperties = function () {
 }
 
 
+let apiMain = function () {
+
+    displayInfo( "API begin" );
+    displayInfo(`base: ${base}, account ID: ${acct}`);
+
+    bindButtons();
+    bindLpEvents();
+    // getNamespaces();
+    // createNamespace();
+    // updateNamespaceProperty();
+    // getNamespaceProperties();
+}
 
 
 $(function() {
-    console.log( "API begin" );
-    // getBearerToken()
-    getNamespaces();
-    // createNamespace();
-    // updateNamespaceProperty();
-    getNamespaceProperties();
+    apiMain();
 });

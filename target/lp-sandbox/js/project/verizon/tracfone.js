@@ -1,3 +1,7 @@
+/*
+    Verizon Tracfone
+*/
+
 let engagementId = null;
 
 let main = function (){
@@ -10,7 +14,9 @@ let main = function (){
         setLpTagSections(event.target.attributes[2].value);
         refreshTracfonePage();
     });
+
     $('#launchTracfoneEngagementBtn').click( launchTracfoneEngagement );
+    $('#getEventsBtn').click( getEvents );
     checkLpScriptsLoaded();
 };
 
@@ -26,6 +32,14 @@ let refreshTracfonePage = function () {
 
 
 let launchTracfoneEngagement = function () {
+
+
+    //TODO FIX
+    //TODO   WHEN YOU SEE THE CONSOLE MESSAGES, YOU'LL SEE WHAT I MEAN
+    //          ITS NOT LAUNCHING THE ENGAGEMENT FOR 1 , AND THE GET ALL
+    //          ENGAGEMENTS IS RETURNING MANY.
+
+
     console.log(`URL: ${document.URL}`);
     let engagements = lpTag.events.hasFired("RENDERER_STUB","AFTER_CREATE_ENGAGEMENT_INSTANCE");
 
@@ -43,6 +57,7 @@ let launchTracfoneEngagement = function () {
     if (engagements && engagements.length > 0) {
         let engagement = engagements[0];
         console.log(`Engagement name: ${engagement.data.eng.conf.name}`);
+        // let engagementId = engagement.data.msg.engagementId;
         if (engagementId) {
 
             let engagementInfo = lpTag.taglets.rendererStub.getEngagementInfo(engagementId);
@@ -59,8 +74,22 @@ let launchTracfoneEngagement = function () {
 }
 
 
+let getEvents = function () {
+    try {
+        let allEvents = lpTag.events.hasFired("*","*");
+        console.log(`allEvents: ${allEvents.length}`);
+    }
+    catch (e) {
+        console.log('checkEvents failed');
+    }
+}
+
+
+
+
 $(function() {
     console.log( "Tracfone begin" );
     lpTag.section = [ "tracfone" ];   // initialize lpTage sections
     main();
 });
+

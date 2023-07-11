@@ -1,7 +1,0 @@
-0:0:0:0:0:0:0:1 - - [24/May/2023:22:28:24 -0500] "GET /view/project/priceline/priceline.html HTTP/1.1" 200 4440 http-bio-9000-exec-1 19
-0:0:0:0:0:0:0:1 - - [24/May/2023:22:28:24 -0500] "GET /css/project.css HTTP/1.1" 200 229 http-bio-9000-exec-5 2
-0:0:0:0:0:0:0:1 - - [24/May/2023:22:28:24 -0500] "GET /css/main.css HTTP/1.1" 200 3755 http-bio-9000-exec-1 2
-0:0:0:0:0:0:0:1 - - [24/May/2023:22:28:24 -0500] "GET /js/livepersonScripts/lpDetectBrowser.js HTTP/1.1" 200 7952 http-bio-9000-exec-2 1
-0:0:0:0:0:0:0:1 - - [24/May/2023:22:28:24 -0500] "GET /js/project/priceline/dynamicRouting.js HTTP/1.1" 200 3225 http-bio-9000-exec-4 0
-0:0:0:0:0:0:0:1 - - [24/May/2023:22:28:24 -0500] "GET /js/util/infoPanel.js HTTP/1.1" 200 333 http-bio-9000-exec-8 1
-0:0:0:0:0:0:0:1 - - [24/May/2023:22:28:24 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-8 15

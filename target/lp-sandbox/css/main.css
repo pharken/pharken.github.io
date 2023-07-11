@@ -36,12 +36,7 @@ label { font-weight: bold; }
 .font-size-default { font-size: smaller; }
 .font-size-small { font-size: small; }
 
-.columnContainer{
-    border: 1px solid darkgray;
-    margin: 5px;
-    padding: 5px;
-    background-color: lightblue;
-}
+
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
         FONT AWESOME

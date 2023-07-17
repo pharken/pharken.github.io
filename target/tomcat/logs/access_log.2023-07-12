@@ -1,0 +1,15 @@
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:29:11 -0500] "GET /view/agentWidget/agentWidget.html HTTP/1.1" 200 5710 http-bio-9000-exec-1 35
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:29:11 -0500] "GET /css/main.css HTTP/1.1" 200 4343 http-bio-9000-exec-3 3
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:29:12 -0500] "GET /js/agentWidget.js HTTP/1.1" 200 4829 http-bio-9000-exec-4 2
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:29:12 -0500] "GET /css/project.css HTTP/1.1" 200 231 http-bio-9000-exec-2 10
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:29:12 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-7 3
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:29:20 -0500] "GET /view/verizon/tracfone HTTP/1.1" 404 993 http-bio-9000-exec-8 0
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:29:25 -0500] "GET /view/verizon/tracfone.html HTTP/1.1" 404 1003 http-bio-9000-exec-9 1
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:30:05 -0500] "GET /view/project/verizon/tracfone.html HTTP/1.1" 200 4882 http-bio-9000-exec-10 2
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:30:05 -0500] "GET /js/project/verizon/tracfone.js HTTP/1.1" 200 2815 http-bio-9000-exec-10 2
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:30:05 -0500] "GET /js/util/lpScripts.js HTTP/1.1" 200 1157 http-bio-9000-exec-6 17
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:30:18 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-6 3
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:30:19 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-6 1
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:30:29 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-6 0
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:30:37 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-6 0
+0:0:0:0:0:0:0:1 - - [12/Jul/2023:16:31:31 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-6 1

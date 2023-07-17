@@ -10,7 +10,8 @@
     --color-list-panel-hover: #000000;
     /*--color-list-panel-hover-background: #d0def5;*/
     --color-list-panel-hover-background: #dcfcf4;
-    --color-list-panel-hover-active: #3d799f;
+    --color-list-panel-active: #ffffff;
+    --color-list-panel-active-background: #66a2ca;
     --color-list-panel-border: #cfd9e9;
     --color-list-item: #00004b;
     --color-list_item-background: #ffffff;
@@ -41,6 +42,10 @@ label { font-weight: bold; }
     margin: 5px;
     padding: 5px;
     background-color: lightblue;
+}
+.isSelected {
+    color: var(--color-list-panel-active);
+    background-color: var(--color-list-panel-active-background);
 }
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

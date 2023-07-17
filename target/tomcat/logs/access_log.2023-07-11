@@ -2,3 +2,9 @@
 0:0:0:0:0:0:0:1 - - [11/Jul/2023:16:46:47 -0500] "GET /js/agentWidget.js HTTP/1.1" 200 4829 http-bio-9000-exec-2 3
 0:0:0:0:0:0:0:1 - - [11/Jul/2023:16:46:47 -0500] "GET /css/main.css HTTP/1.1" 304 - http-bio-9000-exec-19 5
 0:0:0:0:0:0:0:1 - - [11/Jul/2023:16:46:47 -0500] "GET /css/project.css HTTP/1.1" 304 - http-bio-9000-exec-24 6
+0:0:0:0:0:0:0:1 - - [11/Jul/2023:17:12:14 -0500] "GET /view/routing/routing.html HTTP/1.1" 200 6944 http-bio-9000-exec-23 6
+0:0:0:0:0:0:0:1 - - [11/Jul/2023:17:12:14 -0500] "GET /js/util/infoPanel.js HTTP/1.1" 200 1312 http-bio-9000-exec-7 2
+0:0:0:0:0:0:0:1 - - [11/Jul/2023:17:12:14 -0500] "GET /js/util/dataTimeUtil.js HTTP/1.1" 200 996 http-bio-9000-exec-22 3
+0:0:0:0:0:0:0:1 - - [11/Jul/2023:17:12:14 -0500] "GET /js/livepersonScripts/lpDetectBrowser.js HTTP/1.1" 200 7473 http-bio-9000-exec-10 7
+0:0:0:0:0:0:0:1 - - [11/Jul/2023:17:12:14 -0500] "GET /js/routing/routing.js HTTP/1.1" 200 8286 http-bio-9000-exec-23 8
+0:0:0:0:0:0:0:1 - - [11/Jul/2023:17:12:14 -0500] "GET /js/livepersonScripts/lpInfoDisplay.js HTTP/1.1" 200 6659 http-bio-9000-exec-21 3

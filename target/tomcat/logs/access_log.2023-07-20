@@ -1,0 +1,14 @@
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:44 -0500] "GET /view/project/verizon/tracfone.html HTTP/1.1" 200 4744 http-bio-9000-exec-1 55
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:44 -0500] "GET /css/main.css HTTP/1.1" 200 4517 http-bio-9000-exec-3 14
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:44 -0500] "GET /js/project/verizon/tracfone.js HTTP/1.1" 200 5560 http-bio-9000-exec-2 30
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:44 -0500] "GET /js/util/lpScripts.js HTTP/1.1" 200 1157 http-bio-9000-exec-4 30
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:46 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-6 2
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:47 -0500] "GET /view/routing/routing.html HTTP/1.1" 200 6944 http-bio-9000-exec-8 29
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:47 -0500] "GET /css/project.css HTTP/1.1" 200 231 http-bio-9000-exec-9 29
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:47 -0500] "GET /js/util/infoPanel.js HTTP/1.1" 200 1312 http-bio-9000-exec-10 34
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:47 -0500] "GET /js/routing/routing.js HTTP/1.1" 200 8286 http-bio-9000-exec-7 42
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:47 -0500] "GET /js/livepersonScripts/lpInfoDisplay.js HTTP/1.1" 200 6659 http-bio-9000-exec-1 47
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:47 -0500] "GET /js/util/dataTimeUtil.js HTTP/1.1" 200 996 http-bio-9000-exec-3 47
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:47 -0500] "GET /js/livepersonScripts/lpDetectBrowser.js HTTP/1.1" 200 7473 http-bio-9000-exec-5 49
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:57 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-5 2
+0:0:0:0:0:0:0:1 - - [20/Jul/2023:12:13:57 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-5 1

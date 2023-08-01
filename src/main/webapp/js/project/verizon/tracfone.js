@@ -125,7 +125,7 @@ let changePageFont = function( fontName ){
 };
 
 /**
-    Force refresh of lpTag - usually for SPA (single page app) but useful for this demo
+    Force refresh of lpTag - usually for SPA (single page app) but useful for this poc
 */
 let refreshTracfonePage = function () {
     lpTag.newPage( document.URL, { section: lpTag.section });

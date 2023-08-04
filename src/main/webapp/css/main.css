@@ -44,15 +44,6 @@ label { font-weight: bold; }
     padding: 5px;
     background-color: lightblue;
 }
-.isSelected {
-    /*color: var(--color-list-panel-active);*/
-    /*background-color: var(--color-list-panel-active-background);*/
-
-    border: 3px solid var(--color-list-panel-active-border);
-    /*border: 3px;*/
-    /*border-color: var(--color-list-panel-active);*/
-
-}
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
         FONT AWESOME
@@ -100,7 +91,7 @@ ul li {
     background: var(--color-list_item-background);
     color: var(--color-list-item);
     font-size: medium;
-    border: 1px solid var(--color-list-panel-border);
+    border: 2px solid var(--color-list-panel-border);
     border-radius: var(--border-radius);
 }
 ul li:hover {
@@ -123,6 +114,8 @@ ul li p {
     text-decoration: inherit; /* no underline */
 }
 .noHrefStyling li a:hover { all: unset; }
+.isSelected { border: 2px solid var(--color-list-panel-active-border); }
+
 
 .defaultSection {
     width: 100%;

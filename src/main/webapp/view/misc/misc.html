@@ -9,6 +9,7 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../css/main.css" rel="stylesheet">
+    <link href="../../css/project.css" rel="stylesheet">
 </head>
 
 <body>
@@ -31,31 +32,36 @@
 
 <!--                <div class="defaultSection p-2">-->
                     <h3 class="fs-2">Browser Info</h3>
-                    <div id="browserInfo" class="p-2">
-                    </div>
+                    <div id="browserInfo" class="p-2"></div>
 <!--                </div>-->
 
                 </div>
 
             </div>
-            <div class="col d-flex align-items-start">
+            <div class="col d-flex align-items-start" style="width:60vw;">
 
-<!--
                 <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                    <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+                </div>
+                <!--<div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                     <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"></use></svg>
+                </div>-->
+                <div class="defaultSection p-3">
+                    <h3 class="fs-2">URL to Section Values</h3>
+                    <textarea id="url2sectionsTextArea"></textarea>
+                    <a id="url2sectionsBtn" href="#" class="btn btn-primary">Section Values</a>
+                    <a id="url2entryPointsBtn" href="#" class="btn btn-primary">Entry Points</a>
+                    <a id="url2engagementsBtn" href="#" class="btn btn-primary">Engagements</a>
+                    <a id="clearBtn" href="#" class="btn btn-secondary">Clear</a>
+                    <div id="url2SectionValueResultContainer">
+                        <p id="url2sectionsResultSection"></p>
+                    </div>
                 </div>
-                <div class="defaultSection p-2">
-                    <h3 class="fs-2">Featured title</h3>
-                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-                    <a href="#" class="btn btn-primary">
-                        Primary button
-                    </a>
-                </div>
--->
 
             </div>
             <div class="col d-flex align-items-start">
 
+<!-- 3rd column -->
 <!--                <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                     <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"></use></svg>
                 </div>
@@ -66,12 +72,12 @@
                         Primary button
                     </a>
                 </div>
-                -->
+-->
             </div>
         </div>
     </div>
-
 <!--
+
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
         <div class="col d-flex align-items-start">
             <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
@@ -121,6 +127,7 @@
 <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../../js/misc/detectBrowser.js"></script>
+<script type="text/javascript" src="../../js/misc/urlToSectionValues.js"></script>
 
 </body>
 </html>

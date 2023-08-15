@@ -16,3 +16,14 @@
     margin: 20px;
 }
 
+#url2sectionsTextArea {
+    height: 20vh;
+    width: 80vh;
+}
+#url2SectionValueResultContainer{
+    overflow: auto;
+}
+#url2sectionsResultSection {
+    height: 20vh;
+    width: 85vh;
+}

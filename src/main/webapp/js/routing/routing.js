@@ -105,7 +105,8 @@ const offerClickCallback = ( (data) => genericBindEventCallback('OFFER_CLICK', d
 const offerRemoveCallback = ( (data) => genericBindEventCallback('OFFER_REMOVE', data));
 
 const genericBindEventCallback = function (eventName, data) {
-    displayInfo(`( ${getFormattedTimeStamp()} )  ${eventName}:\n ${JSON.stringify(data, null, 2)}`);
+    //displayInfo(`( ${getFormattedTimeStamp()} )  ${eventName}:\n ${JSON.stringify(data, null, 2)}`);
+    displayInfo(`${eventName}:\n ${JSON.stringify(data, null, 2)}`);
 
     checkEventCallbackValueForSpecificData(data);
 }
@@ -234,7 +235,9 @@ $(function() {
     console.log( "Routing begin" );
     // routing is for the top right 'banking' entry point
     // parkinglot is for the top left 'parking lot' entry point. This is a shortcut to go directly to the parking lot bot
-    lpTag.section = [ "routing", "parkinglot" ];   // initialize
+    lpTag.section = [ "routing", "parkinglot" ];   // playground tests
+    // lpTag.section = [ "parkinglot" ];   // test for verizon sales - QA
+    // lpTag.section = [ "l1:wireline", "l2:home", "l3:internet", "l4:acp" ];   // playground tests
 
     //TODO  do this on lpTag --- on ready or the other one
     // detectBrowserMain();

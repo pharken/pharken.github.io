@@ -3,7 +3,11 @@ const $infoList = $('#infoList');
 const infoList = document.getElementById('infoList');
 
 
-let displayInfo = function (info) {
+let displayInfo = function (info, addTimeStamp=false) {
+
+    let lastMsg = '';
+    if (infoList)
+        lastMsg = $("#infoList li:last textarea").val();
 
     const li = document.createElement('li');
 
@@ -14,12 +18,20 @@ let displayInfo = function (info) {
         textarea.disabled = true;
         textarea.cols = "1";
 
-        li.append(textarea);
-        infoList.appendChild(li);
+        if ( lastMsg !== info ) {
+            if (addTimeStamp)
+                info = `( ${getFormattedTimeStamp()} )  ${info}`;
 
-        resizeTextAreaBasedOnContentSize(textarea, info);
+            li.append(textarea);
+            infoList.appendChild(li);
+
+            resizeTextAreaBasedOnContentSize(textarea, info);
+        }
     }
     else {
+        if (addTimeStamp)
+            info = `( ${getFormattedTimeStamp()} )  ${info}`;
+
         li.innerHTML = info;
         infoList.appendChild(li);
     }

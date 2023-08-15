@@ -8,9 +8,10 @@
     --color-list-panel:yellow;
     --color-list-panel-background: #f7f8fb;
     --color-list-panel-hover: #000000;
-    /*--color-list-panel-hover-background: #d0def5;*/
-    --color-list-panel-hover-background: #dcfcf4;
-    --color-list-panel-hover-active: #0367ff;
+    --color-list-panel-hover-background: #f1f6ff;
+    --color-list-panel-active: #ffffff;
+    --color-list-panel-active-background: #2828ff;
+    --color-list-panel-active-border: #86a0ff;
     --color-list-panel-border: #cfd9e9;
     --color-list-item: #00004b;
     --color-list_item-background: #ffffff;
@@ -35,8 +36,14 @@ label { font-weight: bold; }
 .margin-top-20px { margin-top: 20px; }
 .font-size-default { font-size: smaller; }
 .font-size-small { font-size: small; }
+.font-size-smallest { font-size: x-small; }
 
-
+.columnContainer{
+    border: 1px solid darkgray;
+    margin: 5px;
+    padding: 5px;
+    background-color: lightblue;
+}
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
         FONT AWESOME
@@ -84,7 +91,8 @@ ul li {
     background: var(--color-list_item-background);
     color: var(--color-list-item);
     font-size: medium;
-    border: 1px solid var(--color-list-panel-border);
+    border: 2px solid var(--color-list-panel-border);
+    border-radius: var(--border-radius);
 }
 ul li:hover {
     color: var(--color-list-panel-hover);
@@ -92,7 +100,7 @@ ul li:hover {
 }
 ul li:active {
     color: var(--color-list-panel-hover);
-    background-color: var(--color-list-panel-hover-active);
+    background-color: var(--color-list-panel-active);
 }
 ul li p {
     width: 25vw;
@@ -106,6 +114,8 @@ ul li p {
     text-decoration: inherit; /* no underline */
 }
 .noHrefStyling li a:hover { all: unset; }
+.isSelected { border: 2px solid var(--color-list-panel-active-border); }
+
 
 .defaultSection {
     width: 100%;

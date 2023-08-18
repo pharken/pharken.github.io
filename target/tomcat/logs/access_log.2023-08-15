@@ -320,3 +320,14 @@
 0:0:0:0:0:0:0:1 - - [15/Aug/2023:12:37:42 -0500] "GET /css/project.css HTTP/1.1" 200 423 http-bio-9000-exec-1 1
 0:0:0:0:0:0:0:1 - - [15/Aug/2023:12:37:42 -0500] "GET /js/misc/urlToSectionValues.js HTTP/1.1" 200 4774 http-bio-9000-exec-5 1
 0:0:0:0:0:0:0:1 - - [15/Aug/2023:12:37:42 -0500] "GET /js/misc/detectBrowser.js HTTP/1.1" 200 2279 http-bio-9000-exec-10 1
+0:0:0:0:0:0:0:1 - - [15/Aug/2023:12:43:40 -0500] "GET /view/misc/misc.html HTTP/1.1" 200 8584 http-bio-9000-exec-4 2
+0:0:0:0:0:0:0:1 - - [15/Aug/2023:12:43:40 -0500] "GET /css/main.css HTTP/1.1" 200 4539 http-bio-9000-exec-4 1
+0:0:0:0:0:0:0:1 - - [15/Aug/2023:12:43:40 -0500] "GET /css/project.css HTTP/1.1" 200 423 http-bio-9000-exec-2 1
+0:0:0:0:0:0:0:1 - - [15/Aug/2023:12:43:40 -0500] "GET /js/misc/urlToSectionValues.js HTTP/1.1" 200 4774 http-bio-9000-exec-5 2
+0:0:0:0:0:0:0:1 - - [15/Aug/2023:12:43:40 -0500] "GET /js/misc/detectBrowser.js HTTP/1.1" 200 2279 http-bio-9000-exec-8 3
+0:0:0:0:0:0:0:1 - - [15/Aug/2023:17:32:36 -0500] "GET /view/misc/misc.html HTTP/1.1" 200 8584 http-bio-9000-exec-9 26
+0:0:0:0:0:0:0:1 - - [15/Aug/2023:17:32:36 -0500] "GET /css/main.css HTTP/1.1" 200 4539 http-bio-9000-exec-9 2
+0:0:0:0:0:0:0:1 - - [15/Aug/2023:17:32:36 -0500] "GET /css/project.css HTTP/1.1" 200 423 http-bio-9000-exec-3 2
+0:0:0:0:0:0:0:1 - - [15/Aug/2023:17:32:36 -0500] "GET /js/misc/urlToSectionValues.js HTTP/1.1" 200 4774 http-bio-9000-exec-9 2
+0:0:0:0:0:0:0:1 - - [15/Aug/2023:17:32:36 -0500] "GET /js/misc/detectBrowser.js HTTP/1.1" 200 2279 http-bio-9000-exec-1 2
+0:0:0:0:0:0:0:1 - - [15/Aug/2023:17:32:36 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-1 29

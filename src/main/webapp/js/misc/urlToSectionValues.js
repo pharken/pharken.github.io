@@ -1,6 +1,11 @@
 let textarea = null;
 const result = document.getElementById("url2sectionsResultSection");
-const ENTRY_POINT_PREFIX = 'TF-sales-';
+const SPANISH_IDENTIFIER = 'es';
+let entryPointPrefix = 'TF-';
+let salesOrCare = 'sales';
+let includeSubdomain = true;
+let includeSpanish = true;
+
 
 
 const init = function () {
@@ -18,7 +23,43 @@ const init = function () {
 
     const clearBtn = document.getElementById("clearBtn");
     clearBtn.addEventListener("click", clearResults);
+
+    bindLobDropdownBtn();
+    bindSaleOrCareDropdownBtn();
+
+    $('#includeSubdomainCheckbox').change(function() {
+        includeSubdomain = $(this).prop('checked');
+    })
+    $('#includeSpanishCheckbox').change(function() {
+        includeSpanish = $(this).prop('checked');
+    })
 }
+
+
+const bindLobDropdownBtn = function (){
+    let $lobDropDownBtn = $('#lobDropDownBtn');
+    $lobDropDownBtn.html('TF <span class="caret"></span>');
+    $('#lobDropDownMenu').find("li a").click( function(){
+        let selText = $(this).text();
+        $lobDropDownBtn.html(selText + ' <span class="caret"></span>');
+        entryPointPrefix = selText.concat('-');
+        // console.log(`entry point prefix: ${entryPointPrefix}`);
+    });
+}
+
+
+
+const bindSaleOrCareDropdownBtn = function (){
+    let $salesOrCareBtn = $('#salesOrCareDropdownBtn');
+    $salesOrCareBtn.html('Sales <span class="caret"></span>');
+    $('#salesOrCareDropdownMenu').find("li a").click( function(){
+        salesOrCare = $(this).text();
+        $salesOrCareBtn.html(salesOrCare + ' <span class="caret"></span>');
+        // console.log(`sales or care: ${salesOrCare}`);
+    });
+}
+
+
 
 
 let handlePaste = function (event) {
@@ -123,8 +164,21 @@ const splitIntoSections = function (row){
 
 
 const createEntryPointNames = function (row){
-    let newRow = ENTRY_POINT_PREFIX;
+    let newRow = entryPointPrefix;
     let sections = row.split('\/');
+
+    if (!includeSubdomain)
+        sections.shift();
+
+    if (!includeSpanish) {
+        const index = sections.indexOf(SPANISH_IDENTIFIER);
+        if (index > -1)
+            sections.splice(index, 1);
+    }
+
+    if (salesOrCare !== 'none')
+        sections.unshift(salesOrCare);
+
     for (let elem of sections) {
         newRow = newRow.concat( `${elem}-` );
     }
@@ -133,8 +187,21 @@ const createEntryPointNames = function (row){
 
 
 const createEngagementNames = function (row){
-    let newRow = ENTRY_POINT_PREFIX;
+    let newRow = entryPointPrefix;
     let sections = row.split('\/');
+
+    if (!includeSubdomain)
+        sections.shift();
+
+    if (!includeSpanish) {
+        const index = sections.indexOf(SPANISH_IDENTIFIER);
+        if (index > -1)
+            sections.splice(index, 1);
+    }
+
+    if (salesOrCare !== 'none')
+        sections.unshift(salesOrCare);
+
     for (let elem of sections) {
         newRow = newRow.concat( `${elem}_` );
     }

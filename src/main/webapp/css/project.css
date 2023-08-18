@@ -18,7 +18,8 @@
 
 #url2sectionsTextArea {
     height: 20vh;
-    width: 80vh;
+    /*width: 80vh;*/
+    width: 100%;
 }
 #url2SectionValueResultContainer{
     overflow: auto;

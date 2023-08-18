@@ -43,16 +43,58 @@
                 <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                     <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
                 </div>
-                <!--<div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                    <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"></use></svg>
-                </div>-->
                 <div class="defaultSection p-3">
                     <h3 class="fs-2">URL to Section Values</h3>
-                    <textarea id="url2sectionsTextArea"></textarea>
-                    <a id="url2sectionsBtn" href="#" class="btn btn-primary">Section Values</a>
-                    <a id="url2entryPointsBtn" href="#" class="btn btn-primary">Entry Points</a>
-                    <a id="url2engagementsBtn" href="#" class="btn btn-primary">Engagements</a>
-                    <a id="clearBtn" href="#" class="btn btn-secondary">Clear</a>
+                    <div class="row px-1 g-2">
+                        <div class="row justify-content-start">
+                            <div class="col-9">
+                                <textarea id="url2sectionsTextArea"></textarea>
+                            </div>
+                            <div class="col-3">
+                                <div style="background: white; width: 100%; height: 20vh;">
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="lobDropDownBtn"
+                                                data-bs-toggle="dropdown" aria-expanded="false">LOB</button>
+                                        <ul id="lobDropDownMenu" class="dropdown-menu" aria-labelledby="lobDropDownBtn">
+                                            <li><a class="dropdown-item" href="#">GS</a></li>
+                                            <li><a class="dropdown-item" href="#">NT</a></li>
+                                            <li><a class="dropdown-item" href="#">TF</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="salesOrCareDropdownBtn"
+                                                data-bs-toggle="dropdown" aria-expanded="false">Sales or Care</button>
+                                        <ul id="salesOrCareDropdownMenu" class="dropdown-menu" aria-labelledby="salesOrCareDropdownBtn">
+                                            <li><a class="dropdown-item" href="#">care</a></li>
+                                            <li><a class="dropdown-item" href="#">sales</a></li>
+                                            <li><a class="dropdown-item" href="#">none</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="form-check">
+                                        <input id="includeSubdomainCheckbox" class="form-check-input" type="checkbox" value="" checked>
+                                        <label class="form-check-label" for="includeSubdomainCheckbox">
+                                            Include subdomain
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input id="includeSpanishCheckbox" class="form-check-input" type="checkbox" value="" checked>
+                                        <label class="form-check-label" for="includeSpanishCheckbox">
+                                            Include spanish
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="g-2 py-1">
+                        <a id="url2sectionsBtn" href="#" class="btn btn-primary" style="width: 20%;">Section Values</a>
+                        <a id="url2entryPointsBtn" href="#" class="btn btn-primary margin-left-10px" style="width: 20%;">Entry Points</a>
+                        <a id="url2engagementsBtn" href="#" class="btn btn-primary margin-left-10px" style="width: 20%;">Engagements</a>
+                        <a id="clearBtn" href="#" class="btn btn-secondary float-end" style="margin-right: 38px;width: 10%;">Clear</a>
+                    </div>
                     <div id="url2SectionValueResultContainer">
                         <p id="url2sectionsResultSection"></p>
                     </div>

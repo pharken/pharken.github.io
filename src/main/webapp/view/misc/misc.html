@@ -22,7 +22,7 @@
         <h2 class="pb-2 border-bottom">Misc</h2>
 
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-            <div class="col d-flex align-items-start">
+            <div class="col d-flex align-items-start" style="width:25vw;">
 
                 <div class="defaultSection p-2">
 
@@ -38,7 +38,7 @@
                 </div>
 
             </div>
-            <div class="col d-flex align-items-start" style="width:60vw;">
+            <div class="col d-flex align-items-start" style="width:70vw;">
 
                 <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                     <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
@@ -47,23 +47,30 @@
                     <h3 class="fs-2">URL to Section Values</h3>
                     <div class="row px-1 g-2">
                         <div class="row justify-content-start">
-                            <div class="col-9">
+                            <div class="col-8">
                                 <textarea id="url2sectionsTextArea"></textarea>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <div style="background: white; width: 100%; height: 20vh;">
 
-                                    <div class="dropdown">
+                                    <div class="dropdown display-inline">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="lobDropDownBtn"
                                                 data-bs-toggle="dropdown" aria-expanded="false">LOB</button>
                                         <ul id="lobDropDownMenu" class="dropdown-menu" aria-labelledby="lobDropDownBtn">
                                             <li><a class="dropdown-item" href="#">GS</a></li>
                                             <li><a class="dropdown-item" href="#">NT</a></li>
+                                            <li><a class="dropdown-item" href="#">PP</a></li>
+                                            <li><a class="dropdown-item" href="#">SL</a></li>
+                                            <li><a class="dropdown-item" href="#">SM</a></li>
+                                            <li><a class="dropdown-item" href="#">ST</a></li>
+                                            <li><a class="dropdown-item" href="#">TBV</a></li>
                                             <li><a class="dropdown-item" href="#">TF</a></li>
+                                            <li><a class="dropdown-item" href="#">WFM</a></li>
+                                            <li><a class="dropdown-item" href="#">DP</a></li>
                                         </ul>
                                     </div>
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle" type="button" id="salesOrCareDropdownBtn"
+                                    <div class="dropdown margin-top-5px display-inline">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="salesOrCareDropdownBtn"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Sales or Care</button>
                                         <ul id="salesOrCareDropdownMenu" class="dropdown-menu" aria-labelledby="salesOrCareDropdownBtn">
                                             <li><a class="dropdown-item" href="#">care</a></li>
@@ -71,7 +78,16 @@
                                             <li><a class="dropdown-item" href="#">none</a></li>
                                         </ul>
                                     </div>
-                                    <div class="form-check">
+                                    <div class="dropdown margin-top-5px display-inline">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="entryPointTypeDropdownBtn"
+                                                data-bs-toggle="dropdown" aria-expanded="false">sticky</button>
+                                        <ul id="entryPointTypeDropdownMenu" class="dropdown-menu" aria-labelledby="entryPointTypeDropdownBtn">
+                                            <li><a class="dropdown-item" href="#">sticky</a></li>
+                                            <li><a class="dropdown-item" href="#">overlay</a></li>
+                                            <li><a class="dropdown-item" href="#">embedded</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="form-check margin-top-5px">
                                         <input id="includeSubdomainCheckbox" class="form-check-input" type="checkbox" value="" checked>
                                         <label class="form-check-label" for="includeSubdomainCheckbox">
                                             Include subdomain
@@ -83,6 +99,18 @@
                                             Include spanish
                                         </label>
                                     </div>
+                                    <div class="form-check">
+                                        <input id="behaviorAutoOpen" class="form-check-input" type="checkbox" value="">
+                                        <label class="form-check-label" for="behaviorAutoOpen">
+                                            Behavior | auto-open
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input id="behaviorTimeOnPage" class="form-check-input" type="checkbox" value="">
+                                        <label class="form-check-label" for="behaviorTimeOnPage">
+                                            Behavior | time on page
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -90,9 +118,11 @@
 
                     </div>
                     <div class="g-2 py-1">
-                        <a id="url2sectionsBtn" href="#" class="btn btn-primary" style="width: 20%;">Section Values</a>
-                        <a id="url2entryPointsBtn" href="#" class="btn btn-primary margin-left-10px" style="width: 20%;">Entry Points</a>
-                        <a id="url2engagementsBtn" href="#" class="btn btn-primary margin-left-10px" style="width: 20%;">Engagements</a>
+                        <a id="url2sectionsBtn" href="#" class="btn btn-primary" style="width: 15%;">Section Values</a>
+                        <a id="url2entryPointsBtn" href="#" class="btn btn-primary margin-left-10px" style="width: 15%;">Entry Points</a>
+                        <a id="url2engagementsBtn" href="#" class="btn btn-primary margin-left-10px" style="width: 15%;">Engagements</a>
+                        <a id="url2behaviorsBtn" href="#" class="btn btn-primary margin-left-10px" style="width: 15%;">Behaviors</a>
+                        <a id="url2EngagementWindowBtn" href="#" class="btn btn-primary margin-left-10px" style="width: 15%;">Windows</a>
                         <a id="clearBtn" href="#" class="btn btn-secondary float-end" style="margin-right: 38px;width: 10%;">Clear</a>
                     </div>
                     <div id="url2SectionValueResultContainer">

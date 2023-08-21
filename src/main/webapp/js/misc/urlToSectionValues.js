@@ -16,11 +16,26 @@
 
 let textarea = null;
 const result = document.getElementById("url2sectionsResultSection");
+const sectionCounts = document.getElementById("url2sectionsCounts");
 const SPANISH_IDENTIFIER = 'es';
+/*
+The engagement name character limit is 50.
+The TF_sales_ prefix, 2 digit language, entry point identifier,  and behavior identifiers can be up to 21 characters.
+That leaves 32 characters for the URL path items.
+
+If the path is over 29 characters, it's going to need to be compressed somehow
+
+Example values:
+        TF_sales_es
+        /activate/phones/esimnewact/simselection
+        _S
+        _AO-30s
+*/
+const URL_PATH_CHAR_COUNT_LIMIT = 29;
 let lobPrefix = 'TF';
 let salesOrCare = 'sales';
 let entryPointType = 'sticky';
-let includeSubdomain = true;
+let includeSubdomain = false;
 let includeSpanish = true;
 let behaviorAutoOpen = false;
 let behaviorTimeOnPage = false;
@@ -33,17 +48,17 @@ const init = function () {
     const toSectionValuesBtn = document.getElementById("url2sectionsBtn");
     toSectionValuesBtn.addEventListener("click", convertUrlToSectionValues);
 
-    const toEntryPointsBtn = document.getElementById("url2entryPointsBtn");
-    toEntryPointsBtn.addEventListener("click", convertUrlToEntryPoints);
-
     const toEngagementsBtn = document.getElementById("url2engagementsBtn");
     toEngagementsBtn.addEventListener("click", convertUrlToEngagements);
 
+    const toEntryPointsBtn = document.getElementById("url2entryPointsBtn");
+    toEntryPointsBtn.addEventListener("click", convertUrlToEntryPoints);
+
     const toBehaviorsBtn = document.getElementById("url2behaviorsBtn");
-    toEngagementsBtn.addEventListener("click", convertUrlToEngagements);
-//TODO
+    toBehaviorsBtn.addEventListener("click", convertUrlToBehaviors);
+
     const toEngagementWindowsBtn = document.getElementById("url2EngagementWindowBtn");
-    toEngagementsBtn.addEventListener("click", convertUrlToEngagements);
+    toEngagementWindowsBtn.addEventListener("click", convertUrlToEngagementWindows);
 
     const clearBtn = document.getElementById("clearBtn");
     clearBtn.addEventListener("click", clearResults);
@@ -73,9 +88,7 @@ const bindLobDropdownBtn = function (){
     $('#lobDropDownMenu').find("li a").click( function(){
         let entryPointPrefix = $(this).text();
         $lobDropDownBtn.html(entryPointPrefix + ' <span class="caret"></span>');
-        // console.log(`entry point prefix: ${entryPointPrefix}`);
     });
-    //$lobDropDownBtn.trigger('click');
 }
 
 
@@ -129,38 +142,27 @@ let handlePaste = function (event) {
 
 
 let convertUrlToSectionValues = function () {
-    const textarea = document.getElementById("url2sectionsTextArea");
-    const updatedContent = textarea.value;
-    const updatedRowCount = textarea.rows;
-    console.log(`Number of rows: ${updatedRowCount}`);
-
-    let rows = updatedContent.split(/\r\n|\r|\n/);
-    for (let row of rows) {
-        row = row.replace("https://www.", "");
-        row = row.replace(".com", "");
-        row = splitIntoSections(row);
-        result.innerHTML += `<br>${row}`;
-    }
+    convertUrlToNamingConventions('sections');
 }
-
-
-let convertUrlToEntryPoints = function () {
-    const textarea = document.getElementById("url2sectionsTextArea");
-    const updatedContent = textarea.value;
-    const updatedRowCount = textarea.rows;
-    console.log(`Number of rows: ${updatedRowCount}`);
-
-    let rows = updatedContent.split(/\r\n|\r|\n/);
-    for (let row of rows) {
-        row = row.replace("https://www.", "");
-        row = row.replace(".com", "");
-        row = createEntryPointNames(row);
-        result.innerHTML += `<br>${row}`;
-    }
-}
-
 
 let convertUrlToEngagements = function () {
+    convertUrlToNamingConventions('engagements');
+}
+
+let convertUrlToEntryPoints = function () {
+    convertUrlToNamingConventions('entryPoints');
+}
+
+let convertUrlToBehaviors = function () {
+    convertUrlToNamingConventions('behaviors');
+}
+
+let convertUrlToEngagementWindows = function () {
+    convertUrlToNamingConventions('engagementWindows');
+}
+
+
+let convertUrlToNamingConventions = function (funcCall) {
     const textarea = document.getElementById("url2sectionsTextArea");
     const updatedContent = textarea.value;
     const updatedRowCount = textarea.rows;
@@ -170,7 +172,21 @@ let convertUrlToEngagements = function () {
     for (let row of rows) {
         row = row.replace("https://www.", "");
         row = row.replace(".com", "");
-        row = createEngagementNames(row);
+        // row = splitIntoSections(row);
+        switch (funcCall) {
+            case 'sections':
+                row = splitIntoSections(row); break;
+            case 'engagements':
+                row = createEngagementNames(row); break;
+            case 'entryPoints':
+                row = createEntryPointNames(row); break;
+            case 'behaviors':
+                row = createBehaviors(row); break;
+            case 'engagementWindows':
+                row = createEngagementWindows(row); break;
+            default:
+                console.log('No match for function type');
+        }
         result.innerHTML += `<br>${row}`;
     }
 }
@@ -226,6 +242,8 @@ const createNamingConventionBaseName = function (row, delimiter){
             sections.splice(index, 1);
     }
 
+    sections = checkUrlPathCharLength_and_compressIfTooLong(sections);
+
     // add the LOB division - insert into the beginning of the array
     if (salesOrCare !== 'none')
         sections.unshift(salesOrCare);
@@ -238,46 +256,6 @@ const createNamingConventionBaseName = function (row, delimiter){
 }
 
 
-/*
- ---Name---------------------Syntax-------------------------------------------Example-------------------------------
- Entry Point			<<BASE>>(-language)									TF-sales-accessories-audio-es
-*/
-const createEntryPointNames = function (row){
-/*
-    // new row starts with the LOB prefix
-    let newRow = lobPrefix.concat('-');
-    let sections = row.split('\/');
-
-    // remove first array element
-    if (!includeSubdomain)
-        sections.shift();
-
-    // check for remove spanish
-    if (!includeSpanish) {
-        const index = sections.indexOf(SPANISH_IDENTIFIER);
-        if (index > -1)
-            sections.splice(index, 1);
-    }
-
-    // add the LOB division - insert into the beginning of the array
-    if (salesOrCare !== 'none')
-        sections.unshift(salesOrCare);
-
-    for (let elem of sections) {
-        newRow = newRow.concat( `${elem}-` );
-    }
-*/
-    let newRow = createNamingConventionBaseName(row, '-');
-
-    return newRow.substring(0, newRow.length - 1); // remove last dash
-}
-
-
-
-
-/* ---Name---------------------Syntax-------------------------------------------Example-------------------------------
- Enagement Name 		<<BASE>>(_language)_entryPointType_behavior1-N		TF_sales_accessories_audio_es_S_AO-30s
-*/
 const createEngagementNames = function (row){
     let baseName = createNamingConventionBaseName(row, '_');
     let newRow = baseName.concat( getEntryPointType('_') );
@@ -285,6 +263,84 @@ const createEngagementNames = function (row){
 
     return newRow.substring(0, newRow.length - 1); // remove last underscore
 }
+
+const createEntryPointNames = function (row){
+    let newRow = createNamingConventionBaseName(row, '-');
+
+    return newRow.substring(0, newRow.length - 1); // remove last dash
+}
+
+const createBehaviors = function (row){
+    let newRow = createNamingConventionBaseName(row, '-');
+    newRow = newRow.concat( getBehaviors() );
+
+    return newRow.substring(0, newRow.length - 1); // remove last dash
+}
+
+const createEngagementWindows = function (row){
+    let delimiter = '-';
+    // new row starts with the LOB prefix
+    let newRow = lobPrefix.concat(delimiter);
+    let sections = row.split('\/');
+
+    // remove first array element.  Example:  this would be 'tracfone' from the string, www.tracfone.com
+    sections.shift();
+
+    // add the LOB division
+    if (salesOrCare !== 'none')
+        newRow = newRow.concat( `${salesOrCare}${delimiter}` );
+
+    // check for add/remove spanish
+    if (includeSpanish) {
+        const index = sections.indexOf(SPANISH_IDENTIFIER);
+        if (index > -1)
+            newRow = newRow.concat( `${SPANISH_IDENTIFIER}${delimiter}` );
+    }
+
+    newRow = newRow.concat( '(uniqueIdPlaceholder)' );
+
+    return newRow
+}
+
+
+// check the size of the URL in order to decide if the generated name needs to be compressed
+// Do this check before sales or care is added
+const checkUrlPathCharLength_and_compressIfTooLong = function (sections){
+    let sectionCount = sections.length;
+    let numberOfPathDelimiters = sectionCount - 1;
+    let sectionCharCount = 0;
+    for (let elem of sections) {
+        sectionCharCount += elem.length;
+    }
+    sectionCharCount += numberOfPathDelimiters;
+
+    console.log(`# of sections: ${sectionCount},  section char count: ${sectionCharCount}`);
+    if (sectionCharCount > URL_PATH_CHAR_COUNT_LIMIT)
+        sectionCounts.innerHTML += `<br>path cnt: ${sectionCount},  # of chars: <b style="color: blue;">${sectionCharCount}</b>`;
+    else
+        sectionCounts.innerHTML += `<br>path cnt: ${sectionCount},  # of chars: ${sectionCharCount}`;
+
+    // this will start with the 4th item in the array.
+    // It will take the first 3 letters of the path section and replace that array piece so that the
+    //      engagement name can sufficiently be reduced in size
+    if (sectionCharCount > URL_PATH_CHAR_COUNT_LIMIT) {
+        if (sectionCount > 3) {
+            for (let i=3; i<sectionCount; i++) {
+                let thisArySection = sections[i];
+                // only do this for longer names in the path  (longer than 3 characters anyway)
+                if (thisArySection.length > 3) {
+                    let firstThree = thisArySection.substring(0, 3);
+                    sections[i] = firstThree;
+                }
+            }
+        }
+    }
+
+    return sections;
+}
+
+
+
 
 
 const getEntryPointType = function (delimiter = '-') {
@@ -323,6 +379,7 @@ const getBehaviors = function (){
 
 const clearResults = function () {
     result.innerHTML = '';
+    sectionCounts.innerHTML = '';
 }
 
 

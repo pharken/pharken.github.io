@@ -8,7 +8,7 @@ $(function() {
     console.log( "sandbox" );
     // initialize lpTag sections
     // lpTag.section = [ "example01", "example02" ];
-    lpTag.section = [ "example02" ];
+    lpTag.section = [ "example01", "example02" ];
 
     main();
 });

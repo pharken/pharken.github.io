@@ -86,8 +86,8 @@ const bindLobDropdownBtn = function (){
     let $lobDropDownBtn = $('#lobDropDownBtn');
     $lobDropDownBtn.html('TF <span class="caret"></span>');
     $('#lobDropDownMenu').find("li a").click( function(){
-        let entryPointPrefix = $(this).text();
-        $lobDropDownBtn.html(entryPointPrefix + ' <span class="caret"></span>');
+        lobPrefix = $(this).text();
+        $lobDropDownBtn.html(lobPrefix + ' <span class="caret"></span>');
     });
 }
 

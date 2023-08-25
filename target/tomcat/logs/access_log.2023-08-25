@@ -144,3 +144,5 @@
 0:0:0:0:0:0:0:1 - - [25/Aug/2023:10:56:38 -0500] "GET /view/project/tracfone/tracfone.html HTTP/1.1" 200 9653 http-bio-9000-exec-9 2
 0:0:0:0:0:0:0:1 - - [25/Aug/2023:10:56:54 -0500] "GET /view/project/tracfone/tracfone.html HTTP/1.1" 200 9645 http-bio-9000-exec-9 5
 0:0:0:0:0:0:0:1 - - [25/Aug/2023:10:57:14 -0500] "GET /view/project/tracfone/tracfone.html HTTP/1.1" 200 9597 http-bio-9000-exec-9 5
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:15:20:33 -0500] "GET / HTTP/1.1" 200 1981 http-bio-9000-exec-5 16
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:15:21:06 -0500] "GET / HTTP/1.1" 200 1186 http-bio-9000-exec-5 3

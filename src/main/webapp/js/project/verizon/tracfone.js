@@ -126,8 +126,6 @@ let setLpTagSections = function(brand){
     lpTag.section = [];
     let sections = brand.split(',');
     lpTag.section = [...sections];
-    // lpTag.section = [ "l1:tracfone", "l2:phone" ];
-
 };
 
 let changePageFont = function( fontName ){
@@ -142,6 +140,16 @@ let changePageFont = function( fontName ){
 let refreshTracfonePage = function () {
     lpTag.newPage( document.URL, { section: lpTag.section });
 }
+
+/*
+
+    if (lpTag && lpTag.taglets && lpTag.taglets.rendererStub)
+        let clicked = lpTag.taglets.rendererStub.click(ROUTING_ENGAGEMENT_ID);
+
+*/
+
+
+
 
 
 let launchTracfoneEngagement = function () {
@@ -181,6 +189,6 @@ let launchTracfoneEngagement = function () {
 
 $(function() {
     console.log( "Tracfone begin" );
-    lpTag.section = [ "tracfone" ];   // initialize lpTage sections
+    lpTag.section = [ "tracfonedemo" ];   // initialize lpTage sections
     main();
 });

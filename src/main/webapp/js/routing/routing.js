@@ -10,7 +10,6 @@
 */
 
 const ROUTING_ENGAGEMENT_ID = '3955040638';
-
 const GBM = 'gbm';
 const ABC = 'abc';
 const WEB = 'web';

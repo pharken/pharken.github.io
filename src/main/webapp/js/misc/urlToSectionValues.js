@@ -17,7 +17,7 @@
 let textarea = null;
 const result = document.getElementById("url2sectionsResultSection");
 const sectionCounts = document.getElementById("url2sectionsCounts");
-const SPANISH_IDENTIFIER = 'es';
+const SPANISH_IDENTIFIER = 'spa';
 /*
 The engagement name character limit is 50.
 The TF_sales_ prefix, 2 digit language, entry point identifier,  and behavior identifiers can be up to 21 characters.
@@ -34,6 +34,7 @@ Example values:
 const URL_PATH_CHAR_COUNT_LIMIT = 29;
 let lobPrefix = 'TF';
 let salesOrCare = 'sales';
+let platform = 'DT';
 let entryPointType = 'sticky';
 let includeSubdomain = false;
 let includeSpanish = true;
@@ -64,6 +65,7 @@ const init = function () {
     clearBtn.addEventListener("click", clearResults);
 
     bindLobDropdownBtn();
+    bindPlatformDropdownBtn();
     bindSaleOrCareDropdownBtn();
     bindEntryPointTypeDropdownBtn();
 
@@ -99,6 +101,16 @@ const bindSaleOrCareDropdownBtn = function (){
         salesOrCare = $(this).text();
         $salesOrCareBtn.html(salesOrCare + ' <span class="caret"></span>');
         // console.log(`sales or care: ${salesOrCare}`);
+    });
+}
+
+
+const bindPlatformDropdownBtn = function (){
+    let $platformBtn = $('#platformDropdownBtn');
+    $platformBtn.html('DT <span class="caret"></span>');
+    $('#platformDropdownMenu').find("li a").click( function(){
+        platform = $(this).text();
+        $platformBtn.html(platform + ' <span class="caret"></span>');
     });
 }
 
@@ -258,23 +270,28 @@ const createNamingConventionBaseName = function (row, delimiter){
 
 const createEngagementNames = function (row){
     let baseName = createNamingConventionBaseName(row, '_');
-    let newRow = baseName.concat( getEntryPointType('_') );
-    newRow = newRow.concat( getBehaviors() );
+    baseName = removeLastChar(baseName);
+    baseName = `${baseName}[`;      // add opening bracket
 
-    return newRow.substring(0, newRow.length - 1); // remove last underscore
+    let newRow = baseName.concat( getPlatform('_') );
+    newRow = newRow.concat( getEntryPointType('_') );
+    newRow = newRow.concat( getBehaviors() );
+    newRow = removeLastChar(newRow);
+    newRow = `${newRow}]`;        // add closing bracket
+
+    return newRow;
 }
 
 const createEntryPointNames = function (row){
     let newRow = createNamingConventionBaseName(row, '-');
-
-    return newRow.substring(0, newRow.length - 1); // remove last dash
+    return removeLastChar(newRow);
 }
 
 const createBehaviors = function (row){
     let newRow = createNamingConventionBaseName(row, '-');
     newRow = newRow.concat( getBehaviors() );
 
-    return newRow.substring(0, newRow.length - 1); // remove last dash
+    return removeLastChar(newRow);
 }
 
 const createEngagementWindows = function (row){
@@ -341,6 +358,20 @@ const checkUrlPathCharLength_and_compressIfTooLong = function (sections){
 
 
 
+const getPlatform = function (delimiter = '-') {
+    let platformType = '';
+    switch (platform) {
+        case 'DT':
+            platformType = `DT${delimiter}`; break;
+        case 'SP':
+            platformType = `SP${delimiter}`; break;
+        case 'ALL':
+            platformType = `A${delimiter}`; break;
+        default:
+            console.log('No match for entry point type');
+    }
+    return platformType;
+}
 
 
 const getEntryPointType = function (delimiter = '-') {
@@ -355,8 +386,6 @@ const getEntryPointType = function (delimiter = '-') {
         default:
             console.log('No match for entry point type');
     }
-
-
     return entryPointExtension;
 }
 
@@ -365,9 +394,9 @@ const getBehaviors = function (){
     let behaviors = '';
     if (behaviorAutoOpen) {
         if (behaviorTimeOnPage)
-            behaviors = 'AO-30s_';
+            behaviors = 'TOL-30s_';
         else
-            behaviors = 'AO_';
+            behaviors = 'TOL_';
     }
     else {
         if (behaviorTimeOnPage)
@@ -380,6 +409,11 @@ const getBehaviors = function (){
 const clearResults = function () {
     result.innerHTML = '';
     sectionCounts.innerHTML = '';
+}
+
+
+const removeLastChar = function (theString) {
+    return theString.substring(0, theString.length - 1);
 }
 
 

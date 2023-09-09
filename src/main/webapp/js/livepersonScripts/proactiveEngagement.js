@@ -53,7 +53,7 @@ function getAOTimer(engName) {
         let match, time;
         while ((match = pattern.exec(engName)) !== null) {
             time = match[1];
-            //console.log(numericDigits);
+            console.log(time);
         }
         return parseInt(time);
     }

@@ -42,7 +42,7 @@ let behaviorAutoOpen = false;
 let behaviorTimeOnPage = false;
 
 
-const init = function () {
+const generateLPNamingConventionsInit = function () {
     textarea = document.getElementById("url2sectionsTextArea");
     textarea.addEventListener("paste", handlePaste);
 
@@ -418,5 +418,5 @@ const removeLastChar = function (theString) {
 
 
 $(function() {
-    init();
+    generateLPNamingConventionsInit();
 });

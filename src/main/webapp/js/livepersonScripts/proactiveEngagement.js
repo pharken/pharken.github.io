@@ -42,14 +42,22 @@ var autoOpenWindow = function autoOpenWindow(currentRetry, engagementId) {
 
 function getAOTimer(engName) {
     try {
+/*
         var findTimeRegex = /\b\d{0,3}s/g;
         var aoTimer = engName.match(findTimeRegex);
-
         // If no regex match, return 0
         if (aoTimer.length === 0) return 0;
         var time = aoTimer[0].replace('s', '');
+*/
+        const pattern = /_(\d+)s/g;
+        let match, time;
+        while ((match = pattern.exec(engName)) !== null) {
+            time = match[1];
+            //console.log(numericDigits);
+        }
         return parseInt(time);
-    } catch (e) {
+    }
+    catch (e) {
         console.log(e)
         //Default AO fallback timer
         return 30;

@@ -189,6 +189,8 @@ let launchTracfoneEngagement = function () {
 
 $(function() {
     console.log( "Tracfone begin" );
-    lpTag.section = [ "tracfonedemo" ];   // initialize lpTage sections
+    // lpTag.section = [ "tracfonedemo" ];   // initialize lpTage sections
+    //lpTag.section = [ "l1:tracfone", "l2:accessories" ];   // Tracfone proactive engagement
+    lpTag.section = [ "autoopen10s" ];// proactive demo engagement
     main();
 });

@@ -140,6 +140,7 @@ const updateText = function (id, obj) {
     }
 }
 
+
 const copyToClipboard = function (id) {
     const textToCopy = $('#' + id).text();
     navigator.clipboard.writeText(textToCopy)

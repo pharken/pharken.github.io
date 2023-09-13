@@ -26,14 +26,16 @@ let main = function (){
         refreshTracfonePage();
     });
 
-
-
     loadEngagementsDropdown();
-
-
 
     $('#launchTracfoneEngagementBtn').click( launchTracfoneEngagement );
     checkLpScriptsLoaded();
+
+    let $copyEngagementBtn = $('#copyEngagementBtn');
+    $copyEngagementBtn.on( "click", function() {
+        copyToClipboard('currentEngagement');
+    });
+
 };
 
 
@@ -65,8 +67,9 @@ let refreshTracfonePage = function () {
 */
 
 
-const loadEngagementsDropdown = function (){
 
+
+const loadEngagementsDropdown = function (){
 
     for (const engmt in engagements) {
         //console.log(engmt, engagements[engmt]);
@@ -91,8 +94,19 @@ const loadEngagementsDropdown = function (){
         let $li = $('<li></li>').on('click', function () {
             lpTag.section = entryPoints[ engagements[engmt] ];
             refreshTracfonePage();
-            let btnTitle = document.getElementById('engagementListDropdown');
-            btnTitle.innerHTML = engmt + ' <span class="caret"></span>';
+            // This works, but I prefer the code below to show it on the bottom of the page
+            // let btnTitle = document.getElementById('engagementListDropdown');
+            // btnTitle.innerHTML = engmt + ' <span class="caret"></span>';
+
+            let currentEngagement = document.getElementById('currentEngagement');
+            currentEngagement.innerHTML = engmt;
+
+/*
+            <div id="copyEngagementBtn" className="display-inline btn btn-secondary">Copy</div>
+            <div id="currentEngagement" className="display-inline margin-left-10px "></div>
+*/
+
+
         });
         $ul.append($li.append($a.append($span)));
     }
@@ -131,6 +145,18 @@ let launchTracfoneEngagement = function () {
         else
             console.log('Cant find engagementId');
     }
+}
+
+
+const copyToClipboard = function (id) {
+    const textToCopy = $('#' + id).text();
+    navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+            console.log("copied to clipboard: " + textToCopy);
+        })
+        .catch((error) => {
+            console.error("Failed to copy text to clipboard:", error);
+        });
 }
 
 

@@ -234,8 +234,8 @@ $(function() {
     console.log( "Routing begin" );
     // routing is for the top right 'banking' entry point
     // parkinglot is for the top left 'parking lot' entry point. This is a shortcut to go directly to the parking lot bot
-    // lpTag.section = [ "routing", "parkinglot" ];   // playground tests
-    lpTag.section = [ "vzqaparkinglot" ];   // test for verizon - QA - parking lot
+    lpTag.section = [ "routing", "parkinglot" ];   // playground tests
+    // lpTag.section = [ "vzqaparkinglot" ];   // test for verizon - QA - parking lot
     // lpTag.section = [ "l1:wireline", "l2:home", "l3:internet", "l4:acp" ];   // playground tests
 
     //TODO  do this on lpTag --- on ready or the other one

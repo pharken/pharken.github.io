@@ -87,7 +87,14 @@ const verizonBrand = [
 //  414143
 
 
+/*
+[ "l1:tracfone", "l2:phone" ]
 
+    <div class="row my-3">
+        <div class="col-lg-6"><p>TF sales phone bot</p></div>
+        <div class="col-lg-6"><p class="btn btn-secondary w-50 brand" data-brand="TF-sales-phone">Go</p></div>
+    </div>
+*/
 
 let main = function (){
     let $brands = $('.brand');
@@ -116,7 +123,9 @@ let main = function (){
 
 let setLpTagSections = function(brand){
     console.log(brand);
-    lpTag.section = [ brand ];
+    lpTag.section = [];
+    let sections = brand.split(',');
+    lpTag.section = [...sections];
 };
 
 let changePageFont = function( fontName ){
@@ -124,19 +133,30 @@ let changePageFont = function( fontName ){
     document.getElementsByTagName("body")[0].style = `font-family: ${fontName}`;
 };
 
-/**
+
+/*
     Force refresh of lpTag - usually for SPA (single page app) but useful for this poc
 */
 let refreshTracfonePage = function () {
     lpTag.newPage( document.URL, { section: lpTag.section });
 }
 
+/*
+
+    if (lpTag && lpTag.taglets && lpTag.taglets.rendererStub)
+        let clicked = lpTag.taglets.rendererStub.click(ROUTING_ENGAGEMENT_ID);
+
+*/
+
+
+
+
 
 let launchTracfoneEngagement = function () {
     console.log(`URL: ${document.URL}`);
     let engagements = lpTag.events.hasFired("RENDERER_STUB","AFTER_CREATE_ENGAGEMENT_INSTANCE");
 
-    // remove duplicates, then display the engagement name
+    // remove duplicates, then log the engagement name to the console
     console.log(`Engagement name count (including duplicates): ${engagements.length}`)
     let engagementNameSet = new Set();
     engagements.forEach(en => {
@@ -169,6 +189,9 @@ let launchTracfoneEngagement = function () {
 
 $(function() {
     console.log( "Tracfone begin" );
-    lpTag.section = [ "tracfone" ];   // initialize lpTage sections
+    // lpTag.section = [ "tracfonedemo" ];   // initialize lpTage sections
+    lpTag.section = [ "l1:tracfone", "l2:phone" ];   // TF_sales_phone[DT_S], TF_sales_phone[DT_O_TOL_30s]
+    //lpTag.section = [ "l1:tracfone", "l2:accessories" ];   // Tracfone specific proactive engagement
+    // lpTag.section = [ "autoopen10s" ];// proactive demo engagement
     main();
 });

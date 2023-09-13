@@ -1,6 +1,0 @@
-0:0:0:0:0:0:0:1 - - [22/Aug/2023:11:27:58 -0500] "GET / HTTP/1.1" 200 1189 http-bio-9000-exec-5 91
-0:0:0:0:0:0:0:1 - - [22/Aug/2023:11:27:58 -0500] "GET /css/project.css HTTP/1.1" 304 - http-bio-9000-exec-3 15
-0:0:0:0:0:0:0:1 - - [22/Aug/2023:11:27:58 -0500] "GET /css/main.css HTTP/1.1" 304 - http-bio-9000-exec-5 5
-0:0:0:0:0:0:0:1 - - [22/Aug/2023:11:28:03 -0500] "GET /view/project/verizoncare/tracfone.html HTTP/1.1" 200 6422 http-bio-9000-exec-5 4
-0:0:0:0:0:0:0:1 - - [22/Aug/2023:11:28:03 -0500] "GET /js/util/lpScripts.js HTTP/1.1" 200 1157 http-bio-9000-exec-3 2
-0:0:0:0:0:0:0:1 - - [22/Aug/2023:11:28:03 -0500] "GET /js/project/verizon/tracfone.js HTTP/1.1" 200 5559 http-bio-9000-exec-5 3

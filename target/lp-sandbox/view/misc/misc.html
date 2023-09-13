@@ -9,6 +9,7 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../css/main.css" rel="stylesheet">
+    <link href="../../css/project.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,7 +22,7 @@
         <h2 class="pb-2 border-bottom">Misc</h2>
 
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-            <div class="col d-flex align-items-start">
+            <div class="col d-flex align-items-start" style="width:25vw;">
 
                 <div class="defaultSection p-2">
 
@@ -31,31 +32,132 @@
 
 <!--                <div class="defaultSection p-2">-->
                     <h3 class="fs-2">Browser Info</h3>
-                    <div id="browserInfo" class="p-2">
-                    </div>
+                    <div id="browserInfo" class="p-2"></div>
 <!--                </div>-->
 
                 </div>
 
             </div>
-            <div class="col d-flex align-items-start">
+            <div class="col d-flex align-items-start" style="width:70vw;">
+
+                <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                    <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+                </div>
+                <div class="defaultSection p-3">
+                    <h3 class="fs-2">URL to Section Values</h3>
+                    <div class="row px-1 g-2">
+                        <div class="row justify-content-start">
+                            <div class="col-8">
+                                <textarea id="url2sectionsTextArea"></textarea>
+                            </div>
+                            <div class="col-4">
+                                <div style="background: white; width: 100%; height: 20vh;">
+
+                                    <div class="dropdown display-inline">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="lobDropDownBtn"
+                                                data-bs-toggle="dropdown" aria-expanded="false">LOB</button>
+                                        <ul id="lobDropDownMenu" class="dropdown-menu" aria-labelledby="lobDropDownBtn">
+                                            <li><a class="dropdown-item" href="#">GS</a></li>
+                                            <li><a class="dropdown-item" href="#">NT</a></li>
+                                            <li><a class="dropdown-item" href="#">PP</a></li>
+                                            <li><a class="dropdown-item" href="#">SL</a></li>
+                                            <li><a class="dropdown-item" href="#">SM</a></li>
+                                            <li><a class="dropdown-item" href="#">ST</a></li>
+                                            <li><a class="dropdown-item" href="#">TBV</a></li>
+                                            <li><a class="dropdown-item" href="#">TF</a></li>
+                                            <li><a class="dropdown-item" href="#">WFM</a></li>
+                                            <li><a class="dropdown-item" href="#">DP</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown margin-top-5px display-inline">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="salesOrCareDropdownBtn"
+                                                data-bs-toggle="dropdown" aria-expanded="false">Sales or Care</button>
+                                        <ul id="salesOrCareDropdownMenu" class="dropdown-menu" aria-labelledby="salesOrCareDropdownBtn">
+                                            <li><a class="dropdown-item" href="#">care</a></li>
+                                            <li><a class="dropdown-item" href="#">sales</a></li>
+                                            <li><a class="dropdown-item" href="#">none</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown margin-top-5px display-inline">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="platformDropdownBtn"
+                                                data-bs-toggle="dropdown" aria-expanded="false">DT</button>
+                                        <ul id="platformDropdownMenu" class="dropdown-menu" aria-labelledby="platformDropdownBtn">
+                                            <li><a class="dropdown-item" href="#">DT</a></li>
+                                            <li><a class="dropdown-item" href="#">SP</a></li>
+                                            <li><a class="dropdown-item" href="#">ALL</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown margin-top-5px display-inline">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="entryPointTypeDropdownBtn"
+                                                data-bs-toggle="dropdown" aria-expanded="false">sticky</button>
+                                        <ul id="entryPointTypeDropdownMenu" class="dropdown-menu" aria-labelledby="entryPointTypeDropdownBtn">
+                                            <li><a class="dropdown-item" href="#">sticky</a></li>
+                                            <li><a class="dropdown-item" href="#">overlay</a></li>
+                                            <li><a class="dropdown-item" href="#">embedded</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="form-check margin-top-5px">
+                                        <input id="includeSubdomainCheckbox" class="form-check-input" type="checkbox" value="">
+                                        <label class="form-check-label" for="includeSubdomainCheckbox">
+                                            Include subdomain
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input id="includeSpanishCheckbox" class="form-check-input" type="checkbox" value="" checked>
+                                        <label class="form-check-label" for="includeSpanishCheckbox">
+                                            Include spanish
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input id="behaviorAutoOpen" class="form-check-input" type="checkbox" value="">
+                                        <label class="form-check-label" for="behaviorAutoOpen">
+                                            Behavior | auto-open
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input id="behaviorTimeOnPage" class="form-check-input" type="checkbox" value="">
+                                        <label class="form-check-label" for="behaviorTimeOnPage">
+                                            Behavior | time on page
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="g-2 py-1">
+                        <a id="url2sectionsBtn" href="#" class="btn btn-primary" style="width: 15%;">Section Values</a>
+                        <a id="url2engagementsBtn" href="#" class="btn btn-primary margin-left-10px" style="width: 15%;">Engagements</a>
+                        <a id="url2entryPointsBtn" href="#" class="btn btn-primary margin-left-10px" style="width: 15%;">Entry Points</a>
+                        <a id="url2behaviorsBtn" href="#" class="btn btn-primary margin-left-10px" style="width: 15%;">Behaviors</a>
+                        <a id="url2EngagementWindowBtn" href="#" class="btn btn-primary margin-left-10px" style="width: 15%;">Windows</a>
+                        <a id="clearBtn" href="#" class="btn btn-secondary float-end" style="margin-right: 38px;width: 10%;">Clear</a>
+                    </div>
 
 <!--
-                <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                    <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"></use></svg>
-                </div>
-                <div class="defaultSection p-2">
-                    <h3 class="fs-2">Featured title</h3>
-                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-                    <a href="#" class="btn btn-primary">
-                        Primary button
-                    </a>
-                </div>
+                    <div id="url2SectionValueResultContainer">
+                        <p id="url2sectionsResultSection"></p>
+                    </div>
 -->
+
+
+                    <div id="url2SectionValueResultContainer" class="row justify-content-start">
+                        <div class="col-9">
+                            <p id="url2sectionsResultSection" style="border: 1px solid #eeeeee;"></p>
+                        </div>
+                        <div class="col-3">
+                            <p id="url2sectionsCounts" style="border: 1px solid #eeeeee;"></p>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
             <div class="col d-flex align-items-start">
 
+<!-- 3rd column -->
 <!--                <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                     <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"></use></svg>
                 </div>
@@ -66,12 +168,12 @@
                         Primary button
                     </a>
                 </div>
-                -->
+-->
             </div>
         </div>
     </div>
-
 <!--
+
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
         <div class="col d-flex align-items-start">
             <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
@@ -121,6 +223,7 @@
 <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../../js/misc/detectBrowser.js"></script>
+<script type="text/javascript" src="../../js/misc/urlToSectionValues.js"></script>
 
 </body>
 </html>

@@ -1,100 +1,9 @@
+// ✅✅✅
+// ❌❌❌
+
+
 let selectedBrand = null;
 
-
-// footer color :  f9f6f6
-// engagement window shadow:   0 0 16px 2px rgba(0,0,0,0.2)
-
-//  414143
-
-
-const verizonBrand = [
-    {
-        name:         "net10",
-        engagementId: "4080717838",
-        fontFamily:   "Roboto",
-        fontSize:     "14px",
-        colors: [ {blue: "00AEEF"},{simpleBlack: "231F20"}, {white: "FFFFFF"}, {hover: "F3FCFF"} ]
-    }
-    ,
-    {
-        name:         "net10support",
-        engagementId: "4144064438",
-        fontFamily:   "Roboto",
-        fontSize:     "14px",
-        colors: [ {blue: "00AEEF"}, {simpleBlack: "231F20"}, {white: "FFFFFF"},{hover: "F3FCFF"} ]
-    },
-    // missing
-    {
-        name:         "safelink",
-        engagementId: "4080697738",
-        fontFamily:   "Arial",
-        fontSize:     "",
-        colors: [ {"1": "000000"}, {"2": "000000"}, {"3": "000000"} ]
-    },
-    // missing
-    {
-        name:         "pageplus",
-        engagementId: "4080722538",
-        fontFamily:   "Arial",
-        fontSize:     "",
-        colors: [{"1": "dd1e1e"}, {"2": "000000"}, {"3": "000000"} ]
-    },
-    {
-        name:         "familymobile",
-        engagementId: "4080715538",
-        fontFamily:   "Bogle regular",
-        fontSize:     "14px",
-        colors: [ {walmartBlue: "1A75CF"}, {walmartYellow: "F7B512"}, {white: "FFFFFF"} ]
-    },
-    {
-        name:         "simple",
-        engagementId: "4080674538",
-        fontFamily:   "Montserrat",
-        fontSize:     "14px",
-        colors: [ {simpleGreen: "93D500"}, {simpleBlack: "231F20"}, {white: "FFFFFF"} ]
-    },
-    {
-        name:         "straighttalk",
-        engagementId: "4080561538",
-        fontFamily:   "Segoe UI regular",
-        fontSize:     "14px",
-        colors: [ {green: "BEE81E"}, {white: "FFFFFF"}, {black: "000000"}, {grey: "6C6C6C"} ]
-    },
-    {
-        name:         "tracfone",
-        engagementId: "4089582738",
-        fontFamily:   "Lato Bold",
-        fontSize:     "",
-        colors: [ {tracfoneBlue: "273691"}, {tracfoneGreen: "88C65B"}, {lightestGrey: "F6F9FC"}, {lightGrey: "E3E9EF"}, {hoverBlue: "012979"} ]
-    },
-    // red:  RGB:238,0,0  =  ee0000
-    {
-        name:         "total",
-        engagementId: "4080697138",
-        fontFamily:   "Verizon",
-        fontSize:     "",
-        colors: [ {black: "000000"}, {white: "FFFFFF"}, {red: "RGB:238,0,0"} ]
-    },
-    {
-        name:         "gosmart",
-        engagementId: "4127275338",
-        fontFamily:   "Istok Web",
-        fontSize:     "14px",
-        colors: [ {blue: "048FB6"},{darkGray: "414143"}, {white: "FFFFFF"}, {logoGreen: "BDD531"}, {hoverBlue: "048FB6"} ]
-    }
-]
-
-//  414143
-
-
-/*
-[ "l1:tracfone", "l2:phone" ]
-
-    <div class="row my-3">
-        <div class="col-lg-6"><p>TF sales phone bot</p></div>
-        <div class="col-lg-6"><p class="btn btn-secondary w-50 brand" data-brand="TF-sales-phone">Go</p></div>
-    </div>
-*/
 
 let main = function (){
     let $brands = $('.brand');
@@ -116,6 +25,13 @@ let main = function (){
         //changePageFont( selectedBrand.fontFamily );
         refreshTracfonePage();
     });
+
+
+
+    loadEngagementsDropdown();
+
+
+
     $('#launchTracfoneEngagementBtn').click( launchTracfoneEngagement );
     checkLpScriptsLoaded();
 };
@@ -149,7 +65,38 @@ let refreshTracfonePage = function () {
 */
 
 
+const loadEngagementsDropdown = function (){
 
+
+    for (const engmt in engagements) {
+        //console.log(engmt, engagements[engmt]);
+
+        let $a = $('<a className:"dropdown-item"></a>');
+        // let $span = $('<span className="d-inline-block bg-primary rounded-circle p-1"></span>');
+        let $span = null;
+        let lob = engmt.substring(0, 2)
+        switch(lob) {
+            case 'TF':
+                $span = $('<span className="d-inline-block bg-primary rounded-circle p-1"></span>');
+                break;
+            case 'GS':
+                $span = $('<span className="d-inline-block bg-secondary rounded-circle p-1"></span>');
+                break;
+            case 'NT':
+                $span = $('<span className="d-inline-block bg-warning rounded-circle p-1"></span>');
+        }
+        $span.text(engmt);
+
+        let $ul = $('#engagementList');
+        let $li = $('<li></li>').on('click', function () {
+            lpTag.section = entryPoints[ engagements[engmt] ];
+            refreshTracfonePage();
+            let btnTitle = document.getElementById('engagementListDropdown');
+            btnTitle.innerHTML = engmt + ' <span class="caret"></span>';
+        });
+        $ul.append($li.append($a.append($span)));
+    }
+}
 
 
 let launchTracfoneEngagement = function () {
@@ -190,7 +137,8 @@ let launchTracfoneEngagement = function () {
 $(function() {
     console.log( "Tracfone begin" );
     lpTag.section = [ "tracfonedemo" ];   // initialize lpTage sections
-    //lpTag.section = [ "l1:tracfone", "l2:accessories" ];   // Tracfone proactive engagement
+    // lpTag.section = [ "l1:tracfone", "l2:phone" ];   // TF_sales_phone[DT_S], TF_sales_phone[DT_O_TOL_30s]
+    //lpTag.section = [ "l1:tracfone", "l2:accessories" ];   // Tracfone specific proactive engagement
     // lpTag.section = [ "autoopen10s" ];// proactive demo engagement
     main();
 });

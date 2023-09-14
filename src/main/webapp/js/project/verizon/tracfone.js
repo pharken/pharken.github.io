@@ -5,6 +5,28 @@
 let selectedBrand = null;
 
 
+const detectLpTagReady = function (){
+    if ( window.lpTag && window.lpTag.events && window.lpTag.events.bind ) {
+        isLpTagReady = true;
+        let $lpLoadSuccessMsg = $('<p></p>', {
+            text: 'LP loaded',
+            class: 'elementToFadeInAndOut'
+        });
+        $('#statusMsg').append($lpLoadSuccessMsg);
+
+
+        lpTag.section = [ "tracfonedemo" ];   // initialize lpTage sections
+        // lpTag.section = [ "l1:tracfone", "l2:phone" ];   // TF_sales_phone[DT_S], TF_sales_phone[DT_O_TOL_30s]
+        //lpTag.section = [ "l1:tracfone", "l2:accessories" ];   // Tracfone specific proactive engagement
+        // lpTag.section = [ "autoopen10s" ];// proactive demo engagement
+
+        hideShowInputField();
+    }
+    else
+        setTimeout(detectLpTagReady, 250);
+}
+
+
 let main = function (){
     let $brands = $('.brand');
     for ( let $brand of $brands) {
@@ -162,9 +184,6 @@ const copyToClipboard = function (id) {
 
 $(function() {
     console.log( "Tracfone begin" );
-    lpTag.section = [ "tracfonedemo" ];   // initialize lpTage sections
-    // lpTag.section = [ "l1:tracfone", "l2:phone" ];   // TF_sales_phone[DT_S], TF_sales_phone[DT_O_TOL_30s]
-    //lpTag.section = [ "l1:tracfone", "l2:accessories" ];   // Tracfone specific proactive engagement
-    // lpTag.section = [ "autoopen10s" ];// proactive demo engagement
+    detectLpTagReady();
     main();
 });

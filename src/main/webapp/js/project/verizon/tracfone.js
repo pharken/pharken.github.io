@@ -122,12 +122,8 @@ const loadEngagementsDropdown = function (){
 
             let currentEngagement = document.getElementById('currentEngagement');
             currentEngagement.innerHTML = engmt;
-
-/*
-            <div id="copyEngagementBtn" className="display-inline btn btn-secondary">Copy</div>
-            <div id="currentEngagement" className="display-inline margin-left-10px "></div>
-*/
-
+            let currentSections = document.getElementById('currentSections');
+            currentSections.innerHTML = (lpTag.section).toString();
 
         });
         $ul.append($li.append($a.append($span)));

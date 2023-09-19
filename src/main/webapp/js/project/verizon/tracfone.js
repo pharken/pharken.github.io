@@ -51,6 +51,8 @@ let main = function (){
     loadEngagementsDropdown();
 
     $('#launchTracfoneEngagementBtn').click( launchTracfoneEngagement );
+    $('#newPageBtn').click( refreshTracfonePage );
+    $('#cartSdeBtn').click( pushCartSde );
     checkLpScriptsLoaded();
 
     let $copyEngagementBtn = $('#copyEngagementBtn');
@@ -163,6 +165,11 @@ let launchTracfoneEngagement = function () {
         else
             console.log('Cant find engagementId');
     }
+}
+
+
+const pushCartSde = function (){
+
 }
 
 

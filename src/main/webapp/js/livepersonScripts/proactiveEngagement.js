@@ -55,7 +55,8 @@ function getAOTimer(engName) {
             time = match[1];
             console.log(time);
         }
-        return parseInt(time);
+        //return parseInt(time);
+        return 4  // 4 seconds for testing only
     }
     catch (e) {
         console.log(e)

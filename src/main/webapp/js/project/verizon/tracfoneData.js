@@ -271,7 +271,7 @@ const entryPoints = {
     "TF-sales-mobile-lp-chat":                     ["l1:tracfone", "l2:mobile-lp-chat"],
     "TF-sales-shop-cart":                          ["l1:tracfone", "l2:shop", "l3:cart"],
     "TF-sales-shop-checkout":                      ['L1:tracfone', 'L2:shop', 'L3:checkout'],
-    "TF-sales-products-plansservices-phone":       ["L1:tracfone", "L2:products", "L3:plans-and-services", "L4:phone-service-plans"],
+    "TF-sales-products-plansservices-phone":       ["L1:tracfone", "L2:products", "L3:plans-and-services", "L4:phone-service-plans.html"],
     "GS-care-wps-portal-home-contact":             ["l1:gosmartmobile", "l2:contactus"],
     "GS-care-contactus-611611":                    ["l1:gosmartmobile", "l2:contactus-611611"],
     "GS-care-wps-portal-home-contact-bot":         ["l1:gosmartmobile", "l2:contactus-bot"],

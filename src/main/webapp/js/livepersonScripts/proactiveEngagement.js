@@ -65,6 +65,8 @@ function getAOTimer(engName) {
     }
 }
 
+//ORIGINAL
+
 function livePersonAutoOpenHandler() {
     //LP Event binding
     if (window.lpTag && window.lpTag.events && window.lpTag.events.bind) {
@@ -91,5 +93,40 @@ function livePersonAutoOpenHandler() {
         }
     }
 }
+
+
+/*
+function livePersonAutoOpenHandler() {
+    //LP Event binding
+    if (window.lpTag && window.lpTag.events && window.lpTag.events.bind) {
+            window.lpTag.events.bind("LP_OFFERS", "OFFER_IMPRESSION", triggerAutoOpen );
+    }
+}
+
+
+const triggerAutoOpen = function (data) {
+    try {
+        let engagementName = data.engagementName;
+        let engagementId = data.engagementId;
+
+        //LP logs
+        if (window.location.href.indexOf("?lpDebug") >= 0) {
+            console.log("AutoOpenScript: ",data);
+        }
+
+        if (engagementName.toLowerCase().includes('tol')) {
+            lpAutoOpenWindowState.autoOpenTimer = getAOTimer(engagementName);
+            autoOpenWindow(0, engagementId);
+        }
+    }
+    catch (err){
+        if (window.location.href.indexOf("?lpDebug") >= 0) {
+            console.log(err)
+            console.log("AutoOpenScript: Error occured in invoking lpTag");
+        }
+    }
+}
+*/
+
 
 livePersonAutoOpenHandler();

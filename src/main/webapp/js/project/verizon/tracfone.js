@@ -15,9 +15,9 @@ const detectLpTagReady = function (){
 
 
         lpTag.section = [ "tracfonedemo" ];   // initialize lpTage sections
-        // lpTag.section = [ "l1:tracfone", "l2:phone" ];   // TF_sales_phone[DT_S], TF_sales_phone[DT_O_TOL_30s]
+        //lpTag.section = [ "l1:tracfone", "l2:phone" ];   // TF_sales_phone[DT_S], TF_sales_phone[DT_O_TOL_30s]
         //lpTag.section = [ "l1:tracfone", "l2:accessories" ];   // Tracfone specific proactive engagement
-        // lpTag.section = [ "autoopen10s" ];// proactive demo engagement
+        //lpTag.section = [ "autoopen10s" ];// proactive demo engagement
 
         hideShowInputField();
     }
@@ -99,7 +99,7 @@ const loadEngagementsDropdown = function (){
 
         let $a = $('<a className:"dropdown-item"></a>');
         // let $span = $('<span className="d-inline-block bg-primary rounded-circle p-1"></span>');
-        let $span = null;
+        let $span = $('<span></span>');
         let lob = engmt.substring(0, 2)
         switch(lob) {
             case 'TF':
@@ -110,6 +110,9 @@ const loadEngagementsDropdown = function (){
                 break;
             case 'NT':
                 $span = $('<span className="d-inline-block bg-warning rounded-circle p-1"></span>');
+                break;
+            default:
+                break;
         }
         $span.text(engmt);
 

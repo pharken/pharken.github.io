@@ -33,11 +33,15 @@ label { font-weight: bold; }
 .isOff {color: var(--color-error) }
 .btn {font-size: smaller;}
 .margin-left-10px { margin-left: 10px; }
+.margin-left-20px { margin-left: 20px; }
+.margin-left-30px { margin-left: 30px; }
 .margin-top-20px { margin-top: 20px; }
+.margin-top-10px { margin-top: 10px; }
 .margin-top-5px { margin-top: 5px; }
 .font-size-default { font-size: smaller; }
 .font-size-small { font-size: small; }
 .font-size-smallest { font-size: x-small; }
+.float-right { float:right; }
 
 .columnContainer{
     border: 1px solid darkgray;
@@ -49,31 +53,11 @@ label { font-weight: bold; }
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
         FONT AWESOME
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
-/*
-.defaultStackedIconSvg {
-    border:1px solid transparent;
-    border-radius:5px
+.inputGroup {
+    border: 1px solid #cecece;
+    border-radius: 8px;
 }
-.defaultStackedIconSvg:hover i:first-of-type {
-    color:#5f93e6
-}
-.defaultStackedIconSvg:active i:first-of-type{
-    color:#4f73ff
-}
-.defaultStackedIconSvg:active i:last-of-type {
-    color:#4f73ff
-}
-.defaultStackedIconSvg i:first-of-type {
-    color:lightgrey
-}
-.defaultStackedIconSvg i:last-of-type {
-    color:darkslategray
-}
-.slow-spin {
-    -webkit-animation: fa-spin 12s infinite linear;
-    animation: fa-spin 12s infinite linear;
-}
-*/
+
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
         GENERAL STYLING
@@ -108,6 +92,7 @@ ul li p {
     max-width: 30vw;
     margin: 0;
 }
+
 
 /* dont style href on index page */
 .noHrefStyling li a {
@@ -164,3 +149,52 @@ ul li p {
 #infoList li textarea:hover{
     background-color: var(--color-list-panel-hover-background);
 }
+
+
+
+/* Fade-in fade-out */
+.elementToFadeInAndOut {
+    width:110px;
+    height: 22px;
+    text-align: center;
+    border: 1px solid greenyellow;
+    border-radius: 5px;
+    -webkit-animation: fadeinout 3s linear forwards;
+    animation: fadeinout 3s linear forwards;
+}
+
+@-webkit-keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+
+
+
+
+/* Dropdown combo box */
+
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+}
+.custom-combobox-toggle {
+    position: absolute;
+    top: -20px;
+    bottom: 0;
+    margin-left: -41px;
+    padding: 0;
+}
+.custom-combobox-input {
+    margin: 0;
+    padding: 5px 10px;
+}
+
+
+
+

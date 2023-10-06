@@ -33,11 +33,15 @@ label { font-weight: bold; }
 .isOff {color: var(--color-error) }
 .btn {font-size: smaller;}
 .margin-left-10px { margin-left: 10px; }
+.margin-left-20px { margin-left: 20px; }
+.margin-left-30px { margin-left: 30px; }
 .margin-top-20px { margin-top: 20px; }
+.margin-top-10px { margin-top: 10px; }
 .margin-top-5px { margin-top: 5px; }
 .font-size-default { font-size: smaller; }
 .font-size-small { font-size: small; }
 .font-size-smallest { font-size: x-small; }
+.float-right { float:right; }
 
 .columnContainer{
     border: 1px solid darkgray;
@@ -49,31 +53,11 @@ label { font-weight: bold; }
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
         FONT AWESOME
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
-/*
-.defaultStackedIconSvg {
-    border:1px solid transparent;
-    border-radius:5px
+.inputGroup {
+    border: 1px solid #cecece;
+    border-radius: 8px;
 }
-.defaultStackedIconSvg:hover i:first-of-type {
-    color:#5f93e6
-}
-.defaultStackedIconSvg:active i:first-of-type{
-    color:#4f73ff
-}
-.defaultStackedIconSvg:active i:last-of-type {
-    color:#4f73ff
-}
-.defaultStackedIconSvg i:first-of-type {
-    color:lightgrey
-}
-.defaultStackedIconSvg i:last-of-type {
-    color:darkslategray
-}
-.slow-spin {
-    -webkit-animation: fa-spin 12s infinite linear;
-    animation: fa-spin 12s infinite linear;
-}
-*/
+
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
         GENERAL STYLING
@@ -108,6 +92,7 @@ ul li p {
     max-width: 30vw;
     margin: 0;
 }
+
 
 /* dont style href on index page */
 .noHrefStyling li a {
@@ -165,6 +150,8 @@ ul li p {
     background-color: var(--color-list-panel-hover-background);
 }
 
+
+
 /* Fade-in fade-out */
 .elementToFadeInAndOut {
     width:110px;
@@ -185,3 +172,38 @@ ul li p {
     0%,100% { opacity: 0; }
     50% { opacity: 1; }
 }
+
+
+
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+    body { background-color: #f9c4c4; }
+    .ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front { width: 90%; }
+}
+
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+    body { background-color: #f9f9b7; }
+}
+
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px){
+    body { background-color: #c7c7f9; }
+}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px){
+    body { background-color: #c2f7c2; }
+}
+
+/* Media Query for Large screens */
+@media (min-width: 1281px) {
+    body { background-color: #f2f2f2; }
+}
+
+
+
+
+
+
+

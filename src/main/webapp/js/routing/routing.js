@@ -15,6 +15,19 @@ const ABC = 'abc';
 const WEB = 'web';
 
 
+const identityFn = function(callback) {
+
+    callback({
+        iss: 'https://www.placeholder.com',
+        acr: 'loa1',
+        sub: 'sub'
+    });
+};
+
+lpTag.identities = [];
+lpTag.identities.push(identityFn);
+
+
 
 let main = function (){
     let $startEngagementBtn = $('#startEngagementBtn');
@@ -46,6 +59,7 @@ let main = function (){
     });
 
     bindLpEvents();
+
 };
 
 
@@ -236,8 +250,10 @@ $(function() {
     // routing is for the top right 'banking' entry point
     // parkinglot is for the top left 'parking lot' entry point. This is a shortcut to go directly to the parking lot bot
     lpTag.section = [ "routing", "parkinglot" ];   // playground tests
-    // lpTag.section = [ "vzqaparkinglot" ];   // test for verizon - QA - parking lot
+    //lpTag.section = [ "vzqaparkinglot" ];   // test for verizon - QA - parking lot
     // lpTag.section = [ "l1:wireline", "l2:home", "l3:internet", "l4:acp" ];   // playground tests
+    // lpTag.section = [ "testPLB" ];   // test for parking lot bot on Afiniti Alpha site
+
 
     //TODO  do this on lpTag --- on ready or the other one
     // detectBrowserMain();

@@ -47,17 +47,12 @@ let main = function (){
         refreshTracfonePage();
     });
 
-    // loadEngagementsDropdown();
-    bindEngagementComboDropdown();
-    loadEngagementsDatalist();
-    //bindEngagementInputTextBox();
+    loadEngagementsDropdown();
 
     $('#launchTracfoneEngagementBtn').click( launchTracfoneEngagement );
     $('#autoOpenBtn').click( livePersonAutoOpenHandler );
     $('#cartSdeBtn').click( pushCartSde );
     checkLpScriptsLoaded();
-
-    bindTestBtn();
 
     let $copyEngagementBtn = $('#copyEngagementBtn');
     $copyEngagementBtn.on( "click", function() {
@@ -87,32 +82,16 @@ let refreshTracfonePage = function () {
     lpTag.newPage( document.URL, { section: lpTag.section });
 }
 
-
 /*
-This works temporarily and then the credentials expire ..... so it's a no go
-let doit = function () {
 
-    var settings = {
-        "url": "https://va.ac.liveperson.net/api/account/91614185/configuration/le-users/skills",
-        "method": "GET",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json",
-            "Authorization": "OAuth oauth_consumer_key=\"5c746408d1e2498ea7c0d6bacf4fd823\",oauth_token=\"aa65ffe517324087a0c2316b16f29726\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1695515427\",oauth_nonce=\"VBUwuchMym2\",oauth_version=\"1.0\",oauth_signature=\"5Lw%2Bav7xAOr7wBd080CQti6zitI%3D\"",
-            "Cookie": "JSESSIONID=9E68EC2381D2DAA8C8CD525BFC0D30DA"
-        },
-    };
+    if (lpTag && lpTag.taglets && lpTag.taglets.rendererStub)
+        let clicked = lpTag.taglets.rendererStub.click(ROUTING_ENGAGEMENT_ID);
 
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
-}
 */
 
 
 
-/*
-// OLD working
+
 const loadEngagementsDropdown = function (){
 
     for (const engmt in engagements) {
@@ -154,181 +133,6 @@ const loadEngagementsDropdown = function (){
         $ul.append($li.append($a.append($span)));
     }
 }
-*/
-
-
-const bindEngagementComboDropdown = function (){
-
-    $.widget( "custom.combobox", {
-        _create: function() {
-            this.wrapper = $( "<span>" )
-                .addClass( "custom-combobox" )
-                .insertAfter( this.element );
-
-            this.element.hide();
-            this._createAutocomplete();
-            this._createShowAllButton();
-        },
-
-        _createAutocomplete: function() {
-            var selected = this.element.children( ":selected" ),
-                value = selected.val() ? selected.text() : "";
-
-            this.input = $( "<input>" )
-                .appendTo( this.wrapper )
-                .val( value )
-                .attr( "title", "" )
-                .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
-                .autocomplete({
-                    delay: 0,
-                    minLength: 0,
-                    source: this._source.bind( this )
-                });
-
-            this._on( this.input, {
-                autocompleteselect: function( event, ui ) {
-                    ui.item.option.selected = true;
-                    this._trigger( "select", event, {
-                        item: ui.item.option
-                    });
-                },
-
-                autocompletechange: "_removeIfInvalid"
-            });
-        },
-
-        _createShowAllButton: function() {
-            var input = this.input,
-                wasOpen = false;
-
-            $('#comboBoxDownArrow').on('click', function() {
-                input.trigger( "focus" );
-                // Close if already visible
-                if ( wasOpen )
-                    return;
-
-                // Pass empty string as value to search for, displaying all results
-                input.autocomplete( "search", "" );
-            });
-
-        },
-
-        _source: function( request, response ) {
-            var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
-            response( this.element.children( "option" ).map(function() {
-                var text = $( this ).text();
-                if ( this.value && ( !request.term || matcher.test(text) ) )
-                    return {
-                        label: text,
-                        value: text,
-                        option: this
-                    };
-            }) );
-        },
-
-        _removeIfInvalid: function( event, ui ) {
-
-            // Selected an item, nothing to do
-            if ( ui.item ) {
-                return;
-            }
-
-            // Search for a match (case-insensitive)
-            var value = this.input.val(),
-                valueLowerCase = value.toLowerCase(),
-                valid = false;
-            this.element.children( "option" ).each(function() {
-                if ( $( this ).text().toLowerCase() === valueLowerCase ) {
-                    this.selected = valid = true;
-                    return false;
-                }
-            });
-
-            // Found a match, nothing to do
-            if ( valid ) {
-                return;
-            }
-
-            // Remove invalid value
-            this.element.val( "" );
-            this.input.autocomplete( "instance" ).term = "";
-        },
-
-        _destroy: function() {
-            this.wrapper.remove();
-            this.element.show();
-        }
-    });
-
-    $( "#engagementCombobox" ).combobox();
-    $( "#toggle" ).on( "click", function() {
-        $( "#engagementCombobox" ).toggle();
-    });
-}
-
-
-const loadEngagementsDatalist = function (){
-
-/*
-    let $engagementDatalist = $("#engagementDatalist");
-    $engagementDatalist.empty();
-    for (const engmt in engagements) {
-        // let $option = $("<option/>).html(engmt).appendTo("#engagementDatalist");
-        let $option = $("<option/>").html(engmt).on('click', ()=> {
-            lpTag.section = entryPoints[ engagements[engmt] ];
-            refreshTracfonePage();
-
-            let currentEngagement = document.getElementById('currentEngagement');
-            currentEngagement.innerHTML = engmt;
-            let currentSections = document.getElementById('currentSections');
-            currentSections.innerHTML = (lpTag.section).toString();
-        });
-        $engagementDatalist.append($option);
-    }
-*/
-    let $engagementlist = $("#engagementCombobox");
-    $engagementlist.empty();
-    for (const engmt in engagements) {
-
-        let $option = $("<option></option>").attr("value", entryPoints[ engagements[engmt] ]).text(engmt);
-        $option.on('click', ()=> {
-                lpTag.section = entryPoints[ engagements[engmt] ];
-                refreshTracfonePage();
-
-                let currentEngagement = document.getElementById('currentEngagement');
-                currentEngagement.innerHTML = engmt;
-                let currentSections = document.getElementById('currentSections');
-                currentSections.innerHTML = (lpTag.section).toString();
-            });
-
-        $engagementlist.append($option);
-    }
-}
-
-
-
-const bindTestBtn = function () {
-    let $testBtn = $('#testBtn');
-    $testBtn.on('click', function (){
-
-        var engagementOptions = {
-            "TF eng 1": "l1:home,l2:phones",
-            "NT eng 2": "value2",
-            "GS spa 3": "value3"
-        };
-
-        var $el = $("#engagementCombobox");
-        $el.empty(); // remove old options
-        $.each(engagementOptions, function(key,value) {
-            $el.append($("<option></option>")
-                .attr("value", value).text(key));
-        });
-    })
-}
-
-
-
-
 
 
 let launchTracfoneEngagement = function () {
@@ -448,10 +252,8 @@ const copyToClipboard = function (id) {
 }
 
 
-
 $(function() {
     console.log( "Tracfone begin" );
     detectLpTagReady();
     main();
 });
-

@@ -1,4 +1,5 @@
 const engagements = {
+/*
     "TF_sales_accessories[DT_S]":                        "TF-sales-accessories",
     "TF_sales_accessories_audio[DT_S]":                  "TF-sales-accessories-audio",
     "TF_sales_accessories_batteries[DT_S]":              "TF-sales-accessories-batteries",
@@ -197,6 +198,8 @@ const engagements = {
     "NT_care_spa_shop_ild[DT_S]":                        "NT-care-spa-shop-ild",
     "NT_care_spa_mobilechat[DT_S]":                      "NT-care-spa-mobilechat",
     "NT_care_spa_mobilechat[SP_O_TOL_0s]":               "NT-care-spa-mobilechat",
+*/
+
     "DP_TBV[DT_S]":                                      "DP-Care-TBV",
     "DP_AR[DT_S]":                                       "DP-Care-AR",
     "SL_care[DT_S]":                                     "SL-Care",

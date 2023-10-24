@@ -310,7 +310,8 @@ $(function() {
 
     //lpTag.section = [ "vzqaparkinglot" ];   // test for verizon - QA - parking lot
     // lpTag.section = [ "l1:wireline", "l2:home", "l3:internet", "l4:acp" ];   // playground tests
-    lpTag.section = [ "testPLB" ];   // test for parking lot bot on Afiniti Alpha site
+    // lpTag.section = [ "testPLB" ];   // test for parking lot bot on Afiniti Alpha site
+    lpTag.section = [ "lp-plb-test" ];   // test for parking lot bot on Afiniti Alpha site
 
 
 

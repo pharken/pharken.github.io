@@ -20,10 +20,29 @@ const detectLpTagReady = function (){
         //lpTag.section = [ "autoopen10s" ];// proactive demo engagement
 
         hideShowInputField();
+        lpTagBind_entryPoint();
     }
     else
         setTimeout(detectLpTagReady, 250);
 }
+
+
+
+function lpTagBind_entryPoint(){
+    console.log("Bind lpTag AFTER_CREATE_ENGAGEMENT_INSTANCE")
+    window.lpTag.events.bind(
+        "RENDERER_STUB",
+        "AFTER_CREATE_ENGAGEMENT_INSTANCE",
+        () => {
+            var renderEvents = lpTag.events.hasFired("RENDERER_STUB", "AFTER_CREATE_ENGAGEMENT_INSTANCE");
+            console.log("RenderEvents:");
+            console.table(renderEvents)
+        }
+
+    )
+    console.log("complete");
+};
+
 
 
 let main = function (){
@@ -118,7 +137,8 @@ const loadEngagementsDropdown = function (){
 
         let $ul = $('#engagementList');
         let $li = $('<li></li>').on('click', function () {
-            lpTag.section = entryPoints[ engagements[engmt] ];
+            let selectedEngagement = engagements[engmt];
+            lpTag.section = entryPoints[ selectedEngagement ];
             refreshTracfonePage();
             // This works, but I prefer the code below to show it on the bottom of the page
             // let btnTitle = document.getElementById('engagementListDropdown');

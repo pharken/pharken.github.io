@@ -1,7 +1,0 @@
-0:0:0:0:0:0:0:1 - - [19/Oct/2023:20:38:37 -0500] "GET /view/project/tracfone/tracfone.html HTTP/1.1" 200 13724 http-bio-9000-exec-9 39
-0:0:0:0:0:0:0:1 - - [19/Oct/2023:20:38:37 -0500] "GET /css/main.css HTTP/1.1" 200 5549 http-bio-9000-exec-9 7
-0:0:0:0:0:0:0:1 - - [19/Oct/2023:20:38:37 -0500] "GET /js/livepersonScripts/lpToggleEngagementTextInput.js HTTP/1.1" 200 1747 http-bio-9000-exec-9 5
-0:0:0:0:0:0:0:1 - - [19/Oct/2023:20:38:37 -0500] "GET /js/util/lpScripts.js HTTP/1.1" 200 1157 http-bio-9000-exec-9 2
-0:0:0:0:0:0:0:1 - - [19/Oct/2023:20:38:37 -0500] "GET /js/livepersonScripts/proactiveEngagement.js HTTP/1.1" 200 4271 http-bio-9000-exec-4 10
-0:0:0:0:0:0:0:1 - - [19/Oct/2023:20:38:37 -0500] "GET /js/project/verizon/tracfone.js HTTP/1.1" 200 9013 http-bio-9000-exec-3 7
-0:0:0:0:0:0:0:1 - - [19/Oct/2023:20:38:37 -0500] "GET /js/project/verizon/tracfoneData.js HTTP/1.1" 200 79373 http-bio-9000-exec-6 43

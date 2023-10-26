@@ -28,3 +28,16 @@
 0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:31:45 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-6 1
 0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:31:54 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-6 1
 0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:31:54 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-6 1
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:49:52 -0500] "GET /view/project/misc/misc.html HTTP/1.1" 404 1005 http-bio-9000-exec-2 2
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:53:55 -0500] "GET /view/misc/misc.html HTTP/1.1" 200 15705 http-bio-9000-exec-10 2
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:53:55 -0500] "GET /css/project.css HTTP/1.1" 200 445 http-bio-9000-exec-10 1
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:53:55 -0500] "GET /js/misc/detectBrowser.js HTTP/1.1" 200 2279 http-bio-9000-exec-8 1
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:53:55 -0500] "GET /js/misc/urlToSectionValues.js HTTP/1.1" 200 13861 http-bio-9000-exec-7 2
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:54:12 -0500] "GET /view/misc/sandbox.html HTTP/1.1" 200 5710 http-bio-9000-exec-7 1
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:54:12 -0500] "GET /js/livepersonScripts/lpInfoDisplay.js HTTP/1.1" 200 6659 http-bio-9000-exec-10 2
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:54:12 -0500] "GET /js/util/infoPanel.js HTTP/1.1" 200 1684 http-bio-9000-exec-8 2
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:54:12 -0500] "GET /js/sandbox/sandbox.js HTTP/1.1" 200 1473 http-bio-9000-exec-7 2
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:55:09 -0500] "GET /view/routing/routing.html HTTP/1.1" 200 14928 http-bio-9000-exec-7 3
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:55:09 -0500] "GET /js/routing/routing.js HTTP/1.1" 200 11347 http-bio-9000-exec-7 2
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:55:09 -0500] "GET /js/livepersonScripts/lpDetectBrowser.js HTTP/1.1" 200 7473 http-bio-9000-exec-8 5
+0:0:0:0:0:0:0:1 - - [25/Oct/2023:08:55:09 -0500] "GET /js/util/dataTimeUtil.js HTTP/1.1" 200 996 http-bio-9000-exec-10 2

@@ -453,6 +453,8 @@ const engagements = {
     "ST_spa_contact_us_showchat[DT_O_TOL_0s]":          "ST-care-spa-support-contact-us-showchat",
     "ST_spa_contact_us_botchat[DT_O_TOL_0s]":           "ST-care-spa-support-contact-us-botchat",
     "ST_spa_contact_us_FBMchat[DT_O_TOL_0s]":           "ST-care-spa-support-contact-us-FBMchat",
+
+    "SM_care_mobilechat[SP_S]":			                "SM-care-mobilechat",
     "SM_contact-us[DT_E]":                              "SM-contact-us",
     "SM_contact_us_showchat[DT_S]":                     "SM-contact-us-showchat",
     "SM_contact_us_botchat[DT_S]":                      "SM-contact-us-botchat",
@@ -686,6 +688,7 @@ const entryPoints = {
     "SL-spa-contact-us-botchat":                   ["l1:safelinkwireless", "l2:support", "l3:contactus-611611", "spanish"],
     "SL-spa-contact-us-FBMchat":                   ["l1:safelinkwireless", "l2:support", "l3:contactus-fbmchat", "spanish"],
 
+    "SM-care-mobilechat":				           [ "l1:simplemobile", "l2:mobile-lp-chat" ],
     "SM-sales-shop-simplemobile-phones":           ["l1:simplemobile", "l2:phones"],
     "SM-sales-activation-byopcollectsim":          ["l1:simplemobile", "l2:activation", "l3:byopcollectsim"],
     "SM-sales-serviceplan":                        ["l1:simplemobile", "l2:serviceplan"],

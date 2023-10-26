@@ -455,6 +455,7 @@ const engagements = {
     "ST_spa_contact_us_FBMchat[DT_O_TOL_0s]":           "ST-care-spa-support-contact-us-FBMchat",
 
     "SM_care_mobilechat[SP_S]":			                "SM-care-mobilechat",
+    "SM_care_mobilechat[SP_O_TOL-30s]":			        "SM-care-mobilechat",
     "SM_contact-us[DT_E]":                              "SM-contact-us",
     "SM_contact_us_showchat[DT_S]":                     "SM-contact-us-showchat",
     "SM_contact_us_botchat[DT_S]":                      "SM-contact-us-botchat",

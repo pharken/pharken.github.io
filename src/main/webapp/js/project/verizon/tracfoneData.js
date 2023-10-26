@@ -438,6 +438,8 @@ const engagements = {
     "TBV_sales_spa_about_coverage[DT_S_TOL-30s]":       "TBV-sales-about-coverage",
     "TBV_sales_spa_about_no-contract[DT_S_TOL-30s]":    "TBV-sales-about-no-contract-phone-plans",
     "TBV_sales_spa_about_prepaid-pho[DT_S_TOL-30s]":    "TBV-sales-about-prepaid-phones",
+    "TBV_care_mobilechat[SP_S]":            			"TBV-care-mobilechat",
+    "TBV_care_mobilechat[SP_O_TOL_0s]":            		"TBV-care-mobilechat",
 
     "ST_care_support_contact_us[DT_E]":                 "ST-care-support-contact-us",
     "ST_care_support_contact_us_showchat[DT_S]":        "ST-care-support-contact-us-showchat",
@@ -816,6 +818,8 @@ const entryPoints = {
     "TBV-sales-about-no-contract-phone-plans":     ["l1:totalbyverizon", "l2:about", "l3:no-contract-phone-plans"],
     "TBV-sales-about-prepaid-phones":              ["l1:totalbyverizon", "l2:about", "l3:prepaid-phones"],
     "TBV-care-my-account-my-rewards":              ["l1:totalbyverizon", "l2:my-account", "l3:my-rewards"],
+    "TBV-care-mobilechat":                         [ "l1:totalbyverizon", "l2:mobile-lp-chat" ],
+
     "TBV-contact-us":                              ["l1:totalbyverizon", "l2:support", "l3:contact-us"],
     "TBV-contact-us-showchat":                     ["l1:totalbyverizon", "l2:support", "l3:contactus-611611"],
     "TBV-contact-us-botchat":                      ["l1:totalbyverizon", "l2:support", "l3:contactus-bot"],

@@ -28,7 +28,10 @@ lpTag.identities = [];
 lpTag.identities.push(identityFn);
 
 
-
+/*
+This is from the SE boot camp.
+Should add this to the authentication code --- not here
+*/
 const xxxxxxx = function () {
 
     // Header
@@ -82,7 +85,7 @@ const xxxxxxx = function () {
 
 
 
-let main = function (){
+let routingMain = function (){
     let $startEngagementBtn = $('#startEngagementBtn');
     $startEngagementBtn.on( "click", function() {
         displayInfo('runEngagementOpen');
@@ -307,17 +310,33 @@ $(function() {
     // parkinglot is for the top left 'parking lot' entry point. This is a shortcut to go directly to the parking lot bot
 
     //lpTag.section = [ "routing", "parkinglot" ];   // playground tests
-
-    //lpTag.section = [ "vzqaparkinglot" ];   // test for verizon - QA - parking lot
+    /*
+    Parking Lot Test:  ( 87604225 )  Verizon - QA
+        Campaign:    VZ TAG CS
+        Engagement:  LP1testForParkingLot
+        Entry point: TestParkingLot
+    */
+    lpTag.section = [ "vzqaparkinglot" ];   //
     // lpTag.section = [ "l1:wireline", "l2:home", "l3:internet", "l4:acp" ];   // playground tests
+
+    /*
+    Parking Lot test with Affiniti  ( 50499881 )
+    Bot agent setup to interact with Parking Lot Bot
+    */
     // lpTag.section = [ "testPLB" ];   // test for parking lot bot on Afiniti Alpha site
-    lpTag.section = [ "lp-plb-test" ];   // test for parking lot bot on Afiniti Alpha site
+
+    /*
+    Parking Lot test with Affiniti  ( 50499881 )
+    Human agents setup to interact with Parking Lot bot
+    */
+    // lpTag.section = [ "lp-plb-test" ];   // test for parking lot bot on Afiniti Alpha site
 
 
 
     //TODO  do this on lpTag --- on ready or the other one
     // detectBrowserMain();
+    detectLpTagReady();
 
-    main();
+    routingMain();
 });
 

@@ -290,6 +290,7 @@ const engagements = {
     "ST_whyst_plans[DT_S]":                             "ST-whyst-plans",
     "ST_whyst_plans[DT_S_TOL-30s]":                     "ST-whyst-plans",
     "SL_care[DT_S]":                                    "SL-Care",
+    "SL_about_us[DT_S]":                                "SL-care-about-us",
     "SL_contact_us[DT_E]":                              "SL-contact-us",
     "SL_contact_us_showchat[DT_S]":                     "SL-contact-us-showchat",
     "SL_contact_us_botchat[DT_S]":                      "SL-contact-us-botchat",
@@ -682,6 +683,8 @@ const entryPoints = {
     "PP-spa-contact-us-botchat":                   ["l1:pagepluscellular", "l2:support-contact", "l3:botchat", "spanish"],
     "PP-spa-contact-us-FBMchat":                   ["l1:pagepluscellular", "l2:support-contact", "l3:fbmchat", "spanish"],
 
+    "SL-Care":                                     ["l1:safelinkwireless", "enrollment", "contact us"],
+    "SL-care-about-us":                            ["l1:safelinkwireless", "l2:support", "l3:aboutUs"],
     "SL-contact-us":                               ["l1:safelinkwireless", "l2:support", "l3:contact-us"],
     "SL-contact-us-showchat":                      ["l1:safelinkwireless", "l2:support", "l3:contactus-bot"],
     "SL-contact-us-botchat":                       ["l1:safelinkwireless", "l2:support", "l3:contactus-611611"],

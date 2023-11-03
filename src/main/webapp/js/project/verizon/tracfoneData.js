@@ -858,15 +858,14 @@ const entryPoints = {
     "WFM-care-spa-rewards":                        ["l1:myfamilymobile", "l2:rewards", "spanish"],
     "WFM-care-spa-accountrecovery":                ["l1:myfamilymobile", "l2:accountrecovery", "spanish"],
 
-
-    "WFM-contact-us":              ["l1:myfamilymobile", "l2:support", "l3:contact-us"],
-    "WFM-contact-us-showchat":     ["l1:myfamilymobile", "l2:support", "l3:contactus-611611"],
-    "WFM-contact-us-botchat":      ["l1:myfamilymobile", "l2:support", "l3:contactus-bot"],
-    "WFM-contact-us-FBMchat":      ["l1:myfamilymobile", "l2:support", "l3:contactus-fbmchat"],
-    "WFM-spa-contact-us":          ["l1:myfamilymobile", "l2:support", "l3:contact-us", "spanish"],
-    "WFM-spa-contact-us-showchat": ["l1:myfamilymobile", "l2:support", "l3:contactus-611611"],
-    "WFM-spa-contact-us-botchat":  ["l1:myfamilymobile", "l2:support", "l3:contactus-bot", "spanish"],
-    "WFM-spa-contact-us-FBMchat":  ["l1:myfamilymobile", "l2:support", "l3:contactus-fbmchat", "spanish"],
+    "WFM-contact-us":              ["l1:myfamilymobile", "l2:contactus"],
+    "WFM-contact-us-showchat":     ["l1:myfamilymobile", "l2:contactus-611611"],
+    "WFM-contact-us-botchat":      ["l1:myfamilymobile", "l2:contactus-bot"],
+    "WFM-contact-us-FBMchat":      ["l1:myfamilymobile", "l2:contactus-fbmchat"],
+    "WFM-spa-contact-us":          ["l1:myfamilymobile", "l2:contactus", "spanish"],
+    "WFM-spa-contact-us-showchat": ["l1:myfamilymobile", "l2:contactus-611611"],
+    "WFM-spa-contact-us-botchat":  ["l1:myfamilymobile", "l2:contactus-bot", "spanish"],
+    "WFM-spa-contact-us-FBMchat":  ["l1:myfamilymobile", "l2:contactus-fbmchat", "spanish"],
 
 }
 

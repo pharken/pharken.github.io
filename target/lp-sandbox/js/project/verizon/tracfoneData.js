@@ -200,6 +200,7 @@ const engagements = {
         "NT_care_spa_mobilechat[SP_O_TOL_0s]":               "NT-care-spa-mobilechat",
     */
 
+
     "DP_TBV[DT_E]":                                     "DP-Care-TBV",
     "DP_AR[DT_E]":                                      "DP-Care-AR",
     "ST_5g[DT_S]":                                      "ST-5g",
@@ -279,6 +280,7 @@ const engagements = {
     "ST_plans_wireless-phones[DT_S_TOL-30s]":           "ST-plans-wireless-phones",
     "ST_refill_auto-refill[DT_S]":                      "ST-refill-auto-refill",
     "ST_refill_refill-your-plan[DT_S]":                 "ST-refill-refill-your-plan",
+    "ST_spa_5g[DT_S]":                                  "ST-spa-5g",
     "ST_whyst_coverage[DT_S]":                          "ST-whyst-coverage",
     "ST_whyst_coverage[DT_S_TOL-30s]":                  "ST-whyst-coverage",
     "ST_whyst_keep-your-own-phone[DT_S]":               "ST-whyst-keep-your-own-phone",
@@ -288,6 +290,7 @@ const engagements = {
     "ST_whyst_plans[DT_S]":                             "ST-whyst-plans",
     "ST_whyst_plans[DT_S_TOL-30s]":                     "ST-whyst-plans",
     "SL_care[DT_S]":                                    "SL-Care",
+    "SL_about_us[DT_S]":                                "SL-care-about-us",
     "SL_contact_us[DT_E]":                              "SL-contact-us",
     "SL_contact_us_showchat[DT_S]":                     "SL-contact-us-showchat",
     "SL_contact_us_botchat[DT_S]":                      "SL-contact-us-botchat",
@@ -436,6 +439,8 @@ const engagements = {
     "TBV_sales_spa_about_coverage[DT_S_TOL-30s]":       "TBV-sales-about-coverage",
     "TBV_sales_spa_about_no-contract[DT_S_TOL-30s]":    "TBV-sales-about-no-contract-phone-plans",
     "TBV_sales_spa_about_prepaid-pho[DT_S_TOL-30s]":    "TBV-sales-about-prepaid-phones",
+    "TBV_care_mobilechat[SP_S]":            			"TBV-care-mobilechat",
+    "TBV_care_mobilechat[SP_O_TOL_0s]":            		"TBV-care-mobilechat",
 
     "ST_care_support_contact_us[DT_E]":                 "ST-care-support-contact-us",
     "ST_care_support_contact_us_showchat[DT_S]":        "ST-care-support-contact-us-showchat",
@@ -451,6 +456,9 @@ const engagements = {
     "ST_spa_contact_us_showchat[DT_O_TOL_0s]":          "ST-care-spa-support-contact-us-showchat",
     "ST_spa_contact_us_botchat[DT_O_TOL_0s]":           "ST-care-spa-support-contact-us-botchat",
     "ST_spa_contact_us_FBMchat[DT_O_TOL_0s]":           "ST-care-spa-support-contact-us-FBMchat",
+
+    "SM_care_mobilechat[SP_S]":			                "SM-care-mobilechat",
+    "SM_care_mobilechat[SP_O_TOL-0s]":			        "SM-care-mobilechat",
     "SM_contact-us[DT_E]":                              "SM-contact-us",
     "SM_contact_us_showchat[DT_S]":                     "SM-contact-us-showchat",
     "SM_contact_us_botchat[DT_S]":                      "SM-contact-us-botchat",
@@ -675,6 +683,8 @@ const entryPoints = {
     "PP-spa-contact-us-botchat":                   ["l1:pagepluscellular", "l2:support-contact", "l3:botchat", "spanish"],
     "PP-spa-contact-us-FBMchat":                   ["l1:pagepluscellular", "l2:support-contact", "l3:fbmchat", "spanish"],
 
+    "SL-Care":                                     ["l1:safelinkwireless", "enrollment", "contact us"],
+    "SL-care-about-us":                            ["l1:safelinkwireless", "l2:support", "l3:aboutUs"],
     "SL-contact-us":                               ["l1:safelinkwireless", "l2:support", "l3:contact-us"],
     "SL-contact-us-showchat":                      ["l1:safelinkwireless", "l2:support", "l3:contactus-bot"],
     "SL-contact-us-botchat":                       ["l1:safelinkwireless", "l2:support", "l3:contactus-611611"],
@@ -684,6 +694,7 @@ const entryPoints = {
     "SL-spa-contact-us-botchat":                   ["l1:safelinkwireless", "l2:support", "l3:contactus-611611", "spanish"],
     "SL-spa-contact-us-FBMchat":                   ["l1:safelinkwireless", "l2:support", "l3:contactus-fbmchat", "spanish"],
 
+    "SM-care-mobilechat":				           [ "l1:simplemobile", "l2:mobile-lp-chat" ],
     "SM-sales-shop-simplemobile-phones":           ["l1:simplemobile", "l2:phones"],
     "SM-sales-activation-byopcollectsim":          ["l1:simplemobile", "l2:activation", "l3:byopcollectsim"],
     "SM-sales-serviceplan":                        ["l1:simplemobile", "l2:serviceplan"],
@@ -727,14 +738,14 @@ const entryPoints = {
     "SM-sales-spa-why-simple-mobile-serviceplan":  ["l1:simplemobile", "l2:why-simple-mobile", "l3:serviceplan", "spanish"],
     "SM-care-spa-rewards":                         ["l1:simplemobile", "l2:rewards", "spanish"],
     "SM-care-spa-myaccount-login-col":             ["l1:simplemobile", "l2:myaccount", "l3:login", "l4:collectusername", "spanish"],
-    "SM-contact-us":                               ["l1:simplemobile", "l2:support", "l3:contact-us"],
-    "SM-contact-us-showchat":                      ["l1:simplemobile", "l2:support", "l3:contactus-611611"],
-    "SM-contact-us-botchat":                       ["l1:simplemobile", "l2:support", "l3:contactus-bot"],
-    "SM-contact-us-FBMchat":                       ["l1:simplemobile", "l2:support", "l3:contactus-fbmchat"],
-    "SM-spa-contact-us":                           ["l1:simplemobile", "l2:support", "l3:contact-us", "spanish"],
-    "SM-spa-contact-us-showchat":                  ["l1:simplemobile", "l2:support", "l3:contactus-611611", "spanish"],
-    "SM-spa-contact-us-botchat":                   ["l1:simplemobile", "l2:support", "l3:contactus-bot", "spanish"],
-    "SM-spa-contact-us-FBMchat":                   ["l1:simplemobile", "l2:support", "l3:contactus-fbmchat", "spanish"],
+    "SM-contact-us":                               ["l1:simplemobile", "l2:contactus"],
+    "SM-contact-us-showchat":                      ["l1:simplemobile", "l2:contactus-611611"],
+    "SM-contact-us-botchat":                       ["l1:simplemobile", "l2:contactus-bot"],
+    "SM-contact-us-FBMchat":                       ["l1:simplemobile", "l2:contactus-fbmchat"],
+    "SM-spa-contact-us":                           ["l1:simplemobile", "l2:contactus", "spanish"],
+    "SM-spa-contact-us-showchat":                  ["l1:simplemobile", "l2:contactus-611611", "spanish"],
+    "SM-spa-contact-us-botchat":                   ["l1:simplemobile", "l2:contactus-bot", "spanish"],
+    "SM-spa-contact-us-FBMchat":                   ["l1:simplemobile", "l2:contactus-fbmchat", "spanish"],
     "ST-5g":                                       ["l1:straighttalk", "l2:5g"],
     "ST-all-plans":                                ["l1:straighttalk", "l2:all-plans"],
     "ST-plans-wireless-phones":                    ["l1:straighttalk", "l2:plans", "l3:wireless-phones"],
@@ -782,6 +793,7 @@ const entryPoints = {
     "ST-whyst-plans":                              ["l1:straighttalk", "l2:whyst", "l3:plans"],
     "ST-whyst-keep-your-own-phone":                ["l1:straighttalk", "l2:whyst", "l3:keep-your-own-phone"],
     "ST-whyst-coverage":                           ["l1:straighttalk", "l2:whyst", "l3:coverage"],
+    "ST-spa-5g":                                   ["l1:straighttalk", "l2:5g", "spanish"],
     "ST-care-support-contact-us":                  ["l1:straighttalk", "l2:support", "l3:contact"],
     "ST-care-support-contact-us-showchat":         ["l1:straighttalk", "l2:support", "l3:contact-611611"],
     "ST-care-support-contact-us-botchat":          ["l1:straighttalk", "l2:support", "l3:contact-bot"],
@@ -809,6 +821,8 @@ const entryPoints = {
     "TBV-sales-about-no-contract-phone-plans":     ["l1:totalbyverizon", "l2:about", "l3:no-contract-phone-plans"],
     "TBV-sales-about-prepaid-phones":              ["l1:totalbyverizon", "l2:about", "l3:prepaid-phones"],
     "TBV-care-my-account-my-rewards":              ["l1:totalbyverizon", "l2:my-account", "l3:my-rewards"],
+    "TBV-care-mobilechat":                         [ "l1:totalbyverizon", "l2:mobile-lp-chat" ],
+
     "TBV-contact-us":                              ["l1:totalbyverizon", "l2:support", "l3:contact-us"],
     "TBV-contact-us-showchat":                     ["l1:totalbyverizon", "l2:support", "l3:contactus-611611"],
     "TBV-contact-us-botchat":                      ["l1:totalbyverizon", "l2:support", "l3:contactus-bot"],
@@ -844,15 +858,14 @@ const entryPoints = {
     "WFM-care-spa-rewards":                        ["l1:myfamilymobile", "l2:rewards", "spanish"],
     "WFM-care-spa-accountrecovery":                ["l1:myfamilymobile", "l2:accountrecovery", "spanish"],
 
-
-    "WFM-contact-us":              ["l1:myfamilymobile", "l2:support", "l3:contact-us"],
-    "WFM-contact-us-showchat":     ["l1:myfamilymobile", "l2:support", "l3:contactus-611611"],
-    "WFM-contact-us-botchat":      ["l1:myfamilymobile", "l2:support", "l3:contactus-bot"],
-    "WFM-contact-us-FBMchat":      ["l1:myfamilymobile", "l2:support", "l3:contactus-fbmchat"],
-    "WFM-spa-contact-us":          ["l1:myfamilymobile", "l2:support", "l3:contact-us", "spanish"],
-    "WFM-spa-contact-us-showchat": ["l1:myfamilymobile", "l2:support", "l3:contactus-611611"],
-    "WFM-spa-contact-us-botchat":  ["l1:myfamilymobile", "l2:support", "l3:contactus-bot", "spanish"],
-    "WFM-spa-contact-us-FBMchat":  ["l1:myfamilymobile", "l2:support", "l3:contactus-fbmchat", "spanish"],
+    "WFM-contact-us":              ["l1:myfamilymobile", "l2:contactus"],
+    "WFM-contact-us-showchat":     ["l1:myfamilymobile", "l2:contactus-611611"],
+    "WFM-contact-us-botchat":      ["l1:myfamilymobile", "l2:contactus-bot"],
+    "WFM-contact-us-FBMchat":      ["l1:myfamilymobile", "l2:contactus-fbmchat"],
+    "WFM-spa-contact-us":          ["l1:myfamilymobile", "l2:contactus", "spanish"],
+    "WFM-spa-contact-us-showchat": ["l1:myfamilymobile", "l2:contactus-611611"],
+    "WFM-spa-contact-us-botchat":  ["l1:myfamilymobile", "l2:contactus-bot", "spanish"],
+    "WFM-spa-contact-us-FBMchat":  ["l1:myfamilymobile", "l2:contactus-fbmchat", "spanish"],
 
 }
 

@@ -33,7 +33,7 @@ function hideShowInputField() {
                 }
                 // Hide input if line is welcome message and show if not current skill
                 if ((line.isWelcomeMessage && line.quickReplies)) {
-                    lpUtils.hideInput();
+                    lpUtils.hideInput();cl
                 }
             });
         },

@@ -1,4 +1,0 @@
-0:0:0:0:0:0:0:1 - - [01/Nov/2023:11:05:54 -0500] "GET /view/project/tracfone/tracfone.html HTTP/1.1" 200 14038 http-bio-9000-exec-4 29
-0:0:0:0:0:0:0:1 - - [01/Nov/2023:11:05:54 -0500] "GET /css/main.css HTTP/1.1" 304 - http-bio-9000-exec-7 29
-0:0:0:0:0:0:0:1 - - [01/Nov/2023:11:06:18 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-4 3
-0:0:0:0:0:0:0:1 - - [01/Nov/2023:11:06:18 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-4 1

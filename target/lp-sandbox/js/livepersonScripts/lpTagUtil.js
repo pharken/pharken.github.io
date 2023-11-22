@@ -23,3 +23,11 @@ const updateStatusMsg = function () {
 
     $('#statusMsg').append($lpLoadSuccessMsg);
 }
+
+/* Updating section and refresh LP tag is intended to be used
+*  with single page apps.
+*  It is useful for demo purposes when we want to frequently
+*  change the entry point */
+const updateSectionValues = function (sectionValues) {
+
+}

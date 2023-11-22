@@ -306,37 +306,40 @@ let launchEngagement = () => {
 
 $(function() {
     console.log( "Routing begin" );
+
     // routing is for the top right 'banking' entry point
     // parkinglot is for the top left 'parking lot' entry point. This is a shortcut to go directly to the parking lot bot
 
-    //lpTag.section = [ "routing", "parkinglot" ];   // playground tests
+    lpTag.section = [ "routing", "parkinglot" ];   // playground tests
+
     /*
     Parking Lot Test:  ( 87604225 )  Verizon - QA
         Campaign:    VZ TAG CS
         Engagement:  LP1testForParkingLot
         Entry point: TestParkingLot
     */
-    lpTag.section = [ "vzqaparkinglot" ];   //
+    // lpTag.section = [ "vzqaparkinglot" ];
+
+
     // lpTag.section = [ "l1:wireline", "l2:home", "l3:internet", "l4:acp" ];   // playground tests
 
     /*
     Parking Lot test with Affiniti  ( 50499881 )
     Bot agent setup to interact with Parking Lot Bot
     */
-    // lpTag.section = [ "testPLB" ];   // test for parking lot bot on Afiniti Alpha site
+    // lpTag.section = [ "lp-plb-test", "bot-agent" ];
 
     /*
     Parking Lot test with Affiniti  ( 50499881 )
     Human agents setup to interact with Parking Lot bot
     */
-    // lpTag.section = [ "lp-plb-test" ];   // test for parking lot bot on Afiniti Alpha site
+    lpTag.section = [ "lp-plb-test", "human-agent", "firstskill" ];
+    // lpTag.section = [ "lp-plb-test", "human-agent", "secondskill" ];
+    // lpTag.section = [ "lp-plb-test", "human-agent", "skill0000" ];
+    // lpTag.section = [ "lp-plb-test", "human-agent", "skill0001" ];
 
 
-
-    //TODO  do this on lpTag --- on ready or the other one
-    // detectBrowserMain();
     detectLpTagReady();
-
     routingMain();
 });
 

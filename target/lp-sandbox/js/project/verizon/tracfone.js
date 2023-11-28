@@ -58,10 +58,10 @@ let main = function (){
         if ($isSelected.length > 0) $isSelected.removeClass('isSelected');
         $thisBrand.addClass('isSelected');
 
-        let sectionValues = event.target.attributes[1].value;
-        selectedBrand = verizonBrand.find( vzbrand => vzbrand.name === sectionValues );
+        let brandName = event.target.attributes[1].value;
+        selectedBrand = verizonBrand.find( vzbrand => vzbrand.name === brandName );
 
-        setLpTagSections(sectionValues);
+        setLpTagSections(brandName);
         //changePageFont( selectedBrand.fontFamily );
         refreshTracfonePage();
     });
@@ -81,10 +81,10 @@ let main = function (){
 };
 
 
-let setLpTagSections = function(sectionValues){
-    console.log(sectionValues);
+let setLpTagSections = function(brand){
+    console.log(brand);
     lpTag.section = [];
-    let sections = sectionValues.split(',');
+    let sections = brand.split(',');
     lpTag.section = [...sections];
 };
 
@@ -173,8 +173,6 @@ let launchTracfoneEngagement = function () {
     if (engagements && engagements.length > 0) {
         let engagement = engagements[0];
         console.log(`Engagement name: ${engagement.data.eng.conf.name}`);
-        //TODO document this line
-        // the equivalent line is :   let engagementId = selectedBrand.engagementId
         let {engagementId} = selectedBrand;
         if (engagementId) {
 

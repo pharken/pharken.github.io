@@ -310,7 +310,7 @@ $(function() {
     // routing is for the top right 'banking' entry point
     // parkinglot is for the top left 'parking lot' entry point. This is a shortcut to go directly to the parking lot bot
 
-    lpTag.section = [ "routing", "parkinglot" ];   // playground tests
+    // lpTag.section = [ "routing", "parkinglot" ];   // playground tests
 
     /*
     Parking Lot Test:  ( 87604225 )  Verizon - QA
@@ -320,7 +320,17 @@ $(function() {
     */
     // lpTag.section = [ "vzqaparkinglot" ];
 
+    /*
+    Parking Lot Test | Verizon PROD |: 23979466
+        Campaign:    vzstore
+        Engagement:  LP_Parking_lot_Test
+        Entry point: TestParkingLot  |  sections:
+    */
+    lpTag.section = [ "vzprodparkinglot" ];
 
+    /*
+    Playground tests - not sure what this is testing though - probably old stuff
+    */
     // lpTag.section = [ "l1:wireline", "l2:home", "l3:internet", "l4:acp" ];   // playground tests
 
     /*

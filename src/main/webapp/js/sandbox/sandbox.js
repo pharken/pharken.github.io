@@ -46,8 +46,19 @@ $(function() {
     // lpTag.section = [ "example01", "example02" ];
     // lpTag.section = [ "playground" ];    // test the playground bot
     // lpTag.section = [ "testPLB" ];       // test the parking lot bot on Alpha
-    //lpTag.section = [ "demooffhours" ];   // test for the Off Hours Messaging Line FaaS function
-    lpTag.section = [ "demooffhours", "playground" ];
+    // lpTag.section = [ "demooffhours" ];   // test for the FaaS function: Off Hours Messaging Line
+    // lpTag.section = [ "demooffhours", "playground" ];
+
+
+    /*
+    Parking Lot Test | Verizon PROD |: 23979466
+        Campaign:    vzstore
+        Engagement:  LP_Parking_lot_Test
+        Entry point: TestParkingLot  |  sections:
+    */
+    lpTag.section = [ "vzprodparkinglot" ];
+
+
 
     main();
 });

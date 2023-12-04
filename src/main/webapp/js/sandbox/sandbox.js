@@ -47,7 +47,7 @@ $(function() {
     // lpTag.section = [ "playground" ];    // test the playground bot
     // lpTag.section = [ "testPLB" ];       // test the parking lot bot on Alpha
     // lpTag.section = [ "demooffhours" ];   // test for the FaaS function: Off Hours Messaging Line
-    // lpTag.section = [ "demooffhours", "playground" ];
+    lpTag.section = [ "demooffhours", "playground" ];
 
 
     /*
@@ -56,7 +56,7 @@ $(function() {
         Engagement:  LP_Parking_lot_Test
         Entry point: TestParkingLot  |  sections:
     */
-    lpTag.section = [ "vzprodparkinglot" ];
+    // lpTag.section = [ "vzprodparkinglot" ];
 
 
 

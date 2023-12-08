@@ -49,3 +49,4 @@
 0:0:0:0:0:0:0:1 - - [04/Dec/2023:14:00:38 -0600] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-7 0
 0:0:0:0:0:0:0:1 - - [04/Dec/2023:14:42:08 -0600] "GET /view/routing/routing.html HTTP/1.1" 200 16934 http-bio-9000-exec-8 14
 0:0:0:0:0:0:0:1 - - [04/Dec/2023:14:42:08 -0600] "GET /js/routing/routing.js HTTP/1.1" 200 12272 http-bio-9000-exec-8 6
+0:0:0:0:0:0:0:1 - - [04/Dec/2023:14:44:10 -0600] "GET /view/routing/routing.html HTTP/1.1" 304 - http-bio-9000-exec-9 2

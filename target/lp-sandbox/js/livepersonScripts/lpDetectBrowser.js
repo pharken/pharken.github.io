@@ -212,6 +212,5 @@ let detectBrowserMain = function () {
     catch (e) {
         displayInfo(`Error in detectBrowserMain: ${e.message}`);
     }
-
 }
 

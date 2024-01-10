@@ -5,11 +5,20 @@
     TODO add ON_STARTED and ON_READY lpTag.events to this demo
 
 */
+
 const ROUTING_ENGAGEMENT_ID = '3955040638';
 const GBM = 'gbm';
 const ABC = 'abc';
 const WEB = 'web';
 
+const sections = {
+    "Verizon-Alpha-50499881":  [ "lp-plb-test", "bot-agent" ],
+    // "Verizon-Alpha-50499881": [ "lp-plb-test", "human-agent", "firstskill" ],
+    // "Verizon-Alpha-50499881": [ "lp-plb-test", "human-agent", "secondskill" ],
+    // "Verizon-Alpha-50499881": [ "lp-plb-test", "human-agent", "skill0000" ],
+    // "Verizon-Alpha-50499881": [ "lp-plb-test", "human-agent", "skill0001" ],
+
+}
 
 
 let routingMain = function (){
@@ -41,8 +50,50 @@ let routingMain = function (){
         copyToClipboard('visitorId');
     });
 
+    let $webtagBtn = $('#webtagBtn');
+    $webtagBtn.on( "click", function() {
+
+        let siteScript = '';
+        addScript( siteScript );
+/*
+        // Example: Unload jQuery and load a different version dynamically
+        unloadAndReloadScript('https://code.jquery.com/jquery-3.6.4.min.js', 'https://code.jquery.com/jquery-3.6.0.min.js', function(){
+            // New version of jQuery has been loaded, you can now use it.
+            $(document).ready(function(){
+                // Your jQuery code goes here
+                console.log('New version of jQuery is ready!');
+            });
+        });
+*/
+/*
+        const webtagScript = '../../js/livepersonScripts/webtag.js';
+        unloadAndReloadScript('placeholder', webtagScript, function(){
+            $(document).ready(function(){
+                console.log('Did it work?');
+                lpTag.section = [ "vz-tracfone-prod-plb-test" ];   // parking lot bot test (tracfone)
+            });
+        });
+*/
+
+    });
+
+    let $lpSiteBtn = $('#lpSiteBtn');
+    $lpSiteBtn.on( "click", function() {
+        lpTag.site = '91614185';
+        lpTag._load();
+        // lpTag.init();
+    });
+
+
     bindLpEvents();
 };
+
+
+function addScript( src ) {
+    let s = document.createElement( 'script' );
+    s.setAttribute( 'src', src );
+    document.body.appendChild( s );
+}
 
 
 const bindLpEvents = function () {
@@ -225,8 +276,38 @@ let launchEngagement = () => {
 }
 
 
+const unloadAndReloadScript = function (oldScriptUrl, newScriptUrl, callback) {
+    // Find existing script element
+    let existingScript = document.querySelector('script[src="' + oldScriptUrl + '"]');
+
+    if(existingScript){
+        // Remove existing script element
+        existingScript.parentNode.removeChild(existingScript);
+    }
+
+    // Create and append a new script element
+    let newScript = document.createElement('script');
+    newScript.type = 'text/javascript';
+    newScript.src = newScriptUrl;
+    newScript.onload = callback;
+    document.head.appendChild(newScript);
+}
+
+
+
+
+
 $(function() {
-    console.log( "Routing begin" );
+    let p = location.pathname;
+    let pageName = p.substring(p.lastIndexOf('/')+1, p.lastIndexOf('.html'));
+
+    let pageSections = sections[pageName];
+    if (pageSections)
+        lpTag.section = pageSections;
+    else
+        lpTag.section = [];
+
+    console.log(`${pageName}: ${JSON.stringify(pageSections)}`);
 
     // routing is for the top right 'banking' entry point
     // parkinglot is for the top left 'parking lot' entry point. This is a shortcut to go directly to the parking lot bot
@@ -242,12 +323,28 @@ $(function() {
     // lpTag.section = [ "vzqaparkinglot" ];
 
     /*
+    Emergency RSA satellite test | Verizon PROD |: 23979466
+        Campaign:    vzstore
+        Engagement:  LP_Emergency_RSA_Satellite_Test
+    */
+    // lpTag.section = [ "vzprodparkinglot" ];
+
+    /*
     Parking Lot Test | Verizon PROD |: 23979466
         Campaign:    vzstore
         Engagement:  LP_Parking_lot_Test
         Entry point: TestParkingLot  |  sections:
     */
-    lpTag.section = [ "vzprodparkinglot" ];
+    lpTag.section = [ "rsa-bot", "vzprod" ];
+
+
+    /*
+    Parking Lot Test | Verizon Tracfone |: 91614185
+        Engagement:  LP_Parking_Lot_Test
+    */
+    // lpTag.section = [ "vz-tracfone-prod-plb-test" ];   // parking lot bot test (tracfone)
+    // lpTag.section = [ "lp-test", "lp-generic" ];       // LP generic test (tracfone)
+
 
     /*
     Playground tests - not sure what this is testing though - probably old stuff
@@ -255,7 +352,7 @@ $(function() {
     // lpTag.section = [ "l1:wireline", "l2:home", "l3:internet", "l4:acp" ];   // playground tests
 
     /*
-    Parking Lot test with Affiniti  ( 50499881 )
+    Parking Lot test with Afiniti  ( 50499881, 6841549 - same for both sites )
     Bot agent setup to interact with Parking Lot Bot
     */
     // lpTag.section = [ "lp-plb-test", "bot-agent" ];
@@ -268,7 +365,6 @@ $(function() {
     // lpTag.section = [ "lp-plb-test", "human-agent", "secondskill" ];
     // lpTag.section = [ "lp-plb-test", "human-agent", "skill0000" ];
     // lpTag.section = [ "lp-plb-test", "human-agent", "skill0001" ];
-
 
     detectLpTagReady();
     routingMain();

@@ -44,10 +44,12 @@ $(function() {
     console.log( "sandbox" );
     // initialize lpTag sections
     // lpTag.section = [ "example01", "example02" ];
-    // lpTag.section = [ "playground" ];    // test the playground bot
+    // lpTag.section = [ "playground", "demo", "playground-bot" ];    // test the playground bot
     // lpTag.section = [ "testPLB" ];       // test the parking lot bot on Alpha
     // lpTag.section = [ "demooffhours" ];   // test for the FaaS function: Off Hours Messaging Line
-    lpTag.section = [ "demooffhours", "playground" ];
+    // lpTag.section = [ "demooffhours", "playground" ];
+    lpTag.section = [ "sandbox", "plain-ordinary", "playground" ];    // 2 engagements: ordinary chat and playground bot
+
 
 
     /*

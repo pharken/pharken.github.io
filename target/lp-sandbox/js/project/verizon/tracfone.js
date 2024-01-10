@@ -14,7 +14,8 @@ const detectLpTagReady = function (){
         $('#statusMsg').append($lpLoadSuccessMsg);
 
 
-        lpTag.section = [ "tracfonedemo" ];   // initialize lpTage sections
+        lpTag.section = [ "vz-tracfone-prod-plb-test" ];   // parking lot bot test (tracfone)
+        //lpTag.section = [ "tracfonedemo" ];   // initialize lpTage sections
         //lpTag.section = [ "l1:tracfone", "l2:phone" ];   // TF_sales_phone[DT_S], TF_sales_phone[DT_O_TOL_30s]
         //lpTag.section = [ "l1:tracfone", "l2:accessories" ];   // Tracfone specific proactive engagement
         //lpTag.section = [ "autoopen10s" ];// proactive demo engagement
@@ -251,7 +252,7 @@ const pushCartSde = function (){
                 },
             ]
         }
-    }
+    };
     //SDE PUSH -- instant
     //SDE SEND -- delayed
     lpTag.sdes.send(cartUpdateEx);

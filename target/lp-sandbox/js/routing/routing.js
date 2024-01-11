@@ -5,11 +5,20 @@
     TODO add ON_STARTED and ON_READY lpTag.events to this demo
 
 */
+
 const ROUTING_ENGAGEMENT_ID = '3955040638';
 const GBM = 'gbm';
 const ABC = 'abc';
 const WEB = 'web';
 
+const sections = {
+    "Verizon-Alpha-50499881":  [ "lp-plb-test", "bot-agent" ],
+    // "Verizon-Alpha-50499881": [ "lp-plb-test", "human-agent", "firstskill" ],
+    // "Verizon-Alpha-50499881": [ "lp-plb-test", "human-agent", "secondskill" ],
+    // "Verizon-Alpha-50499881": [ "lp-plb-test", "human-agent", "skill0000" ],
+    // "Verizon-Alpha-50499881": [ "lp-plb-test", "human-agent", "skill0001" ],
+
+}
 
 
 let routingMain = function (){
@@ -289,7 +298,16 @@ const unloadAndReloadScript = function (oldScriptUrl, newScriptUrl, callback) {
 
 
 $(function() {
-    console.log( "Routing begin" );
+    let p = location.pathname;
+    let pageName = p.substring(p.lastIndexOf('/')+1, p.lastIndexOf('.html'));
+
+    let pageSections = sections[pageName];
+    if (pageSections)
+        lpTag.section = pageSections;
+    else
+        lpTag.section = [];
+
+    console.log(`${pageName}: ${JSON.stringify(pageSections)}`);
 
     // routing is for the top right 'banking' entry point
     // parkinglot is for the top left 'parking lot' entry point. This is a shortcut to go directly to the parking lot bot
@@ -305,22 +323,27 @@ $(function() {
     // lpTag.section = [ "vzqaparkinglot" ];
 
     /*
+    Emergency RSA satellite test | Verizon PROD |: 23979466
+        Campaign:    vzstore
+        Engagement:  LP_Emergency_RSA_Satellite_Test
+    */
+    // lpTag.section = [ "vzprodparkinglot" ];
+
+    /*
     Parking Lot Test | Verizon PROD |: 23979466
         Campaign:    vzstore
         Engagement:  LP_Parking_lot_Test
         Entry point: TestParkingLot  |  sections:
     */
-    // lpTag.section = [ "vzprodparkinglot" ];
+    lpTag.section = [ "rsa-bot", "vzprod" ];
 
 
     /*
     Parking Lot Test | Verizon Tracfone |: 91614185
         Engagement:  LP_Parking_Lot_Test
     */
-    lpTag.section = [ "vz-tracfone-prod-plb-test" ];   // parking lot bot test (tracfone)
-
-
     // lpTag.section = [ "vz-tracfone-prod-plb-test" ];   // parking lot bot test (tracfone)
+    // lpTag.section = [ "lp-test", "lp-generic" ];       // LP generic test (tracfone)
 
 
     /*

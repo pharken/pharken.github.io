@@ -1,5 +1,6 @@
 $(function() {
-    console.log( "Routing begin" );
+    console.log( "Test page begin" );
+    detectLpTagReady();
     /*
     Parking Lot test with Affiniti  ( 50499881 )
     Human agents setup to interact with Parking Lot bot

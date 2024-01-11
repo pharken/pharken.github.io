@@ -1,3 +1,8 @@
+
+$('#lpTagRefreshBtn').on( "click", function() {
+    refreshLpTag();
+});
+
 $(function() {
     console.log( "Test page begin" );
     waitForLpTagPromise.then(
@@ -19,4 +24,3 @@ const loadSectionValues = function (){
 
     setTimeout(() => refreshLpTag(), 2000);
 }
-

@@ -83,3 +83,6 @@
 0:0:0:0:0:0:0:1 - - [11/Jan/2024:10:59:38 -0600] "GET /css/project.css HTTP/1.1" 200 445 http-bio-9000-exec-4 3
 0:0:0:0:0:0:0:1 - - [11/Jan/2024:10:59:38 -0600] "GET /js/livepersonScripts/lpTagUtil.js HTTP/1.1" 200 1447 http-bio-9000-exec-4 3
 0:0:0:0:0:0:0:1 - - [11/Jan/2024:10:59:38 -0600] "GET /js/sandbox/testPage.js HTTP/1.1" 200 735 http-bio-9000-exec-4 2
+0:0:0:0:0:0:0:1 - - [11/Jan/2024:11:13:02 -0600] "GET /view/misc/TestPage.html HTTP/1.1" 200 5816 http-bio-9000-exec-7 8
+0:0:0:0:0:0:0:1 - - [11/Jan/2024:11:13:02 -0600] "GET /js/livepersonScripts/lpTagUtil.js HTTP/1.1" 304 - http-bio-9000-exec-7 4
+0:0:0:0:0:0:0:1 - - [11/Jan/2024:11:13:02 -0600] "GET /js/sandbox/testPage.js HTTP/1.1" 200 812 http-bio-9000-exec-10 7

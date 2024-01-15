@@ -3,10 +3,20 @@
  *  all LP functions are available
  */
 
-
 const detectLpTagReady = function (){
-    if ( window.lpTag && window.lpTag.events && window.lpTag.events.bind )
+        if ( window.lpTag && window.lpTag.events && window.lpTag.events.bind )
+            updateStatusMsg();
+        else
+            setTimeout(detectLpTagReady, 250);
+    }
+
+
+const detectLpTagReadyPromise = function (lpTagLoadResolve){
+    if ( window.lpTag && window.lpTag.events && window.lpTag.events.bind ) {
         updateStatusMsg();
+        lpTagLoadResolve();
+        // setTimeout(() => lpTagLoadResolve(), 2000);
+    }
     else
         setTimeout(detectLpTagReady, 250);
 }
@@ -24,10 +34,27 @@ const updateStatusMsg = function () {
     $('#statusMsg').append($lpLoadSuccessMsg);
 }
 
-/* Updating section and refresh LP tag is intended to be used
-*  with single page apps.
-*  It is useful for demo purposes when we want to frequently
-*  change the entry point */
-const updateSectionValues = function (sectionValues) {
 
+/*
+promise that allows us to wait for the LP tag to finish loading
+Once loaded, resolve the promise and then continue with the code that
+performs operations on the LP tag
+*/
+const waitForLpTagPromise = new Promise( function (lpTagLoadResolve, lpTagLoadError) {
+    detectLpTagReadyPromise(lpTagLoadResolve);
+});
+
+
+const refreshLpTag = function () {
+    console.log('lpTag refresh');
+    lpTag.newPage( document.URL, { section: lpTag.section });
 }
+
+
+/*
+export  {
+    waitForLpTagPromise,
+    updateStatusMsg,
+    refreshLpTag
+}
+*/

@@ -89,4 +89,3 @@ let projectMain = function (){
 $(function() {
     projectMain();
 });
-

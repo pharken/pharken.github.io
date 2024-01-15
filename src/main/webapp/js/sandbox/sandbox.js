@@ -5,6 +5,7 @@ const main = function () {
 }
 
 
+//TODO  put this in a LP util class
 // THIS WORKS
 function lpTagBind_entryPoint(){
     console.log("Bind lpTag AFTER_CREATE_ENGAGEMENT_INSTANCE")

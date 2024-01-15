@@ -24,3 +24,10 @@ const getFormattedTimeStamp = function () {
     return `${hours}:${minutes}:${seconds}`;
 }
 
+
+/*
+export  {
+    getFormattedDateTimeStamp,
+    getFormattedTimeStamp
+}
+*/

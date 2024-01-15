@@ -214,3 +214,14 @@ let detectBrowserMain = function () {
     }
 }
 
+export {
+    CheckChannelSupport,
+    extractSystemInfo,
+    checkVersion,
+    setCampaignId,
+    addChannelScript,
+    addUrl,
+    setUpEngagements,
+    detectBrowserMain
+}
+

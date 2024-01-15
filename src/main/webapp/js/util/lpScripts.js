@@ -1,5 +1,17 @@
 
 
+
+/**
+ *
+ * TODO    I THINK THIS ENTIRE CLASS GOES AWAY
+ *
+*/
+
+
+
+
+
+
 /*  Activate the message button once LP scripts have been loaded    */
 let timerId = null;
 let checkLpScriptsLoaded = function () {

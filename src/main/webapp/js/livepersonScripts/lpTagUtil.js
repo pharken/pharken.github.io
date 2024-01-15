@@ -49,3 +49,10 @@ const refreshLpTag = function () {
     console.log('lpTag refresh');
     lpTag.newPage( document.URL, { section: lpTag.section });
 }
+
+
+export  {
+    waitForLpTagPromise,
+    updateStatusMsg,
+    refreshLpTag
+}

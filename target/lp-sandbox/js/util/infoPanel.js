@@ -1,3 +1,6 @@
+'use strict';
+
+import * as dateTimeUtil from "./dataTimeUtil.js";
 
 const $infoList = $('#infoList');
 const infoList = document.getElementById('infoList');
@@ -20,7 +23,7 @@ let displayInfo = function (info, addTimeStamp=false) {
 
         if ( lastMsg !== info ) {
             if (addTimeStamp)
-                info = `( ${getFormattedTimeStamp()} )  ${info}`;
+                info = `( ${dateTimeUtil.getFormattedTimeStamp()} )  ${info}`;
 
             li.append(textarea);
             infoList.appendChild(li);
@@ -30,7 +33,7 @@ let displayInfo = function (info, addTimeStamp=false) {
     }
     else {
         if (addTimeStamp)
-            info = `( ${getFormattedTimeStamp()} )  ${info}`;
+            info = `( ${dateTimeUtil.getFormattedTimeStamp()} )  ${info}`;
 
         li.innerHTML = info;
         infoList.appendChild(li);
@@ -57,3 +60,10 @@ let resizeTextAreaBasedOnContentSize = function ( textarea, info ) {
 let scrollToBottom = function () {
     $infoList.animate({scrollTop: $infoList.prop("scrollHeight")}, 500);
 }
+
+
+/*
+export  {
+    displayInfo
+}
+*/

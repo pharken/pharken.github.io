@@ -16,6 +16,8 @@
     --color-list-item: #00004b;
     --color-list_item-background: #ffffff;
     --border-radius: 4px;
+
+    /*--bs-body-font-size: 0.7rem !important;*/
 }
 
 body {
@@ -203,8 +205,26 @@ ul li p {
 }
 
 
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+        DATATABLES CUSTOMIZATION
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+/* Table row font size */
+table.dataTable td {
+    font-size: 0.8rem !important;
+}
+table.dataTable tr.dtrg-level-0 td {
+    font-size: 0.8rem !important;
+}
 
 
-
+/*#projectTable tbody tr.even:hover {*/
+#projectTable tbody tr:hover {
+    background-color: #8ad975;
+    cursor: pointer;
+}
+#projectTable tr.even:hover td.sorting_1 {
+    background-color: #8ad975;
+    cursor: pointer;
+}
 
 

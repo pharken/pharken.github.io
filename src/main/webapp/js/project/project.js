@@ -1,6 +1,6 @@
 /**
  *
- * THIS IS A TEMPLATE FOR A TEST PAGE
+ * TEMPLATE FOR A TEST PAGE
  *
  */
 'use strict';

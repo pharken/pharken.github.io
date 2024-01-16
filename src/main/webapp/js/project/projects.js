@@ -16,6 +16,7 @@ const projectDataset = [
     ["VZ-Tracfone", "91614185", "LP_Parking_Lot_Test", [ "vz-tracfone-prod-plb-test" ], "PLB test", ""],
     ["VZ-Tracfone", "91614185", "---",   [ "lp-test", "lp-generic" ], "LP generic test", ""],
     ["VZ-Alpha-2", "6841549", "---",   [ "lp-plb-test", "bot-agent" ], "PLB/Afiniti. Bot agent interact with PLB", "" ],
+    ["VZ-fast",  "88102062", "---",  [ "l2:business", "l3:shop", "l4:uc", "l5:contact-us", "source:digquote-d2d" ], "not sure", "/project/archived" ],
     ["VZ-Alpha", "50499881", "---",  [ "lp-plb-test", "bot-agent" ], "PLB/Afiniti. Bot agent interact with PLB", "" ],
     ["VZ-Alpha", "50499881", "firstSkill",  [ "lp-plb-test", "human-agent", "firstskill" ],  "PLB/Afiniti. Human agent interact with PLB", "" ],
     ["VZ-Alpha", "50499881", "secondSkill", [ "lp-plb-test", "human-agent", "secondskill" ], "PLB/Afiniti. Human agent interact with PLB", "" ],
@@ -25,7 +26,7 @@ const projectDataset = [
 
 
 let projectMain = function (){
-    hrefDomain = githubDomain;
+    hrefDomain = localDomain;
 
     let projectTable = new DataTable('#projectTable', {
         columns: tableColumns,

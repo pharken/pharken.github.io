@@ -63,8 +63,13 @@ const offerClickCallback = ( (data) => genericBindEventCallback('OFFER_CLICK', d
 const offerRemoveCallback = ( (data) => genericBindEventCallback('OFFER_REMOVE', data));
 
 const genericBindEventCallback = function (eventName, data) {
-    //infoPanel.displayInfo(`( ${getFormattedTimeStamp()} )  ${eventName}:\n ${JSON.stringify(data, null, 2)}`);
-    infoPanel.displayInfo(`${eventName}:\n ${JSON.stringify(data, null, 2)}`);
+    // for some reason, there is sometimes an error in the LP tag.js here and so wrap it in try/catch so that
+    // checkEventCallbackValueForSpecificData will still execute
+    try {
+        //infoPanel.displayInfo(`( ${getFormattedTimeStamp()} )  ${eventName}:\n ${JSON.stringify(data, null, 2)}`);
+        infoPanel.displayInfo(`${eventName}:\n ${JSON.stringify(data, null, 2)}`);
+    }
+    catch (e) {}
 
     checkEventCallbackValueForSpecificData(data);
 }

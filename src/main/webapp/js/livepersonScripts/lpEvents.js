@@ -1,11 +1,12 @@
 'use strict';
 
 import * as infoPanel from "../util/infoPanel.js";
+import * as common from "../util/common.js";
 
 const bindCopyVisitorIdBtn = function (){
     let $copyVisitorIdBtn = $('#copyVisitorIdBtn');
     $copyVisitorIdBtn.on( "click", function() {
-        copyToClipboard('visitorId');
+        common.copyToClipboard('visitorId');
     });
 }
 

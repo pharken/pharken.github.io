@@ -65,6 +65,15 @@ label { font-weight: bold; }
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
         GENERAL STYLING
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+textarea {
+    height: 100%;
+    width: 100%;
+    color: var(--color-list-item);
+    resize: none;
+    border: none;
+    overflow: auto;
+    outline: none;
+}
 
 ul {
     max-height: 85vh;
@@ -109,6 +118,7 @@ ul li p {
 .defaultSection {
     width: 100%;
     border: 1px solid #d1d1d1;
+    background-color: var(--color-background);
 }
 
 

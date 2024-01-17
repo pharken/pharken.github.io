@@ -568,3 +568,6 @@
 0:0:0:0:0:0:0:1 - - [16/Jan/2024:13:48:01 -0600] "GET /js/util/common.js HTTP/1.1" 200 387 http-bio-9000-exec-1 1
 0:0:0:0:0:0:0:1 - - [16/Jan/2024:13:48:01 -0600] "GET /js/util/dataTimeUtil.js HTTP/1.1" 200 1071 http-bio-9000-exec-4 1
 0:0:0:0:0:0:0:1 - - [16/Jan/2024:13:48:01 -0600] "GET /js/util/urlToSectionValues.js HTTP/1.1" 200 13848 http-bio-9000-exec-15 5
+0:0:0:0:0:0:0:1 - - [16/Jan/2024:15:43:11 -0600] "GET /view/misc/misc.html HTTP/1.1" 200 15707 http-bio-9000-exec-14 25
+0:0:0:0:0:0:0:1 - - [16/Jan/2024:15:43:11 -0600] "GET /js/util/detectBrowser.js HTTP/1.1" 200 2178 http-bio-9000-exec-14 3
+0:0:0:0:0:0:0:1 - - [16/Jan/2024:15:43:11 -0600] "GET /js/misc/misc.js HTTP/1.1" 200 312 http-bio-9000-exec-6 2

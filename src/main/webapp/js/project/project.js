@@ -7,6 +7,7 @@
 
 import * as lpTagUtil from "../livepersonScripts/lpTagUtil.js";
 import * as lpEvents  from "../livepersonScripts/lpEvents.js";
+import * as lpInfo    from "../livepersonScripts/lpInfoSnippet.js";
 
 const loadSectionValues = function(urlParams){
     let newLpTagSections = [];
@@ -21,22 +22,23 @@ const loadSectionValues = function(urlParams){
     setTimeout(() => lpTagUtil.refreshLpTag(), 2000);
 }
 
+const postLpTagLoad = function (urlParams){
+    loadSectionValues(urlParams);
+    lpEvents.bindLpEvents();
+    lpEvents.bindCopyVisitorIdBtn();
+    lpInfo.bindLpInfoBtn();
+}
 
 
 $(function() {
     console.log( "Test page begin" );
-
     const urlStr = window.location.search;
     const urlParams = new URLSearchParams(urlStr);
 
     lpTagUtil.waitForLpTagPromise.then(
-        result => loadSectionValues(urlParams),
+        result => postLpTagLoad(urlParams),
         error => console.log('LP tag not loading')
     );
-
     document.title = urlParams.get('pagetitle');
-
-    lpEvents.bindCopyVisitorIdBtn();
-    lpEvents.bindLpEvents();
 });
 

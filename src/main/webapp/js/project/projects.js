@@ -79,13 +79,6 @@ const bindDomainSelectorSlider = () => {
     });
 }
 
-const bindVisitorCopyToClipboardBtn = () => {
-    let $copyVisitorIdBtn = $('#copyVisitorIdBtn');
-    $copyVisitorIdBtn.on( "click", function() {
-        copyToClipboard('visitorId');
-    });
-}
-
 const bindDomainWarningIcon = () => {
     $('.fa-warning.isOff').on('click', () => {
         alert('lpTag is not white listed for localhost');
@@ -97,7 +90,6 @@ $(function() {
     hrefDomain = localDomain;
     initDataTable();
     bindDomainSelectorSlider();
-    bindVisitorCopyToClipboardBtn();
     bindDomainWarningIcon();
 });
 

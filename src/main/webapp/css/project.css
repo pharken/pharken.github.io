@@ -1,4 +1,14 @@
 
+#statusMsg {
+    position: absolute;
+    top: 120px;
+    right: 100px;
+    float: right;
+    color: green;
+    height: 30px;
+    font-size: smaller;
+}
+
 /*  Main menu  */
 #mainMenu ul {
     width: 30vw;

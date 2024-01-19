@@ -1,4 +1,46 @@
+/**
+ * TEST PAGE SETUP FOR AFINITI TEAM
+ */
+'use strict';
 
+import * as lpTagUtil from "../livepersonScripts/lpTagUtil.js";
+
+const loadSectionValues = function(urlParams){
+    let newLpTagSections = [];
+    const params = urlParams.entries();
+    for(const entry of params) {
+        if ( entry[0].startsWith('sect') ) {
+            console.log(`${entry[0]}: ${entry[1]}`);
+            newLpTagSections.push( entry[1] );
+        }
+    }
+    lpTag.section = newLpTagSections;
+    setTimeout(() => lpTagUtil.refreshLpTag(), 2000);
+}
+
+const postLpTagLoad = function (urlParams){
+    loadSectionValues(urlParams);
+}
+
+
+$(function() {
+    console.log( "Test page begin" );
+    const urlStr = window.location.search;
+    const urlParams = new URLSearchParams(urlStr);
+
+    lpTagUtil.waitForLpTagPromise.then(
+        result => postLpTagLoad(urlParams),
+        error => console.log('LP tag not loading')
+    );
+    document.title = urlParams.get('pagetitle');
+});
+
+
+
+
+
+
+/*
 $('#lpTagRefreshBtn').on( "click", function() {
     refreshLpTag();
 });
@@ -12,10 +54,6 @@ $(function() {
 });
 
 const loadSectionValues = function (){
-    /*
-        Parking Lot test with Affiniti  ( 50499881 )
-        Human agents setup to interact with Parking Lot bot
-    */
     console.log('load sections');
     lpTag.section = [ "lp-plb-test", "human-agent", "firstskill" ];
     // lpTag.section = [ "lp-plb-test", "human-agent", "secondskill" ];
@@ -24,3 +62,4 @@ const loadSectionValues = function (){
 
     setTimeout(() => refreshLpTag(), 2000);
 }
+*/

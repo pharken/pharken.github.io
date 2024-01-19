@@ -106,6 +106,9 @@ ul li p {
 }
 
 
+
+
+
 /* dont style href on index page */
 .noHrefStyling li a {
     color: inherit;
@@ -120,8 +123,6 @@ ul li p {
     border: 1px solid #d1d1d1;
     background-color: var(--color-background);
 }
-
-
 
 #infoPanel {
     height: 70vh;
@@ -164,7 +165,6 @@ ul li p {
 }
 
 
-
 /* Fade-in fade-out */
 .elementToFadeInAndOut {
     width:110px;
@@ -172,8 +172,8 @@ ul li p {
     text-align: center;
     border: 1px solid greenyellow;
     border-radius: 5px;
-    -webkit-animation: fadeinout 3s linear forwards;
-    animation: fadeinout 3s linear forwards;
+    -webkit-animation: fadeinout 4s linear forwards;
+    animation: fadeinout 4s linear forwards;
 }
 
 @-webkit-keyframes fadeinout {

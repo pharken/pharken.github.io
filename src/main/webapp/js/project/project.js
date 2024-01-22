@@ -22,11 +22,47 @@ const loadSectionValues = function(urlParams){
     setTimeout(() => lpTagUtil.refreshLpTag(), 2000);
 }
 
+const addPageButtons = function () {
+    const commonBtnClass = 'btn btn-secondary margin-left-10px display-inline float-end mt-2';
+    const $buttonContainer = $("#buttonContainer");
+    if( $buttonContainer.length != 0 ) {
+        const $clearBtn = $('<div></div>', {
+            id: 'clearBtn',
+            class: commonBtnClass,
+            text: 'clear'
+        });
+        const $lpInfo = $('<div></div>', {
+            id: 'lpInfoBtn',
+            class: commonBtnClass,
+            text: 'LP info'
+        });
+        $buttonContainer.append( $lpInfo, $clearBtn );
+    }
+}
+
+const bindClearBtn = function () {
+    const $clearBtn = $('#clearBtn');
+    $clearBtn.on('click', () => {
+        document.getElementById('visitorId').innerHTML = '';
+        document.getElementById('agentId').innerHTML = '';
+        document.getElementById('agentName').innerHTML = '';
+        document.getElementById('skill').innerHTML = '';
+        document.getElementById('campaignId').innerHTML = '';
+        document.getElementById('conversationId').innerHTML = '';
+        document.getElementById('state').innerHTML = '';
+        document.getElementById("lpInfoContainer").value = "";
+    })
+}
+
+
 const postLpTagLoad = function (urlParams){
+    addPageButtons();
     loadSectionValues(urlParams);
     lpEvents.bindLpEvents();
     lpEvents.bindCopyVisitorIdBtn();
+    lpInfo.lpTagBind_entryPoint();
     lpInfo.bindLpInfoBtn();
+    bindClearBtn();
 }
 
 

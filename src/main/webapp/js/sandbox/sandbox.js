@@ -29,7 +29,7 @@ function lpTagBind_engagementWindow(){
         "LP_OFFERS",
         "OFFER_CLICK",
         () => {
-            var renderEvents = lpTag.events.hasFired("LP_OFFERS", "OFFER_CLICK");
+            let renderEvents = lpTag.events.hasFired("LP_OFFERS", "OFFER_CLICK");
             console.log("RenderEvents:");
             console.table(renderEvents)
         }

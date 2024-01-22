@@ -7,7 +7,8 @@ const defaultPath = '/project';
 const tableColumns = [ { title: 'Site' },{ title: 'Site ID' },{ title: 'Engagement' },{ title: 'Sections' },{ title: 'Desc' },{ title: 'Path' } ];
 
 const projectDataset = [
-    ["sandbox", "49985427", "---", [ "routing", "parkinglot" ], "not sure, various playground demos", "/misc" ],
+    ["sandbox", "49985427", "---", [ "routing", "parkinglot" ], "old routing bot. routing and PLB demos", "/misc" ],
+    ["sandbox", "49985427", "---", [ "demo", "playground", "playground-bot" ], "playground demos", "/misc" ],
     ["VZ-QA", "87604225", "LP1testForParkingLot", [ "vzqaparkinglot" ], "PLB test, campaign: VZ TAG CS", "" ],
     ["VZ-Prod", "23979466", "LP_Parking_lot_Test", [ "vzprodparkinglot" ], "<span class='fa fa-lg fa-warning isOff'></span> PLB test, campaign: vzstore", "" ],
     ["VZ-Prod", "23979466", "LP_Emergency_RSA_Satellite_Test", [ "rsa-bot", "vzprod" ], "<span class='fa fa-lg fa-warning isOff'></span> Emergency RSA satellite test, campaign: vzstore", "" ],

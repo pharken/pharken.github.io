@@ -17,8 +17,6 @@ let bookmarklet = document.createElement('script'),
 */
 
 
-const $lpInfoContainer = $('#lpInfoContainer');
-
 
 const lpTagBind_entryPoint = function() {
     console.log("Bind lpTag AFTER_CREATE_ENGAGEMENT_INSTANCE")
@@ -133,7 +131,7 @@ const getLpInfo = function() {
         // console.log(lpInfoObj);
 
         // $lpInfoContainer.text(JSON.stringify(lpInfoObj,null,'\t'));
-        $lpInfoContainer.text(JSON.stringify(lpInfoObj,null,4));
+        $('#lpInfoContainer').text(JSON.stringify(lpInfoObj,null,4));
 
 
 

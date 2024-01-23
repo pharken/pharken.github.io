@@ -318,3 +318,7 @@
 0:0:0:0:0:0:0:1 - - [22/Jan/2024:14:51:03 -0600] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-12 1
 0:0:0:0:0:0:0:1 - - [22/Jan/2024:14:52:56 -0600] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-14 1
 0:0:0:0:0:0:0:1 - - [22/Jan/2024:14:55:07 -0600] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9000-exec-15 1
+0:0:0:0:0:0:0:1 - - [22/Jan/2024:15:02:09 -0600] "GET /view/project/projects.html HTTP/1.1" 200 2231 http-bio-9000-exec-3 1
+0:0:0:0:0:0:0:1 - - [22/Jan/2024:15:02:09 -0600] "GET /css/main.css HTTP/1.1" 200 6373 http-bio-9000-exec-3 1
+0:0:0:0:0:0:0:1 - - [22/Jan/2024:15:02:09 -0600] "GET /css/project.css HTTP/1.1" 200 607 http-bio-9000-exec-1 1
+0:0:0:0:0:0:0:1 - - [22/Jan/2024:15:02:09 -0600] "GET /js/project/projects.js HTTP/1.1" 200 4496 http-bio-9000-exec-3 2

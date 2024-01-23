@@ -24,6 +24,10 @@ const projectDataset = [
     ["TestPage", "50499881", "firstSkill", [ "lp-plb-test", "human-agent", "firstskill" ], "Test page setup for the Afiniti team", "/misc" ]
 ]
 
+const tableEventFired = function (theEvent) {
+    if ( theEvent === 'Search' )
+        bindDomainWarningIcon();
+}
 
 const initDataTable = () => {
     let projectTable = new DataTable('#projectTable', {
@@ -36,7 +40,11 @@ const initDataTable = () => {
                 targets: -1
             }
         ]
-    });
+    })
+        .on('order.dt', () => tableEventFired('Order'))
+        .on('search.dt', () => tableEventFired('Search'))
+        .on('page.dt', () => tableEventFired('Page'))
+        .on( 'draw', bindDomainWarningIcon );       // table rendered
 
     /*
         // table row click
@@ -82,7 +90,9 @@ const bindDomainSelectorSlider = () => {
 }
 
 const bindDomainWarningIcon = () => {
-    $('.fa-warning.isOff').on('click', () => {
+    let $domainWarningIcon = $('.fa-warning.isOff');
+    $domainWarningIcon.off();
+    $domainWarningIcon.on('click', () => {
         alert('lpTag is not white listed for localhost');
     });
 }

@@ -1,13 +1,12 @@
 /**
- * TEST PAGE SETUP FOR AFINITI TEAM
+ *
  */
 'use strict';
 
 import * as lpTagUtil from "../livepersonScripts/lpTagUtil.js";
-import * as url2section from "../util/urlToSectionValues";
-import * as browser from "../util/detectBrowser";
 
-const loadSectionValues = (urlParams) =>{
+
+const loadSectionValues = function(urlParams){
     let newLpTagSections = [];
     const params = urlParams.entries();
     for(const entry of params) {
@@ -21,8 +20,36 @@ const loadSectionValues = (urlParams) =>{
 }
 
 
+const addPageButtons = function () {
+    const commonBtnClass = 'btn btn-secondary margin-left-10px display-inline float-end mt-2';
+    const $buttonContainer = $("#buttonContainer");
+    if( $buttonContainer.length != 0 ) {
+        const $clearBtn = $('<div></div>', {
+            id: 'clearBtn',
+            class: commonBtnClass,
+            text: 'clear'
+        });
+
+        // $buttonContainer.append( $lpInfo, $clearBtn );
+        $buttonContainer.append( $clearBtn );
+    }
+}
+
+
+const bindClearBtn = function () {
+    const $clearBtn = $('#clearBtn');
+    $clearBtn.on('click', () => {
+        console.log('clear button clicked');
+        // document.getElementById('state').innerHTML = '';
+        // document.getElementById("lpInfoContainer").value = "";
+    })
+}
+
+
 const postLpTagLoad = function (urlParams){
+    addPageButtons();
     loadSectionValues(urlParams);
+    bindClearBtn();
 }
 
 
@@ -37,3 +64,4 @@ $(function() {
     );
     document.title = urlParams.get('pagetitle');
 });
+

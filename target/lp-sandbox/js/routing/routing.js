@@ -5,20 +5,18 @@
     TODO add ON_STARTED and ON_READY lpTag.events to this demo
 
 */
+'use strict';
+
+import * as lpInfo from "../livepersonScripts/lpInfoDisplay.js";
+import * as lpTagUtil from "../livepersonScripts/lpTagUtil";
+import * as lpEvents from "../livepersonScripts/lpEvents";
+
 
 const ROUTING_ENGAGEMENT_ID = '3955040638';
 const GBM = 'gbm';
 const ABC = 'abc';
 const WEB = 'web';
 
-const sections = {
-    "Verizon-Alpha-50499881":  [ "lp-plb-test", "bot-agent" ],
-    // "Verizon-Alpha-50499881": [ "lp-plb-test", "human-agent", "firstskill" ],
-    // "Verizon-Alpha-50499881": [ "lp-plb-test", "human-agent", "secondskill" ],
-    // "Verizon-Alpha-50499881": [ "lp-plb-test", "human-agent", "skill0000" ],
-    // "Verizon-Alpha-50499881": [ "lp-plb-test", "human-agent", "skill0001" ],
-
-}
 
 
 let routingMain = function (){
@@ -42,7 +40,7 @@ let routingMain = function (){
 
     let $lpInfoBtn = $('#lpInfoBtn');
     $lpInfoBtn.on( "click", function() {
-        getLpInfo();
+        lpInfo.getLpInfo();
     });
 
     let $copyVisitorIdBtn = $('#copyVisitorIdBtn');
@@ -298,75 +296,20 @@ const unloadAndReloadScript = function (oldScriptUrl, newScriptUrl, callback) {
 
 
 $(function() {
-    let p = location.pathname;
-    let pageName = p.substring(p.lastIndexOf('/')+1, p.lastIndexOf('.html'));
+    console.log( "Test page begin" );
 
-    let pageSections = sections[pageName];
-    if (pageSections)
-        lpTag.section = pageSections;
-    else
-        lpTag.section = [];
+    const urlStr = window.location.search;
+    const urlParams = new URLSearchParams(urlStr);
 
-    console.log(`${pageName}: ${JSON.stringify(pageSections)}`);
+    lpTagUtil.waitForLpTagPromise.then(
+        result => loadSectionValues(urlParams),
+        error => console.log('LP tag not loading')
+    );
 
-    // routing is for the top right 'banking' entry point
-    // parkinglot is for the top left 'parking lot' entry point. This is a shortcut to go directly to the parking lot bot
+    document.title = 'Routing';
 
-    // lpTag.section = [ "routing", "parkinglot" ];   // playground tests
+    lpEvents.bindCopyVisitorIdBtn();
+    lpEvents.bindLpEvents();
 
-    /*
-    Parking Lot Test:  ( 87604225 )  Verizon - QA
-        Campaign:    VZ TAG CS
-        Engagement:  LP1testForParkingLot
-        Entry point: TestParkingLot
-    */
-    // lpTag.section = [ "vzqaparkinglot" ];
-
-    /*
-    Emergency RSA satellite test | Verizon PROD |: 23979466
-        Campaign:    vzstore
-        Engagement:  LP_Emergency_RSA_Satellite_Test
-    */
-    // lpTag.section = [ "vzprodparkinglot" ];
-
-    /*
-    Parking Lot Test | Verizon PROD |: 23979466
-        Campaign:    vzstore
-        Engagement:  LP_Parking_lot_Test
-        Entry point: TestParkingLot  |  sections:
-    */
-    lpTag.section = [ "rsa-bot", "vzprod" ];
-
-
-    /*
-    Parking Lot Test | Verizon Tracfone |: 91614185
-        Engagement:  LP_Parking_Lot_Test
-    */
-    // lpTag.section = [ "vz-tracfone-prod-plb-test" ];   // parking lot bot test (tracfone)
-    // lpTag.section = [ "lp-test", "lp-generic" ];       // LP generic test (tracfone)
-
-
-    /*
-    Playground tests - not sure what this is testing though - probably old stuff
-    */
-    // lpTag.section = [ "l1:wireline", "l2:home", "l3:internet", "l4:acp" ];   // playground tests
-
-    /*
-    Parking Lot test with Afiniti  ( 50499881, 6841549 - same for both sites )
-    Bot agent setup to interact with Parking Lot Bot
-    */
-    // lpTag.section = [ "lp-plb-test", "bot-agent" ];
-
-    /*
-    Parking Lot test with Affiniti  ( 50499881 )
-    Human agents setup to interact with Parking Lot bot
-    */
-    // lpTag.section = [ "lp-plb-test", "human-agent", "firstskill" ];
-    // lpTag.section = [ "lp-plb-test", "human-agent", "secondskill" ];
-    // lpTag.section = [ "lp-plb-test", "human-agent", "skill0000" ];
-    // lpTag.section = [ "lp-plb-test", "human-agent", "skill0001" ];
-
-    detectLpTagReady();
     routingMain();
 });
-

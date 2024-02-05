@@ -4,8 +4,10 @@
 'use strict';
 
 import * as lpTagUtil from "../livepersonScripts/lpTagUtil.js";
+import * as url2section from "../util/urlToSectionValues";
+import * as browser from "../util/detectBrowser";
 
-const loadSectionValues = function(urlParams){
+const loadSectionValues = (urlParams) =>{
     let newLpTagSections = [];
     const params = urlParams.entries();
     for(const entry of params) {
@@ -17,6 +19,7 @@ const loadSectionValues = function(urlParams){
     lpTag.section = newLpTagSections;
     setTimeout(() => lpTagUtil.refreshLpTag(), 2000);
 }
+
 
 const postLpTagLoad = function (urlParams){
     loadSectionValues(urlParams);
@@ -34,32 +37,3 @@ $(function() {
     );
     document.title = urlParams.get('pagetitle');
 });
-
-
-
-
-
-
-/*
-$('#lpTagRefreshBtn').on( "click", function() {
-    refreshLpTag();
-});
-
-$(function() {
-    console.log( "Test page begin" );
-    waitForLpTagPromise.then(
-        result => loadSectionValues(),
-        error => console.log('LP tag not loading')
-    );
-});
-
-const loadSectionValues = function (){
-    console.log('load sections');
-    lpTag.section = [ "lp-plb-test", "human-agent", "firstskill" ];
-    // lpTag.section = [ "lp-plb-test", "human-agent", "secondskill" ];
-    // lpTag.section = [ "lp-plb-test", "human-agent", "skill0000" ];
-    // lpTag.section = [ "lp-plb-test", "human-agent", "skill0001" ];
-
-    setTimeout(() => refreshLpTag(), 2000);
-}
-*/

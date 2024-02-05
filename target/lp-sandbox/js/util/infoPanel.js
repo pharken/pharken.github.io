@@ -62,8 +62,6 @@ let scrollToBottom = function () {
 }
 
 
-/*
 export  {
     displayInfo
 }
-*/

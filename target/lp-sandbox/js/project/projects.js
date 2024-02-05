@@ -4,29 +4,35 @@ const localDomain = "http://localhost:9000/view";
 const githubDomain = "https://pharken.github.io/src/main/webapp/view";
 const defaultPath = '/project';
 
-
-
 const tableColumns = [ { title: 'Site' },{ title: 'Site ID' },{ title: 'Engagement' },{ title: 'Sections' },{ title: 'Desc' },{ title: 'Path' } ];
 
+// HTML file name, account site number, engagement name, lpTag section array, description, directory/location of html file
 const projectDataset = [
-    ["sandbox", "49985427", "---", [ "routing", "parkinglot" ], "not sure, various playground demos", "/misc" ],
+    ["DynamicWelcomeMsg", "49985427", "N/A", [], "Dynamic welcome message from CCS", "/poc" ],
+    ["misc", "49985427", "N/A", [], "Naming convention builder, browser detect", "/misc" ],
+    ["sandbox", "49985427", "---", [ "routing", "parkinglot" ], "old routing bot. routing and PLB demos", "/misc" ],
+    ["sandbox", "49985427", "---", [ "demo", "playground", "playground-bot" ], "Bot with menu of various demos", "/misc" ],
     ["VZ-QA", "87604225", "LP1testForParkingLot", [ "vzqaparkinglot" ], "PLB test, campaign: VZ TAG CS", "" ],
-    ["VZ-Prod", "23979466", "LP_Parking_lot_Test", [ "vzprodparkinglot" ], "PLB test, campaign: vzstore", "" ],
-    ["VZ-Prod", "23979466", "LP_Emergency_RSA_Satellite_Test", [ "rsa-bot", "vzprod" ], "Emergency RSA satellite test, campaign: vzstore", "" ],
+    ["VZ-Prod", "23979466", "LP_Parking_lot_Test", [ "vzprodparkinglot" ], "<span class='fa fa-lg fa-warning isOff'></span> PLB test, campaign: vzstore", "" ],
+    ["VZ-Prod", "23979466", "LP_Emergency_RSA_Satellite_Test", [ "rsa-bot", "vzprod" ], "<span class='fa fa-lg fa-warning isOff'></span> Emergency RSA satellite test, campaign: vzstore", "" ],
     ["VZ-Tracfone", "91614185", "LP_Parking_Lot_Test", [ "vz-tracfone-prod-plb-test" ], "PLB test", ""],
     ["VZ-Tracfone", "91614185", "---",   [ "lp-test", "lp-generic" ], "LP generic test", ""],
     ["VZ-Alpha-2", "6841549", "---",   [ "lp-plb-test", "bot-agent" ], "PLB/Afiniti. Bot agent interact with PLB", "" ],
+    ["VZ-fast",  "88102062", "---",  [ "l2:business", "l3:shop", "l4:uc", "l5:contact-us", "source:digquote-d2d" ], "Old, not sure", "/project/archived" ],
     ["VZ-Alpha", "50499881", "---",  [ "lp-plb-test", "bot-agent" ], "PLB/Afiniti. Bot agent interact with PLB", "" ],
     ["VZ-Alpha", "50499881", "firstSkill",  [ "lp-plb-test", "human-agent", "firstskill" ],  "PLB/Afiniti. Human agent interact with PLB", "" ],
     ["VZ-Alpha", "50499881", "secondSkill", [ "lp-plb-test", "human-agent", "secondskill" ], "PLB/Afiniti. Human agent interact with PLB", "" ],
     ["VZ-Alpha", "50499881", "skill0000",   [ "lp-plb-test", "human-agent", "skill0000" ],   "PLB/Afiniti. Human agent interact with PLB", "" ],
-    ["VZ-Alpha", "50499881", "skill0001",   [ "lp-plb-test", "human-agent", "skill0001" ],   "PLB/Afiniti. Human agent interact with PLB", "" ]
+    ["VZ-Alpha", "50499881", "skill0001",   [ "lp-plb-test", "human-agent", "skill0001" ],   "PLB/Afiniti. Human agent interact with PLB", "" ],
+    ["TestPage-Alpha", "50499881", "firstSkill", [ "lp-plb-test", "human-agent", "firstskill" ], "Test page setup for the Afiniti team", "/misc" ]
 ]
 
+const tableEventFired = function (theEvent) {
+    if ( theEvent === 'Search' )
+        bindDomainWarningIcon();
+}
 
-let projectMain = function (){
-    hrefDomain = githubDomain;
-
+const initDataTable = () => {
     let projectTable = new DataTable('#projectTable', {
         columns: tableColumns,
         data: projectDataset,
@@ -37,15 +43,19 @@ let projectMain = function (){
                 targets: -1
             }
         ]
-    });
+    })
+        .on('order.dt', () => tableEventFired('Order'))
+        .on('search.dt', () => tableEventFired('Search'))
+        .on('page.dt', () => tableEventFired('Page'))
+        .on( 'draw', bindDomainWarningIcon );       // table rendered
 
-/*
-    // table row click
-    $('#projectTable tbody tr').on("click", function (){
-        let rowSiteName = $(this).find("td").eq(0).text();
-        console.log(rowSiteName);
-    });
-*/
+    /*
+        // table row click
+        $('#projectTable tbody tr').on("click", function (){
+            let rowSiteName = $(this).find("td").eq(0).text();
+            console.log(rowSiteName);
+        });
+    */
 
     // bind table row button click
     projectTable.on('click', 'button', function (e) {
@@ -63,7 +73,9 @@ let projectMain = function (){
         let href = `${hrefDomain}${urlPath}/${data[0]}.html?${hrefParams}`;
         window.location=href;
     });
+}
 
+const bindDomainSelectorSlider = () => {
     let $domainSelector = $('#domainSelector');
     $domainSelector.on('click', () => {
         if ($domainSelector.hasClass('isOn')) {
@@ -78,14 +90,21 @@ let projectMain = function (){
 
         }
     });
+}
 
-    let $copyVisitorIdBtn = $('#copyVisitorIdBtn');
-    $copyVisitorIdBtn.on( "click", function() {
-        copyToClipboard('visitorId');
+const bindDomainWarningIcon = () => {
+    let $domainWarningIcon = $('.fa-warning.isOff');
+    $domainWarningIcon.off();
+    $domainWarningIcon.on('click', () => {
+        alert('lpTag is not white listed for localhost');
     });
-};
+}
 
 
 $(function() {
-    projectMain();
+    hrefDomain = localDomain;
+    initDataTable();
+    bindDomainSelectorSlider();
+    bindDomainWarningIcon();
 });
+

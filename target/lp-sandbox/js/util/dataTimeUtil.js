@@ -25,9 +25,7 @@ const getFormattedTimeStamp = function () {
 }
 
 
-/*
 export  {
     getFormattedDateTimeStamp,
     getFormattedTimeStamp
 }
-*/

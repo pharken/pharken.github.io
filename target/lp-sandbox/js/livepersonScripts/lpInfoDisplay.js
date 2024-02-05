@@ -154,3 +154,7 @@ const getLpInfo = function () {
         console.error(e)
     }
 }
+
+export {
+    getLpInfo
+}

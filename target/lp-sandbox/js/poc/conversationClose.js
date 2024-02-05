@@ -1,5 +1,12 @@
 /*
-    Conversation Close
+
+
+
+    I THINK THIS CLASS GOES AWAY
+
+
+
+
 */
 const ROUTING_ENGAGEMENT_ID = '3955040638';
 

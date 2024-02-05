@@ -214,7 +214,6 @@ let detectBrowserMain = function () {
     }
 }
 
-/*
 export {
     CheckChannelSupport,
     extractSystemInfo,
@@ -225,5 +224,4 @@ export {
     setUpEngagements,
     detectBrowserMain
 }
-*/
 

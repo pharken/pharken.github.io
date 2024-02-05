@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Tracfone Demo</title>
+
+  <!-- LivePerson Monitor | Tracfone | Prod Env - 91614185 -->
+  <script type="text/javascript">window.lpTag = window.lpTag || {}, 'undefined' == typeof window.lpTag._tagCount ? (window.lpTag = {
+    wl:            lpTag.wl || null,
+    scp:           lpTag.scp || null,
+    site:          '91614185' || '',
+    section:       lpTag.section || '',
+    tagletSection: lpTag.tagletSection || null,
+    autoStart:     lpTag.autoStart !== !1,
+    ovr:           lpTag.ovr || {},
+    _v:            '1.10.0',
+    _tagCount:     1,
+    protocol:      'https:',
+    events:        {
+      bind:       function (t, e, i) {
+        lpTag.defer(function () {
+          lpTag.events.bind(t, e, i)
+        }, 0)
+      }, trigger: function (t, e, i) {
+        lpTag.defer(function () {
+          lpTag.events.trigger(t, e, i)
+        }, 1)
+      }
+    },
+    defer:         function (t, e) {
+      0 === e ? (this._defB = this._defB || [], this._defB.push(t)) : 1 === e ? (this._defT = this._defT || [], this._defT.push(t)) : (this._defL = this._defL || [], this._defL.push(t))
+    },
+    load:          function (t, e, i) {
+      var n = this;
+      setTimeout(function () {
+        n._load(t, e, i)
+      }, 0)
+    },
+    _load:         function (t, e, i) {
+      var n = t;
+      t || (n = this.protocol + '//' + (this.ovr && this.ovr.domain ? this.ovr.domain : 'lptag.liveperson.net') + '/tag/tag.js?site=' + this.site);
+      var o = document.createElement('script');
+      o.setAttribute('charset', e ? e : 'UTF-8'), i && o.setAttribute('id', i), o.setAttribute('src', n), document.getElementsByTagName('head').item(0).appendChild(o)
+    },
+    init:          function () {
+      this._timing = this._timing || {}, this._timing.start = (new Date).getTime();
+      var t = this;
+      window.attachEvent ? window.attachEvent('onload', function () {
+        t._domReady('domReady')
+      }) : (window.addEventListener('DOMContentLoaded', function () {
+        t._domReady('contReady')
+      }, !1), window.addEventListener('load', function () {
+        t._domReady('domReady')
+      }, !1)), 'undefined' === typeof window._lptStop && this.load()
+    },
+    start:         function () {
+      this.autoStart = !0
+    },
+    _domReady:     function (t) {
+      this.isDom || (this.isDom = !0, this.events.trigger('LPT', 'DOM_READY', {t: t})), this._timing[t] = (new Date).getTime()
+    },
+    vars:          lpTag.vars || [],
+    dbs:           lpTag.dbs || [],
+    ctn:           lpTag.ctn || [],
+    sdes:          lpTag.sdes || [],
+    hooks:         lpTag.hooks || [],
+    identities:    lpTag.identities || [],
+    ev:            lpTag.ev || []
+  }, lpTag.init()) : window.lpTag._tagCount += 1;</script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../../css/main.css" rel="stylesheet">
+  <link href="../../../css/project.css" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <script src="../../../js/livepersonScripts/proactiveEngagement.js" type="module"></script>
+  <script src="../../../js/livepersonScripts/lpToggleEngagementTextInput.js" type="module"></script>
+  <script src="../../../js/livepersonScripts/lpSDE.js" type="module"></script>
+  <script src="../../../js/livepersonScripts/lpTagUtil.js" type="module"></script>
+  <script src="../../../js/util/common.js" type="module"></script>
+  <script src="../../../js/project/verizon/tracfoneData.js" type="module"></script>
+  <script src="../../../js/project/verizon/tracfone.js" type="module"></script>
+</head>
+
+<body>
+<div id="container" class="container-fluid">
+  <div class="row g-2 g-lg-2">
+    <div class="col-lg-2 p-3">
+      <ul>
+        <li class="p-2 m-3 brand" data-brand="net10demo">NET10</li>
+        <li class="p-2 m-3 brand" data-brand="safelinkdemo">Safelink</li>
+        <li class="p-2 m-3 brand" data-brand="pageplusdemo">PagePlus</li>
+        <li class="p-2 m-3 brand" data-brand="familymobiledemo">Family Mobile</li>
+        <li class="p-2 m-3 brand" data-brand="simpledemo">Simple</li>
+        <li class="p-2 m-3 brand" data-brand="straighttalkdemo">Straight Talk</li>
+        <li class="p-2 m-3 brand" data-brand="tracfonedemo">Tracfone</li>
+        <li class="p-2 m-3 brand" data-brand="totaldemo">Total</li>
+        <li class="p-2 m-3 brand" data-brand="gosmartdemo">GoSmart</li>
+      </ul>
+    </div>
+    <!--
+            <div class="col-lg-3 p-3 my-4" style="border: 2px solid lightgrey; border-radius: 5px;">
+                <div class="row my-3">
+                    <div class="col-lg-6"><p>GoSmart</p></div>
+                    <div class="col-lg-6">
+                        <div data-LP-event="click">
+                            <a class="btn btn-primary w-100" href="#chat-button" target="" title=""><strong>CHAT WITH US</strong></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-6"><p>Net10</p></div>
+                    <div class="col-lg-6">
+                        <div data-LP-event="click">
+                            <a href="#chat-button" target="_blank" aria-describedby="audioeye_new_window_message" class="btn btn-secondary">CHAT WITH US</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-6"><p>Simple</p></div>
+                    <div class="col-lg-6">
+                        <div data-LP-event="click">
+                            <a href="#chat-button" target="_blank" aria-describedby="audioeye_new_window_message" class="btn tf-btn-primary">CHAT WITH US</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-6"><p>Straight Talk</p></div>
+                    <div class="col-lg-6">
+                        <div data-LP-event="click">
+                        <div class="button large primary-btn text-center pt-40 pb-40 aem-GridColumn aem-GridColumn&#45;&#45;default&#45;&#45;12 w-100">
+                            <a data-gtm-cta="chat_with_us" class="btn" target="_self" aria-label="chat with us in real-time to get fast answers" rel="follow" href="">CHAT WITH US</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-6"><p>TBV</p></div>
+                    <div class="col-lg-6">
+                        <div data-LP-event="click">
+                        <div class="button large secondary-black-outline-btn aem-GridColumn aem-GridColumn&#45;&#45;default&#45;&#45;12 w-100">
+                            <a data-gtm-cta="chat_with_us" class="btn" target="_self" aria-label="chat with us in real-time to get fast answers" rel="follow" href="">Chat Now</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-6"><p>Tracfone</p></div>
+                    <div class="col-lg-6">
+                        <div data-LP-event="click">
+                        <div class="button_track button large primary-btn mt-20" style="cursor: pointer;">
+                            <button role="link" class="btn" href="" data-gtm-cta="chat_with_us" aria-label="chat with us in real-time to get fast answers" style="cursor: pointer;">Chat With Us</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-6"><p>WFM</p></div>
+                    <div class="col-lg-6">
+                        <div data-LP-event="click">
+                            <a href="#chat-button" class="btn btn-primary btn-lg">CHAT WITH US</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    -->
+    <!--
+            <div class="col-lg-3 p-3 my-4 margin-left-10px" style="border: 2px solid lightgrey; border-radius: 5px;">
+                <ul>
+                    <li class="p-2 m-3 brand" data-brand="l1:tracfone,l2:phone">TF sales phone bot</li>
+                    <li class="p-2 m-3 brand" data-brand="l1:gosmartmobile,l2:contactus">GS care contact us (embedded)</li>
+                    <li class="p-2 m-3 brand" data-brand="l1:gosmartmobile,l2:contactus-611611">GS contact us 611611</li>
+                    <li class="p-2 m-3 brand" data-brand="l1:net10wireless,l2:contactus">NT contact us (embedded)</li>
+                    <li class="p-2 m-3 brand" data-brand="l1:tracfone,l2:support,l3:contact-us">TF contact us (embedded)</li>
+                    <li class="p-2 m-3 brand" data-brand="contact-us-demo">Contact us demo</li>
+                    <li class="p-2 m-3 brand" data-brand="autoopen0s">auto open demo - 0s</li>
+                    <li class="p-2 m-3 brand" data-brand="autoopen10s">auto open demo - 10s</li>
+                </ul>
+            </div>
+    -->
+    <!--        <div class="col-lg-3">-->
+    <div class="col-lg-8">
+      <div class="p-3">
+        <div class="btn-group">
+          <button id="engagementListDropdown" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Engagements
+          </button>
+          <ul id="engagementList" class="dropdown-menu" style="width:70vw;"></ul>
+        </div>
+        <!--
+        WORKS  -  DO NOT DELETE
+                        <div class="margin-top-20px margin-left-10px display-inline">
+                            <button id="launchTracfoneEngagementBtn" class="btn btn-outline-primary" type="button" disabled>
+                                Launch
+                            </button>
+                        </div>
+        -->
+        <div class="margin-top-20px margin-left-10px display-inline">
+          <button id="autoOpenBtn" class="btn btn-outline-primary" type="button">
+            Launch Auto-Open
+          </button>
+        </div>
+        <div class="margin-top-20px margin-left-10px display-inline">
+          <button id="cartSdeBtn" class="btn btn-outline-primary" type="button">
+            Send Cart
+          </button>
+        </div>
+        <div class="margin-top-20px">
+          <p>embedded:</p>
+          <div id="inqC2CImgContainer_fixed"></div>
+        </div>
+        <div class="margin-top-20px">
+          <p>DAP embedded:</p>
+          <div id="live-person-chat"></div>
+        </div>
+
+        <!-- status message fade-in fade-out -->
+        <div id="statusMsg" style="position:relative; top:-120px; left: 100px; float:right; color:green; height:30px; font-size:smaller;"></div>
+      </div>
+    </div>
+    <!-- display current engagement and section values -->
+    <div style="position:absolute; left:10px; bottom:35px; height:30px; font-size: smaller; color: mediumblue">
+      <div id="copyEngagementBtn" class="display-inline btn btn-secondary">Copy</div>
+      <div id="currentEngagement" class="display-inline margin-left-10px "></div>
+      <div id="currentSections" style="margin-left: 65px;"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

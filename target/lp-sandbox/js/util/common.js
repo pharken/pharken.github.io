@@ -10,9 +10,10 @@ const copyToClipboard = function (id) {
         });
 }
 
+const jsonPrettyPrint = function (){
 
-/*
+}
+
 export  {
     copyToClipboard
 }
-*/

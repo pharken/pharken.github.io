@@ -14,16 +14,28 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../css/main.css" rel="stylesheet">
     <link href="../../css/project.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="../../js/project/project.js" type="module"></script>
+    <script src="../../js/livepersonScripts/lpEvents.js" type="module"></script>
+    <script src="../../js/livepersonScripts/lpInfoDisplay.js" type="module"></script>
+    <script src="../../js/livepersonScripts/lpTagUtil.js" type="module"></script>
+    <script src="../../js/livepersonScripts/lpInfoSnippet.js" type="module"></script>
+    <script src="../../js/util/common.js" type="module"></script>
+    <script src="../../js/util/infoPanel.js" type="module"></script>
+    <script src="../../js/util/dataTimeUtil.js" type="module"></script>
 </head>
 
 <body>
 <div class="container-fluid">
     <div class="px-4 py-5" id="hanging-icons">
-        <h4 class="pb-2 border-bottom">Verizon QA</h4>
+        <h4 class="pb-2 border-bottom">Sandbox</h4>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
-            <div class="col align-items-start">
+            <div class="col align-items-start" style="margin-top: 8px;">
 
-                <div class="defaultSection mt-3 p-2">
+                <div class="defaultSection mt-3">
+                    <div class="defaultSection p-2">
                     <span class="font-size-small">
                         <div>
                             <label>visitor Id:</label>
@@ -56,6 +68,16 @@
                             <div id="state" class="display-inline margin-left-10px"></div>
                         </div>
                     </span>
+                    </div>
+                </div>
+
+                <div class="defaultSection mt-3">
+                    <div class="defaultSection p-2">
+                        <div style="height: 46vh;">
+                            <textarea id="lpInfoContainer" style="font-size:smaller;"></textarea>
+                        </div>
+                    </div>
+                    <div id="buttonContainer"></div>
                 </div>
             </div>
 
@@ -69,19 +91,7 @@
 
         </div>
     </div>
+    <div id="statusMsg"></div>
 </div>
-
-<!--  LivePerson scripts -->
-<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../js/project/project.js"></script>
-<script type="text/javascript" src="../../js/livepersonScripts/lpDetectBrowser.js"></script>
-<script type="text/javascript" src="../../js/util/common.js"></script>
-<script type="text/javascript" src="../../js/util/infoPanel.js"></script>
-<script type="text/javascript" src="../../js/livepersonScripts/lpEvents.js"></script>
-<script type="text/javascript" src="../../js/livepersonScripts/lpInfoDisplay.js"></script>
-<script type="text/javascript" src="../../js/livepersonScripts/lpTagUtil.js"></script>
-<script type="text/javascript" src="../../js/util/dataTimeUtil.js"></script>
-
 </body>
 </html>

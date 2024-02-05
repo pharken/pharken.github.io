@@ -16,17 +16,31 @@ let bookmarklet = document.createElement('script'),
 %27  -  this is an encoded apostrophe
 */
 
+import * as infoPanel from "../util/infoPanel.js";
 
-
+/**
+ *  This triggers when entry point is displayed  and  when engagement is closed and entry point is
+ *  re-displayed
+ */
 const lpTagBind_entryPoint = function() {
     console.log("Bind lpTag AFTER_CREATE_ENGAGEMENT_INSTANCE")
     window.lpTag.events.bind(
         "RENDERER_STUB",
         "AFTER_CREATE_ENGAGEMENT_INSTANCE",
         () => {
-            var renderEvents = lpTag.events.hasFired("RENDERER_STUB", "AFTER_CREATE_ENGAGEMENT_INSTANCE");
-            console.log("RenderEvents:");
-            console.table(renderEvents)
+            let renderEvents = lpTag.events.hasFired("RENDERER_STUB", "AFTER_CREATE_ENGAGEMENT_INSTANCE");
+            let dataToDisplay = {
+                eventName: renderEvents[0].eventName,
+                appName: renderEvents[0].appName,
+                campaignId: renderEvents[0].data.msg.campaignId,
+                engagementId: renderEvents[0].data.msg.engagementId
+            }
+            try {
+                infoPanel.displayInfo(`Entry Point rendered:\n ${JSON.stringify(dataToDisplay, null, 2)}`);
+            }
+            catch (e) {
+                console.log('error: displayInfo: lpInfoSnippet: lpTagBind_entryPoint')
+            }
         }
 
     )

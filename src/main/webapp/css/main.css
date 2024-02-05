@@ -2,6 +2,7 @@
     --color-background: #ffffff;
     --color-success: green;
     --color-error: red;
+    --color-blue: blue;
     --color-font: #000000;
     --color-font-headerInfo: #636363;
     --color-border: #e2e2e2;
@@ -31,6 +32,7 @@ label { font-weight: bold; }
 .display-none { display: none; }
 .isOn {color: var(--color-success) }
 .isOff {color: var(--color-error) }
+.isBlue {color: var(--color-blue) }
 .btn {font-size: smaller;}
 .margin-left-10px { margin-left: 10px; }
 .margin-left-20px { margin-left: 20px; }

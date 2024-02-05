@@ -83,16 +83,9 @@ let appendInfo = function (info) {
     $browserInfo.append( $p );
 }
 
-
-let main = function (){
-    checkMobile();
-    checkBrowserByUserAgent();
-    checkBrowserByVendor();
-};
-
-
-$(function() {
-    console.log( "detect browser" );
-    main();
-});
+export {
+    checkMobile,
+    checkBrowserByUserAgent,
+    checkBrowserByVendor
+}
 

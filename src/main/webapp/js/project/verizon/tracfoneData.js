@@ -1,3 +1,5 @@
+'use strict';
+
 const engagements = {
     /*
         "TF_sales_accessories[DT_S]":                        "TF-sales-accessories",
@@ -946,3 +948,9 @@ const verizonBrand = [
         colors:       [{blue: "048FB6"}, {darkGray: "414143"}, {white: "FFFFFF"}, {logoGreen: "BDD531"}, {hoverBlue: "048FB6"}]
     }
 ]
+
+export {
+    engagements,
+    entryPoints,
+    verizonBrand
+}

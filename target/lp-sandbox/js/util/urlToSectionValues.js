@@ -417,6 +417,6 @@ const removeLastChar = function (theString) {
 }
 
 
-$(function() {
-    generateLPNamingConventionsInit();
-});
+export {
+    generateLPNamingConventionsInit
+}

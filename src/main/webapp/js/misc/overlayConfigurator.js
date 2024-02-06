@@ -1,7 +1,5 @@
 'use strict';
 
-// import * as common from "../util/common.js";
-
 let textarea;
 let lineNumber;
 let currentLine;
@@ -13,6 +11,7 @@ const init = function () {
     currentLine = document.getElementById('line' + lineNumber);
     textarea = document.getElementById("overlayLineText");
     textarea.addEventListener("paste", handleTextareaPaste);
+
     setOverlayTextarea(lineNumber);
     bindSelectLineBtn();
     bindAddLineBtn();

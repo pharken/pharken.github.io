@@ -1,0 +1,8 @@
+0:0:0:0:0:0:0:1 - - [06/Feb/2024:08:12:31 -0600] "GET /view/misc/overlayConfigurator.html?pagetitle=overlayConfigurator HTTP/1.1" 200 12800 http-bio-9000-exec-18 9
+0:0:0:0:0:0:0:1 - - [06/Feb/2024:08:12:31 -0600] "GET /css/main.css HTTP/1.1" 200 6435 http-bio-9000-exec-18 2
+0:0:0:0:0:0:0:1 - - [06/Feb/2024:08:12:31 -0600] "GET /css/project.css HTTP/1.1" 200 607 http-bio-9000-exec-21 2
+0:0:0:0:0:0:0:1 - - [06/Feb/2024:08:12:31 -0600] "GET /js/misc/overlayConfigurator.js HTTP/1.1" 200 8957 http-bio-9000-exec-23 0
+0:0:0:0:0:0:0:1 - - [06/Feb/2024:08:20:49 -0600] "GET /view/misc/overlayConfigurator.html?pagetitle=overlayConfigurator HTTP/1.1" 200 12800 http-bio-9000-exec-26 14
+0:0:0:0:0:0:0:1 - - [06/Feb/2024:08:20:49 -0600] "GET /css/main.css HTTP/1.1" 200 6435 http-bio-9000-exec-26 2
+0:0:0:0:0:0:0:1 - - [06/Feb/2024:08:20:49 -0600] "GET /css/project.css HTTP/1.1" 200 607 http-bio-9000-exec-25 2
+0:0:0:0:0:0:0:1 - - [06/Feb/2024:08:20:49 -0600] "GET /js/misc/overlayConfigurator.js HTTP/1.1" 200 9436 http-bio-9000-exec-24 0

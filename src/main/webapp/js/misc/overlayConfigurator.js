@@ -9,13 +9,11 @@ let overlayContainer;
 
 
 const init = function () {
-
     lineNumber = 1;
     currentLine = document.getElementById('line' + lineNumber);
-
     textarea = document.getElementById("overlayLineText");
     textarea.addEventListener("paste", handleTextareaPaste);
-
+    setOverlayTextarea(lineNumber);
     bindSelectLineBtn();
     bindAddLineBtn();
     bindDeleteLineBtn();
@@ -33,16 +31,21 @@ const bindSelectLineBtn = function (){
     $selectLineDropDownBtn.html('Line 1 <span class="caret"></span>');
     $('#selectLineDropDownMenu').find("li a").click( function(){
         lineNumber = $(this).text();
-        $selectLineDropDownBtn.html('Line ' + lineNumber + ' <span class="caret"></span>');
-
-        let $selectedLine = $('#line'+ lineNumber);
-        let lineText = $selectedLine[0].outerText;
-
-        textarea.value = lineText;
-        currentLine = document.getElementById('line' + lineNumber);
-
-        setControlsWithCurrentValues();
+        setOverlayTextarea(lineNumber);
     });
+}
+
+
+const setOverlayTextarea = function (lineNumber){
+    $('#selectLineDropDownBtn').html('Line ' + lineNumber + ' <span class="caret"></span>');
+
+    let $selectedLine = $('#line'+ lineNumber);
+    let lineText = $selectedLine[0].outerText;
+
+    textarea.value = lineText;
+    currentLine = document.getElementById('line' + lineNumber);
+
+    setControlsWithCurrentValues();
 }
 
 

@@ -11,8 +11,8 @@
 
     <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-<!--    <script src="../../js/misc/overlayConfigurator.js" type="module"></script>-->
-    <script src="../../js/misc/overlayConfigurator.js"></script>
+    <script src="../../js/misc/overlayConfigurator.js" type="module"></script>
+<!--    <script src="../../js/misc/overlayConfigurator.js"></script>-->
 </head>
 
 <body>
@@ -51,14 +51,9 @@
                                     text-align:left;
                                     font-family: Verizon-NHG-eDS, arial,helvetica,sans-serif;">
                                 <!-- welcome message -->
-<!--
-                                <p id="line1" style="margin-top: 0px; margin-bottom: 0px;">Get the iPhone 15 for as low as $5/mo! Chat now!</p>
-                                <p id="line2" style="margin-top: 0px; margin-bottom: 0px; font-size:12px !important;"><b>Limited Time Only.</b></p>
-                                <p id="line3" style="margin-top: 0px; font-size:11px !important;">New line & select Unlimited plan required.</p>
--->
-                                <p id="line1" style="margin-top: 0px; margin-bottom: 0px;">Get the iPhone 15 for as low as $5/mo! Chat now!</p>
-                                <p id="line2" style="margin-top: 0px; margin-bottom: 0px; font-size:12px !important;"><b>Limited Time Only.</b></p>
-                                <p id="line3" style="margin-top: 0px; font-size:11px !important;">New line & select Unlimited plan required.</p>
+                                <p id="line1" class="overlay" style="margin-top: 0px; margin-bottom: 0px;">Get the iPhone 15 for as low as $5/mo! Chat now!</p>
+                                <p id="line2" class="overlay" style="margin-top: 0px; margin-bottom: 0px; font-size:12px !important;"><b>Limited Time Only.</b></p>
+                                <p id="line3" class="overlay" style="margin-top: 0px; font-size:11px !important;">New line & select Unlimited plan required.</p>
 
                             </div>
                         </div>
@@ -112,6 +107,7 @@
                                                 <li><a class="dropdown-item" href="#">14</a></li>
                                                 <li><a class="dropdown-item" href="#">15</a></li>
                                                 <li><a class="dropdown-item" href="#">16</a></li>
+                                                <li><a class="dropdown-item" href="#">18</a></li>
                                             </ul>
                                         </div>
                                         <div class="dropdown display-inline">
@@ -125,7 +121,17 @@
                                                 <li><a class="dropdown-item" href="#">green</a></li>
                                             </ul>
                                         </div>
+                                        <div class="dropdown display-inline">
+                                            <button class="btn btn-primary dropdown-toggle" type="button" id="alignmentDropDownBtn"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">Alignment</button>
+                                            <ul id="alignmentDropDownMenu" class="dropdown-menu" aria-labelledby="alignmentDropDownBtn">
+                                                <li><a class="dropdown-item" href="#">left</a></li>
+                                                <li><a class="dropdown-item" href="#">center</a></li>
+                                                <li><a class="dropdown-item" href="#">right</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
+
 
                                     <div class="margin-top-10px">
                                         <div class="display-inline ">Bold:

@@ -24,6 +24,9 @@ const bindSliderBtnAnimation = function (domId){
     });
 }
 
+
+
+
 export  {
     copyToClipboard,
     bindSliderBtnAnimation

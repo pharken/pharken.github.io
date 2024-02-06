@@ -1,5 +1,6 @@
 'use strict';
 
+// import * as common from "../util/common.js";
 
 let textarea;
 let lineNumber;
@@ -18,8 +19,9 @@ const init = function () {
     bindSelectLineBtn();
     bindAddLineBtn();
     bindDeleteLineBtn();
-    bindFontSizeDropDownBtn();
-    bindFontColorDropDownBtn();
+    bindDropDownButton('fontColor', 'color', 'Color');
+    bindDropDownButton('fontSize',  'fontSize', 'Font Size', 'px');
+    bindDropDownButton('alignment', 'textAlign', 'Alignment');
     bindBoldSelector();
     bindItalicSelector();
     bindPaddingInputs();
@@ -35,32 +37,96 @@ const bindSelectLineBtn = function (){
 
         let $selectedLine = $('#line'+ lineNumber);
         let lineText = $selectedLine[0].outerText;
+
         textarea.value = lineText;
-
         currentLine = document.getElementById('line' + lineNumber);
-/*
-*
-*   TODO   set the controls with the current values
-*
-*/
-       overlayContainer = document.getElementById('overlayContainer').style;
-       console.log(overlayContainer);
 
-        document.getElementById("linePaddingTop").value    = overlayContainer['padding-top'].slice(0, -2);
-        document.getElementById("linePaddingBottom").value = overlayContainer['padding-bottom'].slice(0, -2);
-        document.getElementById("linePaddingLeft").value   = overlayContainer['padding-left'].slice(0, -2);
-        document.getElementById("linePaddingRight").value  = overlayContainer['padding-right'].slice(0, -2);
-
+        setControlsWithCurrentValues();
     });
 }
 
 
-/*
-let paddingUpdated = function (e){
-    let ev = e;
-    console.log('padding updated');
+const setControlsWithCurrentValues = function (){
+    let lines = $('.overlay');
+    $.each(lines, (idx,value) => {
+
+        if (idx != (lineNumber - 1) )
+            return true;
+
+        /*
+                    console.log(`line${idx}
+                        color: ${value.style.color},
+                        font size: ${value.style.fontSize}
+                        alignment: ${value.style.textAlign},
+                        font weight: ${value.style.fontWeight},
+                        font style: ${value.style.fontStyle}`);
+        */
+
+        if (value.style.fontSize)
+            $('#fontSizeDropDownBtn').html(value.style.fontSize + ' <span class="caret"></span>');
+        else
+            $('#fontSizeDropDownBtn').html('Font Size <span class="caret"></span>');
+
+        if (value.style.color)
+            $('#fontColorDropDownBtn').html(value.style.color + ' <span class="caret"></span>');
+        else
+            $('#fontColorDropDownBtn').html('Color <span class="caret"></span>');
+
+        if (value.style.textAlign)
+            $('#alignmentDropDownBtn').html(value.style.textAlign + ' <span class="caret"></span>');
+        else
+            $('#alignmentDropDownBtn').html('Alignment <span class="caret"></span>');
+
+
+        let $boldSelector = $('#boldSelector');
+        $boldSelector.removeClass('isOn isOff fa-rotate-180');
+
+        let fontWeight = value.style.fontWeight;
+        if (fontWeight) {
+            if (fontWeight === 'normal') {
+                $boldSelector.addClass('isOff fa-rotate-180');
+                currentLine.style.fontWeight = "normal";
+            }
+            else {
+                $boldSelector.addClass('isOn');
+                currentLine.style.fontWeight = "bold";
+            }
+        }
+        else {
+            $boldSelector.addClass('isOff fa-rotate-180');
+            currentLine.style.fontWeight = "normal";
+        }
+
+
+        let $italicSelector = $('#italicSelector');
+        $italicSelector.removeClass('isOn isOff fa-rotate-180');
+
+        let fontStyle = value.style.fontStyle;
+        if (fontStyle) {
+            if (fontStyle === 'normal') {
+                $italicSelector.addClass('isOff fa-rotate-180');
+                currentLine.style.fontStyle = "normal";
+            }
+            else {
+                $italicSelector.addClass('isOn');
+                currentLine.style.fontStyle = "italic";
+            }
+        }
+        else {
+            $italicSelector.addClass('isOff fa-rotate-180');
+            currentLine.style.fontStyle = "normal";
+        }
+    });
+
+
+    overlayContainer = document.getElementById('overlayContainer').style;
+    // console.log(overlayContainer);
+    document.getElementById("linePaddingTop").value    = overlayContainer['padding-top'].slice(0, -2);
+    document.getElementById("linePaddingBottom").value = overlayContainer['padding-bottom'].slice(0, -2);
+    document.getElementById("linePaddingLeft").value   = overlayContainer['padding-left'].slice(0, -2);
+    document.getElementById("linePaddingRight").value  = overlayContainer['padding-right'].slice(0, -2);
 }
-*/
+
 
 const textareaKeyPressEvent = function (event) {
     let cursorPosition = $('#overlayLineText').prop("selectionStart");
@@ -106,26 +172,16 @@ const bindDeleteLineBtn = function(){
 
 }
 
-const bindFontSizeDropDownBtn= function(){
 
-    let $fontSizeDropDownBtn = $('#fontSizeDropDownBtn');
-    // $fontSizeDropDownBtn.html('Line 1 <span class="caret"></span>');
-    $fontSizeDropDownBtn.html('Font <span class="caret"></span>');
-    $('#fontSizeDropDownMenu').find("li a").click( function(){
-        let fontSize = $(this).text();
-        let fontStyle = fontSize + 'px';
-        $fontSizeDropDownBtn.html('Font ' + fontStyle + ' <span class="caret"></span>');
-        currentLine.style.fontSize = fontStyle;
-    });
-}
-
-const bindFontColorDropDownBtn = function(){
-    let $fontColorDropDownBtn = $('#fontColorDropDownBtn');
-    $fontColorDropDownBtn.html('Color <span class="caret"></span>');
-    $('#fontColorDropDownMenu').find("li a").click( function(){
-        let fontColor = $(this).text();
-        $fontColorDropDownBtn.html( fontColor + ' <span class="caret"></span>' );
-        currentLine.style.color = fontColor;
+const bindDropDownButton = function(domId, styleElement, buttonTitle, selectionExtension = '') {
+    let $dropDownBtn = $('#' + domId + 'DropDownBtn');
+    $dropDownBtn.html(buttonTitle + ' <span class="caret"></span>');
+    $('#' + domId + 'DropDownMenu').find("li a").click( function(){
+        let selection = $(this).text();
+        if (selectionExtension)
+            selection += selectionExtension;
+        $dropDownBtn.html( selection + ' <span class="caret"></span>' );
+        currentLine.style[styleElement] = selection;
     });
 }
 

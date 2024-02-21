@@ -10,10 +10,24 @@ const copyToClipboard = function (id) {
         });
 }
 
-const jsonPrettyPrint = function (){
-
+const bindSliderBtnAnimation = function (domId){
+    let $selector = $('#' + domId);
+    $selector.on('click', () => {
+        if ($selector.hasClass('isOn')) {
+            $selector.removeClass('isOn');
+            $selector.addClass('isOff fa-rotate-180');
+        }
+        else {
+            $selector.removeClass('isOff fa-rotate-180');
+            $selector.addClass('isOn');
+        }
+    });
 }
 
+
+
+
 export  {
-    copyToClipboard
+    copyToClipboard,
+    bindSliderBtnAnimation
 }

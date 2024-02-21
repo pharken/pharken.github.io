@@ -1,4 +1,4 @@
-
+'use strict';
 
 
 var lpUtils = {
@@ -40,4 +40,8 @@ function hideShowInputField() {
     });
 }
 
-//hideShowInputField();
+
+export  {
+    hideShowInputField
+}
+

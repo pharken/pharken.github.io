@@ -1,3 +1,6 @@
+'use strict';
+
+import * as util from "../util/common.js";
 
 let hrefDomain;
 const localDomain = "http://localhost:9000/view";
@@ -8,23 +11,26 @@ const tableColumns = [ { title: 'Site' },{ title: 'Site ID' },{ title: 'Engageme
 
 // HTML file name, account site number, engagement name, lpTag section array, description, directory/location of html file
 const projectDataset = [
-    ["DynamicWelcomeMsg", "49985427", "N/A", [], "Dynamic welcome message from CCS", "/poc" ],
+    ["overlayConfigurator", "49985427", "N/A", [], "Overlay configurator", "/misc" ],
     ["misc", "49985427", "N/A", [], "Naming convention builder, browser detect", "/misc" ],
     ["sandbox", "49985427", "---", [ "routing", "parkinglot" ], "old routing bot. routing and PLB demos", "/misc" ],
-    ["sandbox", "49985427", "---", [ "demo", "playground", "playground-bot" ], "Bot with menu of various demos", "/misc" ],
+    ["sandbox", "49985427", "Sandbox>>Playground Bot", [ "demo", "playground", "playground-bot" ], "Bot with menu of various demos", "/misc" ],
+    ["sandbox", "49985427", "Sandbox>>Overlay auto close", [ "playground", "overlay", "autoclose" ], "Overlay auto close ex", "/misc" ],
     ["VZ-QA", "87604225", "LP1testForParkingLot", [ "vzqaparkinglot" ], "PLB test, campaign: VZ TAG CS", "" ],
     ["VZ-Prod", "23979466", "LP_Parking_lot_Test", [ "vzprodparkinglot" ], "<span class='fa fa-lg fa-warning isOff'></span> PLB test, campaign: vzstore", "" ],
     ["VZ-Prod", "23979466", "LP_Emergency_RSA_Satellite_Test", [ "rsa-bot", "vzprod" ], "<span class='fa fa-lg fa-warning isOff'></span> Emergency RSA satellite test, campaign: vzstore", "" ],
+    ["TracfoneDemo", "91614185", "---", [], "<span class='fa fa-lg fa-warning isBlue'></span> Tracfone demo page - Entry Points not working", "/project/tracfone"],
     ["VZ-Tracfone", "91614185", "LP_Parking_Lot_Test", [ "vz-tracfone-prod-plb-test" ], "PLB test", ""],
     ["VZ-Tracfone", "91614185", "---",   [ "lp-test", "lp-generic" ], "LP generic test", ""],
     ["VZ-Alpha-2", "6841549", "---",   [ "lp-plb-test", "bot-agent" ], "PLB/Afiniti. Bot agent interact with PLB", "" ],
-    ["VZ-fast",  "88102062", "---",  [ "l2:business", "l3:shop", "l4:uc", "l5:contact-us", "source:digquote-d2d" ], "Old, not sure", "/project/archived" ],
+    ["VZ-fast",  "88102062", "---",  [ "l2:business", "l3:shop", "l4:uc", "l5:contact-us", "source:digquote-d2d" ], "Old, not sure", "/project/customer" ],
     ["VZ-Alpha", "50499881", "---",  [ "lp-plb-test", "bot-agent" ], "PLB/Afiniti. Bot agent interact with PLB", "" ],
     ["VZ-Alpha", "50499881", "firstSkill",  [ "lp-plb-test", "human-agent", "firstskill" ],  "PLB/Afiniti. Human agent interact with PLB", "" ],
     ["VZ-Alpha", "50499881", "secondSkill", [ "lp-plb-test", "human-agent", "secondskill" ], "PLB/Afiniti. Human agent interact with PLB", "" ],
     ["VZ-Alpha", "50499881", "skill0000",   [ "lp-plb-test", "human-agent", "skill0000" ],   "PLB/Afiniti. Human agent interact with PLB", "" ],
     ["VZ-Alpha", "50499881", "skill0001",   [ "lp-plb-test", "human-agent", "skill0001" ],   "PLB/Afiniti. Human agent interact with PLB", "" ],
-    ["TestPage-Alpha", "50499881", "firstSkill", [ "lp-plb-test", "human-agent", "firstskill" ], "Test page setup for the Afiniti team", "/misc" ]
+    ["TestPage-Alpha", "50499881", "firstSkill", [ "lp-plb-test", "human-agent", "firstskill" ], "Test page setup for the Afiniti team", "/misc" ],
+    ["GoldmanSachs_QA", "36416044", "N/A", [], "Test page for the Key Phrase Observer controller bot", "/project/customers" ]
 ]
 
 const tableEventFired = function (theEvent) {
@@ -87,10 +93,10 @@ const bindDomainSelectorSlider = () => {
             $domainSelector.removeClass('isOff fa-rotate-180');
             $domainSelector.addClass('isOn');
             hrefDomain = githubDomain;
-
         }
     });
 }
+
 
 const bindDomainWarningIcon = () => {
     let $domainWarningIcon = $('.fa-warning.isOff');

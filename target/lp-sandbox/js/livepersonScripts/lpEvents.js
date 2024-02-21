@@ -63,6 +63,7 @@ const offerImpressionCallback = ( (data) => genericBindEventCallback('OFFER_IMPR
 const offerClickCallback = ( (data) => genericBindEventCallback('OFFER_CLICK', data));
 const offerRemoveCallback = ( (data) => genericBindEventCallback('OFFER_REMOVE', data));
 
+
 const genericBindEventCallback = function (eventName, data) {
     // for some reason, there is sometimes an error in the LP tag.js here and so wrap it in try/catch so that
     // checkEventCallbackValueForSpecificData will still execute

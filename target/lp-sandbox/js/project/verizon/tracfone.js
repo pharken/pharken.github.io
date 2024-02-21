@@ -1,52 +1,28 @@
-// ✅✅✅
-// ❌❌❌
+/**
+ *
+ * TEMPLATE FOR A TEST PAGE
+ *
+ *  ✅✅✅
+ *  ❌❌❌
+ */
+
+'use strict';
+
+import * as lpTagUtil from "../../livepersonScripts/lpTagUtil.js";
+import * as lpSDE from "../../livepersonScripts/lpSDE.js";
+import * as lpTextInput from "../../livepersonScripts/lpToggleEngagementTextInput.js";
+import * as proactiveEngagements from "../../livepersonScripts/proactiveEngagement.js";
+import * as common from "../../util/common.js";
+import * as tracfoneData from "./tracfoneData.js";
+
+
 
 let selectedBrand = null;
 
+const postLpTagLoad = function (urlParams){
 
-const detectLpTagReady = function (){
-    if ( window.lpTag && window.lpTag.events && window.lpTag.events.bind ) {
-        isLpTagReady = true;
-        let $lpLoadSuccessMsg = $('<p></p>', {
-            text: 'LP loaded',
-            class: 'elementToFadeInAndOut'
-        });
-        $('#statusMsg').append($lpLoadSuccessMsg);
+    loadSectionValues(urlParams);
 
-
-        lpTag.section = [ "vz-tracfone-prod-plb-test" ];   // parking lot bot test (tracfone)
-        //lpTag.section = [ "tracfonedemo" ];   // initialize lpTage sections
-        //lpTag.section = [ "l1:tracfone", "l2:phone" ];   // TF_sales_phone[DT_S], TF_sales_phone[DT_O_TOL_30s]
-        //lpTag.section = [ "l1:tracfone", "l2:accessories" ];   // Tracfone specific proactive engagement
-        //lpTag.section = [ "autoopen10s" ];// proactive demo engagement
-
-        hideShowInputField();
-        lpTagBind_entryPoint();
-    }
-    else
-        setTimeout(detectLpTagReady, 250);
-}
-
-
-
-function lpTagBind_entryPoint(){
-    console.log("Bind lpTag AFTER_CREATE_ENGAGEMENT_INSTANCE")
-    window.lpTag.events.bind(
-        "RENDERER_STUB",
-        "AFTER_CREATE_ENGAGEMENT_INSTANCE",
-        () => {
-            var renderEvents = lpTag.events.hasFired("RENDERER_STUB", "AFTER_CREATE_ENGAGEMENT_INSTANCE");
-            console.log("RenderEvents:");
-            console.table(renderEvents)
-        }
-
-    )
-    console.log("complete");
-};
-
-
-
-let main = function (){
     let $brands = $('.brand');
     for ( let $brand of $brands) {
         console.log( `brand: ${$brand.attributes[1].nodeValue}` );
@@ -70,16 +46,27 @@ let main = function (){
     loadEngagementsDropdown();
 
     $('#launchTracfoneEngagementBtn').click( launchTracfoneEngagement );
-    $('#autoOpenBtn').click( livePersonAutoOpenHandler );
-    $('#cartSdeBtn').click( pushCartSde );
-    checkLpScriptsLoaded();
+    $('#autoOpenBtn').click( proactiveEngagements.livePersonAutoOpenHandler() );
+    $('#cartSdeBtn').on('click', () => {
+        lpTag.sdes = lpTag.sdes||[];
+
+        //SDE PUSH -- instant
+        //SDE SEND -- delayed
+        lpTag.sdes.send( lpSDE.cartUpdateEx );
+        lpTag.sdes.send( lpSDE.transactionEx );
+        lpTag.sdes.send( lpSDE. viewProductEx );
+    });
 
     let $copyEngagementBtn = $('#copyEngagementBtn');
     $copyEngagementBtn.on( "click", function() {
-        copyToClipboard('currentEngagement');
+        common.copyToClipboard('currentEngagement')
     });
 
+    // lpTextInput.hideShowInputField();
+    // lpTagBind_entryPoint();
+
 };
+
 
 
 let setLpTagSections = function(brand){
@@ -89,7 +76,8 @@ let setLpTagSections = function(brand){
     lpTag.section = [...sections];
 };
 
-let changePageFont = function( fontName ){
+
+const changePageFont = function( fontName ){
     let elem = document.getElementsByTagName("body");
     document.getElementsByTagName("body")[0].style = `font-family: ${fontName}`;
 };
@@ -98,23 +86,14 @@ let changePageFont = function( fontName ){
 /*
     Force refresh of lpTag - usually for SPA (single page app) but useful for this poc
 */
-let refreshTracfonePage = function () {
+const refreshTracfonePage = function () {
     lpTag.newPage( document.URL, { section: lpTag.section });
 }
-
-/*
-
-    if (lpTag && lpTag.taglets && lpTag.taglets.rendererStub)
-        let clicked = lpTag.taglets.rendererStub.click(ROUTING_ENGAGEMENT_ID);
-
-*/
-
-
 
 
 const loadEngagementsDropdown = function (){
 
-    for (const engmt in engagements) {
+    for (const engmt in tracfoneData.engagements) {
         //console.log(engmt, engagements[engmt]);
 
         let $a = $('<a className:"dropdown-item"></a>');
@@ -138,8 +117,8 @@ const loadEngagementsDropdown = function (){
 
         let $ul = $('#engagementList');
         let $li = $('<li></li>').on('click', function () {
-            let selectedEngagement = engagements[engmt];
-            lpTag.section = entryPoints[ selectedEngagement ];
+            let selectedEngagement = tracfoneData.engagements[engmt];
+            lpTag.section = tracfoneData.entryPoints[ selectedEngagement ];
             refreshTracfonePage();
             // This works, but I prefer the code below to show it on the bottom of the page
             // let btnTitle = document.getElementById('engagementListDropdown');
@@ -156,7 +135,7 @@ const loadEngagementsDropdown = function (){
 }
 
 
-let launchTracfoneEngagement = function () {
+const launchTracfoneEngagement = function () {
     console.log(`URL: ${document.URL}`);
     let engagements = lpTag.events.hasFired("RENDERER_STUB","AFTER_CREATE_ENGAGEMENT_INSTANCE");
 
@@ -191,90 +170,36 @@ let launchTracfoneEngagement = function () {
 }
 
 
-const pushCartSde = function (){
-    lpTag.sdes = lpTag.sdes||[];
-
-    // cart update
-    let cartUpdateEx = {
-        "type":     "cart",  //MANDATORY
-        "total":    11.7,  //TOTAL VALUE OF THE CART AFTER DISCOUNT
-        "currency": "USD",  //CURRENCY CODE
-        "numItems": 6,  //NUMBER OF ITEMS IN CART
-        "products": [{
-            "product":     {
-                "name":     "prod1",  //PRODUCT NAME
-                "category": "category",  //PRODUCT CATEGORY NAME
-                "sku":      "sku",  //PRODUCT SKU OR UNIQUE IDENTIFIER
-                "price":    7.8  //SINGLE PRODUCT PRICE
-            }, "quantity": 1  //NUMBER OF PRODUCTS
-        }]
-    };
-
-    // viewed product
-    let viewProductEx = {
-        "type":     "prodView",
-        "currency": "USD",
-        "products": [{
-            "product": {
-                "name":     "red high heel shoe",
-                "category": "women shoes",
-                "sku":      "xyz567",
-                "price":    77.8
-            }
-        }]
-    }
-
-    // transaction
-    let transactionEx = {
-        "type":     "purchase",  //MANDATORY
-        "total":    11.7,
-        "currency": "USD",
-        "orderId":  "DRV1534XC",
-        "cart":     {
-            "products": [
-                {
-                    "product":  {
-                        "name":     "antivirus pro plan",
-                        "category": "software",
-                        "sku":      "xyz001",
-                        "price":    7.8
-                    },
-                    "quantity": 3
-                },
-                {
-                    "product":  {
-                        "name":     "Mega phone",
-                        "category": "device",
-                        "sku":      "mgphne",
-                        "price":    1000.01
-                    },
-                    "quantity": 2
-                },
-            ]
+const loadSectionValues = function(urlParams){
+    let newLpTagSections = [];
+    const params = urlParams.entries();
+    for(const entry of params) {
+        if ( entry[0].startsWith('sect') ) {
+            console.log(`${entry[0]}: ${entry[1]}`);
+            newLpTagSections.push( entry[1] );
         }
-    };
-    //SDE PUSH -- instant
-    //SDE SEND -- delayed
-    lpTag.sdes.send(cartUpdateEx);
-    lpTag.sdes.send(transactionEx);
-    lpTag.sdes.send(viewProductEx);
-}
-
-
-const copyToClipboard = function (id) {
-    const textToCopy = $('#' + id).text();
-    navigator.clipboard.writeText(textToCopy)
-        .then(() => {
-            console.log("copied to clipboard: " + textToCopy);
-        })
-        .catch((error) => {
-            console.error("Failed to copy text to clipboard:", error);
-        });
+    }
+    lpTag.section = newLpTagSections;
+    setTimeout(() => lpTagUtil.refreshLpTag(), 2000);
 }
 
 
 $(function() {
-    console.log( "Tracfone begin" );
-    detectLpTagReady();
-    main();
+    console.log( "Test page begin" );
+    const urlStr = window.location.search;
+    const urlParams = new URLSearchParams(urlStr);
+
+    lpTagUtil.waitForLpTagPromise.then(
+        result => postLpTagLoad(urlParams),
+        error => console.log('LP tag not loading')
+    );
+    document.title = urlParams.get('pagetitle');
 });
+
+
+
+
+
+
+
+

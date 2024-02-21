@@ -3,8 +3,10 @@
 //
 // Created by Yogesh ( 2023-09-07 )
 //***************************************************
+'use strict';
 
-var lpAutoOpenWindowState = {
+
+let lpAutoOpenWindowState = {
     autoOpenTimerRun: 0,
     autoOpenInProgress: true,
     autoOpenMsgWindowClicked: false,
@@ -12,7 +14,8 @@ var lpAutoOpenWindowState = {
     autoOpenTimer: 0,
 };
 
-var autoOpenWindow = function autoOpenWindow(currentRetry, engagementId) {
+
+const autoOpenWindow = function autoOpenWindow(currentRetry, engagementId) {
     var retry = currentRetry || 0;
 
     lpAutoOpenWindowState.autoOpenInProgress = true;
@@ -128,5 +131,8 @@ const triggerAutoOpen = function (data) {
 }
 */
 
+export  {
+    livePersonAutoOpenHandler
+}
 
-livePersonAutoOpenHandler();
+

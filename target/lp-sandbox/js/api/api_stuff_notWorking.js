@@ -2,44 +2,28 @@
 
 const COMMON_HEADERS = {
     'Content-Type': 'application/json',
+    'Accept': 'application/json'
 };
 
 
-/*
-let getBearerToken = function( accountId ) {
-    try {
-        const bearerTokenURL = `https://va.agentvep.liveperson.net/api/account/${accountId}/login?v=1.3`;
-        const bodyGetBearerToken = {
-            "username": "queueHealthStatus",
-            "appKey": "aed144e8bc6a4c54bb6750794ca0fc75",
-            "secret": "42ebd15749c009fe",
-            "accessToken": "47ed01ae4acd4b998a986eb43c57ab0a",
-            "accessTokenSecret": "7b8e272234e0837d"
-        }
-        const payloadRequest = await httpClient(bearerTokenURL, {
-            method: 'POST',
-            headers: { ...COMMON_HEADERS },
-            body: bodyGetBearerToken,
-            json: true,
-        });
-        return payloadRequest.bearer || ''
-    } catch (error) {
-        console.error(`getBearerToken > received following error message during Bearer Token: ${error.message}`)
-        return ''
-    }
-}
+
 */
 
+/*
 let getBearerToken = function() {
 
     const bearerTokenURL = `https://va.agentvep.liveperson.net/api/account/${acct}/login?v=1.3`;
-    const bodyGetBearerToken = {
+    const auth = {
         "username": "queueHealthStatus",
-        "appKey": "aed144e8bc6a4c54bb6750794ca0fc75",
-        "secret": "42ebd15749c009fe",
-        "accessToken": "47ed01ae4acd4b998a986eb43c57ab0a",
-        "accessTokenSecret": "7b8e272234e0837d"
-    }
+        "appKey": "b1d6a2ccd2764a4f9f9ba4cbde546220",
+        "secret": "7ae5d4da4009cb21",
+        "accessToken": "75c76f27ce104828bd9c5b1a6901bdfc",
+        "accessTokenSecret": "216979272d7e9b5c"
+    };
+    const payload =  {
+        "username": "apiUser",
+        "password": "apiUser4321"
+    };
     fetch(bearerTokenURL, {
         method:  'POST',
         body: JSON.stringify(bodyGetBearerToken),
@@ -54,6 +38,7 @@ let getBearerToken = function() {
         .catch( err => console.log('something went wrong', err) );
 }
 
+*/
 
 
 

@@ -1,5 +1,9 @@
 :root {
-    --color-background: #ffffff;
+    --color-background: #d7d7d7;
+    --color-background-lg: #959595;
+    --color-background-md: #60c060;
+    --color-background-sm: #4747be;
+    --color-background-xsm: #444400;
     --color-success: green;
     --color-error: red;
     --color-blue: blue;
@@ -17,9 +21,9 @@
     --color-list-item: #00004b;
     --color-list_item-background: #ffffff;
     --border-radius: 4px;
-
     /*--bs-body-font-size: 0.7rem !important;*/
 }
+
 
 body {
     /*font-family: 'Lato', Arial, sans-serif;*/
@@ -198,22 +202,22 @@ ul li p {
 
 /* Media Query for low resolution  Tablets, Ipads */
 @media (min-width: 481px) and (max-width: 767px) {
-    body { background-color: #f9f9b7; }
+    body { background-color: var(--color-background-xsm); }
 }
 
 /* Media Query for Tablets Ipads portrait mode */
 @media (min-width: 768px) and (max-width: 1024px){
-    body { background-color: #c7c7f9; }
+    body { background-color: var(--color-background-sm); }
 }
 
 /* Media Query for Laptops and Desktops */
 @media (min-width: 1025px) and (max-width: 1280px){
-    body { background-color: #c2f7c2; }
+    body { background-color: var(--color-background-md); }
 }
 
 /* Media Query for Large screens */
 @media (min-width: 1281px) {
-    body { background-color: #f2f2f2; }
+    body { background-color: var(--color-background-lg); }
 }
 
 

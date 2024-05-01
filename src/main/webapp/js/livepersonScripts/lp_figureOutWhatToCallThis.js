@@ -14,7 +14,6 @@ let isCdnTagJs = params.cdn_tag_js === "true";
 // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 
-
 const identityCheckArea = $("#identity-check-area");
 const useAsyncIdentityCheckbox = $("#use-async-identity");
 const useSecureIdentityCheckbox = $("#use-secure-identity");

@@ -29,6 +29,8 @@ const autoOpenWindow = function autoOpenWindow(currentRetry, engagementId) {
                 console.log('AutoOpenScript: autoMessageWindow Launched!', lpAutoOpenWindowState);
             }
 
+            // Trigger the engagement window.  Acts the same as if consumer clicked
+            // the entry point
             lpTag.taglets.rendererStub.click(engagementId);
             lpAutoOpenWindowState.autoOpenMsgWindowClicked = true;
             lpAutoOpenWindowState.autoOpenInProgress = false;

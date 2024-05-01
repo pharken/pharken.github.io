@@ -15,8 +15,10 @@ const projectDataset = [
     ["misc", "49985427", "N/A", [], "Naming convention builder, browser detect", "/misc" ],
     ["sandbox", "49985427", "---", [ "routing", "parkinglot" ], "old routing bot. routing and PLB demos", "/misc" ],
     ["sandbox", "49985427", "Sandbox>>Playground Bot", [ "demo", "playground", "playground-bot" ], "Bot with menu of various demos", "/misc" ],
-    ["sandbox", "49985427", "Sandbox>>Overlay auto close", [ "playground", "overlay", "autoclose" ], "Overlay auto close ex", "/misc" ],
+    ["sandbox", "49985427", "Sandbox>>Overlay auto close", [ "playground", "overlay", "autoclose" ], "Overlay entry point auto close ex", "/misc" ],
+    ["MessageInteractionsAPI", "49985427", "Sandbox>>Messaging Interaction API", [ "playground", "MessagingInteractions" ], "Messaging Interactions API", "/api" ],
     ["VZ-QA", "87604225", "LP1testForParkingLot", [ "vzqaparkinglot" ], "PLB test, campaign: VZ TAG CS", "" ],
+    ["VZ-QA", "87604225", "LP PH dynamic routing test", [ "lp-ph-dynamic-routing" ], "Dynamic routing test, campaign: VZ Store", "" ],
     ["VZ-Prod", "23979466", "LP_Parking_lot_Test", [ "vzprodparkinglot" ], "<span class='fa fa-lg fa-warning isOff'></span> PLB test, campaign: vzstore", "" ],
     ["VZ-Prod", "23979466", "LP_Emergency_RSA_Satellite_Test", [ "rsa-bot", "vzprod" ], "<span class='fa fa-lg fa-warning isOff'></span> Emergency RSA satellite test, campaign: vzstore", "" ],
     ["TracfoneDemo", "91614185", "---", [], "<span class='fa fa-lg fa-warning isBlue'></span> Tracfone demo page - Entry Points not working", "/project/tracfone"],
@@ -30,8 +32,10 @@ const projectDataset = [
     ["VZ-Alpha", "50499881", "skill0000",   [ "lp-plb-test", "human-agent", "skill0000" ],   "PLB/Afiniti. Human agent interact with PLB", "" ],
     ["VZ-Alpha", "50499881", "skill0001",   [ "lp-plb-test", "human-agent", "skill0001" ],   "PLB/Afiniti. Human agent interact with PLB", "" ],
     ["TestPage-Alpha", "50499881", "firstSkill", [ "lp-plb-test", "human-agent", "firstskill" ], "Test page setup for the Afiniti team", "/misc" ],
-    ["GoldmanSachs_QA", "36416044", "N/A", [ "lptest" ], "Test page for the Key Phrase Observer controller bot", "/project/customer" ]
+    ["GoldmanSachs_QA", "36416044", "N/A", [ "lptest" ], "Test page for the Key Phrase Observer controller bot", "/project/customer" ],
+    ["apiSandbox", "49985427", "N/A", [ ], "API sandbox", "/api" ]
 ]
+
 
 const tableEventFired = function (theEvent) {
     if ( theEvent === 'Search' )

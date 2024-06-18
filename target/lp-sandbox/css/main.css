@@ -170,6 +170,8 @@ ul li p {
     background-color: var(--color-list-panel-hover-background);
 }
 
+#lpInfoContainer { width: 100%; }
+
 
 /* Fade-in fade-out */
 .elementToFadeInAndOut {

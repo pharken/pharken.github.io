@@ -55,7 +55,7 @@ const buildPageHtml = function () {
         `
         <div class="defaultSection p-2">
             <div style="height: 46vh;">
-                <textarea id="lpInfoContainer" style="font-size:smaller;"></textarea>
+                <textarea id="lpInfoContainer" style="font-size:smaller; width:100%; height:100%;"></textarea>
             </div>
         </div>
         <div>

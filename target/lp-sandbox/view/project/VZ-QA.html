@@ -32,62 +32,13 @@
     <div class="px-4 py-5" id="hanging-icons">
         <h4 class="pb-2 border-bottom">Sandbox</h4>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+
             <div class="col align-items-start" style="margin-top: 8px;">
-
-                <div class="defaultSection mt-3">
-                    <div class="defaultSection p-2">
-                    <span class="font-size-small">
-                        <div>
-                            <label>visitor Id:</label>
-                            <div id="visitorId" class="display-inline"></div>
-                            <div id="copyVisitorIdBtn"
-                                 class="display-inline btn btn-secondary margin-left-10px float-end display-none">Copy</div>
-                        </div>
-                        <div class="margin-top-20px">
-                            <label>agent Uuid:</label>
-                            <div id="agentId" class="display-inline margin-left-10px"></div>
-                        </div>
-                        <div>
-                            <label>agent name:</label>
-                            <div id="agentName" class="display-inline margin-left-10px"></div>
-                        </div>
-                        <div>
-                            <label>skill Id:</label>
-                            <div id="skill" class="display-inline margin-left-10px"></div>
-                        </div>
-                        <div>
-                            <label>campaign Id:</label>
-                            <div id="campaignId" class="display-inline margin-left-10px"></div>
-                        </div>
-                        <div>
-                            <label>conversation Id:</label>
-                            <div id="conversationId" class="display-inline margin-left-10px"></div>
-                        </div>
-                        <div>
-                            <label>state:</label>
-                            <div id="state" class="display-inline margin-left-10px"></div>
-                        </div>
-                    </span>
-                    </div>
-                </div>
-
-                <div class="defaultSection mt-3">
-                    <div class="defaultSection p-2">
-                        <div style="height: 46vh;">
-                            <textarea id="lpInfoContainer" style="font-size:smaller;"></textarea>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="display-inline">
-                            <label for="sectionValues" class="display-inline">Section Values</label>
-                            <input type="text" id="sectionValues" name="sectionValues" class="display-inline">
-                        </div>
-                        <div id="buttonContainer" class="display-inline"></div>
-                    </div>
-                </div>
+                <div id="mainPanelTopLeft" class="defaultSection mt-3"></div>
+                <div id="mainPanelBottomLeft" class="defaultSection mt-3"></div>
             </div>
 
-            <div class="col d-flex align-items-start">
+            <div id="mainPanelRight" class="col d-flex align-items-start">
                 <div class="defaultSection">
                     <div id="infoPanel" class="well">
                         <ul id="infoList"></ul>

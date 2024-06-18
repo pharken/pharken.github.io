@@ -29,57 +29,26 @@
 
 <body>
 <div class="container-fluid">
-  <div class="px-4 py-5" id="hanging-icons">
-    <h4 class="pb-2 border-bottom">VZ fast</h4>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
-      <div class="col align-items-start">
+    <div class="px-4 py-5" id="hanging-icons">
+        <h4 class="pb-2 border-bottom">Sandbox</h4>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
 
-        <div class="defaultSection mt-3 p-2">
-                    <span class="font-size-small">
-                        <div>
-                            <label>visitor Id:</label>
-                            <div id="visitorId" class="display-inline"></div>
-                            <div id="copyVisitorIdBtn"
-                                 class="display-inline btn btn-secondary margin-left-10px float-end display-none">Copy</div>
-                        </div>
-                        <div class="margin-top-20px">
-                            <label>agent Uuid:</label>
-                            <div id="agentId" class="display-inline margin-left-10px"></div>
-                        </div>
-                        <div>
-                            <label>agent name:</label>
-                            <div id="agentName" class="display-inline margin-left-10px"></div>
-                        </div>
-                        <div>
-                            <label>skill Id:</label>
-                            <div id="skill" class="display-inline margin-left-10px"></div>
-                        </div>
-                        <div>
-                            <label>campaign Id:</label>
-                            <div id="campaignId" class="display-inline margin-left-10px"></div>
-                        </div>
-                        <div>
-                            <label>conversation Id:</label>
-                            <div id="conversationId" class="display-inline margin-left-10px"></div>
-                        </div>
-                        <div>
-                            <label>state:</label>
-                            <div id="state" class="display-inline margin-left-10px"></div>
-                        </div>
-                    </span>
+            <div class="col align-items-start" style="margin-top: 8px;">
+                <div id="mainPanelTopLeft" class="defaultSection mt-3"></div>
+                <div id="mainPanelBottomLeft" class="defaultSection mt-3"></div>
+            </div>
+
+            <div id="mainPanelRight" class="col d-flex align-items-start">
+                <div class="defaultSection">
+                    <div id="infoPanel" class="well">
+                        <ul id="infoList"></ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
-
-      <div class="col d-flex align-items-start">
-        <div class="defaultSection">
-          <div id="infoPanel" class="well">
-            <ul id="infoList"></ul>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
+    <div id="statusMsg"></div>
 </div>
 </body>
 </html>

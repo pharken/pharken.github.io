@@ -1,13 +1,19 @@
 /**
  *
+ * TEMPLATE FOR A TEST PAGE
+ *
+ *  ✅✅✅
+ *  ❌❌❌
  */
+
 'use strict';
 
 import * as lpTagUtil from "../../livepersonScripts/lpTagUtil.js";
+import * as lpSDE from "../../livepersonScripts/lpSDE.js";
+import * as lpTextInput from "../../livepersonScripts/lpToggleEngagementTextInput.js";
 import * as proactiveEngagements from "../../livepersonScripts/proactiveEngagement.js";
 import * as common from "../../util/common.js";
-import * as api from "../../api/cc-ui-api.js";
-import {getBearerToken, getCampaign, getCampaigns} from "../../api/cc-ui-api.js";
+import * as tracfoneData from "./tracfoneData.js";
 
 
 
@@ -17,24 +23,63 @@ const postLpTagLoad = function (urlParams){
 
     loadSectionValues(urlParams);
 
+    let $brands = $('.brand');
+    for ( let $brand of $brands) {
+        console.log( `brand: ${$brand.attributes[1].nodeValue}` );
+    }
 
-    //TODO  getCampaigns
-    //TODO  iterate campaigns for engagements
-    //      for each campaign, add a 'title' division in the list.
-    //      for each engagement
-    //          load entry point
-    //          get section values
-    //          load engagement in the engagement list.  Add css class to make clickable
+    $brands.click( function(event) {
+        let $thisBrand = $(event.target);
 
+        let $isSelected = $('.isSelected');
+        if ($isSelected.length > 0) $isSelected.removeClass('isSelected');
+        $thisBrand.addClass('isSelected');
+
+        let brandName = event.target.attributes[1].value;
+        selectedBrand = verizonBrand.find( vzbrand => vzbrand.name === brandName );
+
+        setLpTagSections(brandName);
+        //changePageFont( selectedBrand.fontFamily );
+        refreshTracfonePage();
+    });
 
     loadEngagementsDropdown();
+
     $('#launchTracfoneEngagementBtn').click( launchTracfoneEngagement );
     $('#autoOpenBtn').click( proactiveEngagements.livePersonAutoOpenHandler() );
+    $('#cartSdeBtn').on('click', () => {
+        lpTag.sdes = lpTag.sdes||[];
+
+        //SDE PUSH -- instant
+        //SDE SEND -- delayed
+        lpTag.sdes.send( lpSDE.cartUpdateEx );
+        lpTag.sdes.send( lpSDE.transactionEx );
+        lpTag.sdes.send( lpSDE. viewProductEx );
+    });
 
     let $copyEngagementBtn = $('#copyEngagementBtn');
     $copyEngagementBtn.on( "click", function() {
         common.copyToClipboard('currentEngagement')
     });
+
+    // lpTextInput.hideShowInputField();
+    // lpTagBind_entryPoint();
+
+};
+
+
+
+let setLpTagSections = function(brand){
+    console.log(brand);
+    lpTag.section = [];
+    let sections = brand.split(',');
+    lpTag.section = [...sections];
+};
+
+
+const changePageFont = function( fontName ){
+    let elem = document.getElementsByTagName("body");
+    document.getElementsByTagName("body")[0].style = `font-family: ${fontName}`;
 };
 
 
@@ -46,33 +91,7 @@ const refreshTracfonePage = function () {
 }
 
 
-const loadEngagementsDropdown = async function (){
-
-    let loginResp = await api.getBearerToken()
-    let bearerToken = loginResp.data.bearer;
-
-    let campaignsResp = await api.getCampaigns();
-    let campaigns = campaignsResp.data;
-
-
-    for ( const campaign of campaigns ) {
-
-        // let sampleCampaign = campaigns[0].id;
-        let campaignResp = await api.getCampaign( campaign.id );
-        let engagementName = campaignResp.data.name;
-
-        let engagementIds = campaignResp.data.engagementIds;
-        for ( const engagementId of engagementIds ) {
-
-            //TODO      load entry point
-            //          get section values
-            //          load engagement in the engagement list.  Add css class to make clickable
-
-        }
-
-    }
-
-
+const loadEngagementsDropdown = function (){
 
     for (const engmt in tracfoneData.engagements) {
         //console.log(engmt, engagements[engmt]);

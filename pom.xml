@@ -10,7 +10,7 @@
   <packaging>war</packaging>
 
   <name>webapp-sandbox</name>
-  <!-- FIXME change it to the project's website -->
+  <!-- FIXME change it to the demo's website -->
   <url>https://pharken.github.io</url>
 
   <properties>

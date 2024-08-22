@@ -4,7 +4,7 @@
  *  logic for comparing the LP WorkingHours object to the actual date
  *
  *  INSTEAD OF USING THIS FOR TESTING, SEE LP_FAAS WEBSTORM PROJECT.
- *  That project is setup to run the lambda outside of LP environment
+ *  That demo is setup to run the lambda outside of LP environment
  *  and makes debugging much faster.
  *
  *  Also, the code here isnt up-to-date either.

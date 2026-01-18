@@ -1,10 +1,28 @@
-// Simple email validation (basic regex + length check)
-const isValidEmail = (email) => {
-    if (!email) return true; // empty is allowed (optional field)
+/**
+ *
+ * @param value
+ * @returns {null|object}
+ */
+const getCustomerIdentityType = (value) => {
 
+    let identity = null;
+    if (!value || value.trim() === '') return { 'emailAddress': '' };
+
+    const identityVal = value.trim();
+
+    // Email check
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(email) && email.length <= 254;
+    if (emailRegex.test(identityVal))
+        identity = { 'emailAddress': identityVal };
+
+    // Phone number check (very permissive – international format, digits, +, -, spaces, parentheses)
+    const phoneRegex = /^(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?:\s*(?:ext|x|ext.)\s*(\d+))?$/i;
+    if (phoneRegex.test(identityVal))
+        identity = { 'mobileNumber': identityVal };
+
+    return identity;
 }
+
 
 const log = (message, type = 'info') =>{
     const content = document.getElementById('status-window-content');
@@ -22,7 +40,4 @@ const log = (message, type = 'info') =>{
 }
 
 
-export  {
-    isValidEmail,
-    log
-}
+export { getCustomerIdentityType, log }

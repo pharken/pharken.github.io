@@ -20,9 +20,7 @@
 
     <!-- Paze SDK - Dev/Sandbox -->
     <script src="https://checkout.wallet.cat.earlywarning.io/web/resources/js/digitalwallet-sdk.js" type="text/javascript" async></script>
-<!--    <script src="../../js/paze/checkout.js" type="module"></script>-->
-<!--    <script src="../../js/paze/paze.js" type="module"></script>-->
-<!--    <script src="../../js/paze/demoCommon.js" type="module"></script>-->
+
 </head>
 <body>
 
@@ -66,15 +64,15 @@
             <p class="secure">Secure form</p>
 
             <div class="payment-options">
-                <div class="payment-option selected" >
+                <div class="payment-option selected" onclick="selectPayment('credit')">
                     <input type="radio" name="payment" id="credit" checked>
                     <label for="credit">Credit or debit card</label>
                 </div>
-                <div class="payment-option">
+                <div class="payment-option" onclick="selectPayment('paze')">
                     <input type="radio" name="payment" id="paze">
                     <label for="paze">Paze - Pay securely with your bank wallet</label>
                 </div>
-                <div class="payment-option">
+                <div class="payment-option" onclick="selectPayment('points')">
                     <input type="radio" name="payment" id="points">
                     <label for="points">Use points / rewards</label>
                 </div>
@@ -104,8 +102,8 @@
             <div id="paze-details" class="payment-details">
                 <p>Use Paze for faster, more secure checkout without entering full card details.</p>
                 <div class="form-group">
-                    <label>Email (helps speed up lookup - optional)</label>
-                    <input type="email" placeholder="you@example.com" id="pazeEmail">
+                    <label>Email or phone number (optional – speeds up lookup)</label>
+                    <input type="text" placeholder="you@example.com or +15551234567" id="pazeContact" autocomplete="tel email">
                 </div>
                 <p>Click "Use this payment type" below to launch the Paze wallet.</p>
             </div>
@@ -149,7 +147,7 @@
         <p>Total before tax: <span class="price-highlight">$49.99</span></p>
         <p>Estimated tax: <span class="price-highlight">$3.50</span></p>
         <p class="total" style="font-size: 20px; border-top: 1px solid #334155; padding-top: 12px;">
-            Order total: <span class="price-highlight">$53.49</span>
+            Order total: <span id="totalAmount" class="price-highlight">$53.49</span>
         </p>
     </div>
 </div>
@@ -165,8 +163,11 @@
     import {selectPayment} from '../../js/paze/checkout.js';
 
     document.querySelectorAll('input[name="payment"]').forEach(radio => {
-        radio.addEventListener('change', () => selectPayment(radio.id));
+        radio.addEventListener('change', () => {
+            selectPayment(radio.id);
+        });
     });
+
 </script>
 
 </body>

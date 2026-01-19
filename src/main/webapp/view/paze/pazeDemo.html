@@ -33,28 +33,45 @@
 
         <!-- 1. Shipping Address -->
         <div class="section">
-            <h2>1. Select a shipping address</h2>
+            <h2>1. Customer Info</h2>
             <p class="secure">Secure form</p>
+
             <div class="form-group">
                 <label>Full name</label>
                 <input type="text" placeholder="John Doe" id="fullName">
             </div>
+
             <div class="form-group">
                 <label>Address line 1</label>
                 <input type="text" placeholder="123 Main St" id="address1">
             </div>
-            <div class="form-group">
-                <label>City</label>
-                <input type="text" placeholder="Thornton" id="city">
+
+            <!-- City, State, ZIP  -->
+            <div style="display: flex; gap: 16px; margin-bottom: 16px;">
+                <div class="form-group" style="flex: 2;">
+                    <label>City</label>
+                    <input type="text" placeholder="Thornton" id="city">
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label>State</label>
+                    <input type="text" placeholder="IL" id="state" maxlength="2">
+                </div>
+                <div class="form-group" style="flex: 1.2;">
+                    <label>ZIP code</label>
+                    <input type="text" placeholder="60476" id="zip" maxlength="10">
+                </div>
             </div>
+
             <div class="form-group">
-                <label>State</label>
-                <input type="text" placeholder="IL" id="state">
+                <label>Email</label>
+                <input type="email" placeholder="you@example.com" id="customerEmail" autocomplete="email">
             </div>
+
             <div class="form-group">
-                <label>ZIP code</label>
-                <input type="text" placeholder="60476" id="zip">
+                <label>Phone number</label>
+                <input type="text" placeholder="+1 (555) 123-4567" id="customerPhone" autocomplete="tel">
             </div>
+
             <button class="btn">Use this address</button>
         </div>
 
@@ -78,7 +95,7 @@
                 </div>
             </div>
 
-            <!-- Credit Card Details -->
+            <!-- Credit Card -->
             <div id="credit-details" class="payment-details active">
                 <div class="form-group">
                     <label>Card number</label>
@@ -98,17 +115,19 @@
                 </div>
             </div>
 
-            <!-- Paze Details -->
+            <!-- Paze -->
             <div id="paze-details" class="payment-details">
                 <p>Use Paze for faster, more secure checkout without entering full card details.</p>
                 <div class="form-group">
                     <label>Email or phone number (optional – speeds up lookup)</label>
                     <input type="text" placeholder="you@example.com or +15551234567" id="pazeContact" autocomplete="tel email">
                 </div>
-                <p>Click "Use this payment type" below to launch the Paze wallet.</p>
+                <!--<p style="color: #94a3b8; font-size: 14px; margin-top: 12px;">
+                    We'll use the email and/or phone number you provided above to look up your Paze wallet.
+                </p>-->
             </div>
 
-            <!-- Points Details -->
+            <!-- Points -->
             <div id="points-details" class="payment-details">
                 <p>Use your available rewards points.</p>
                 <div class="form-group">
@@ -121,7 +140,7 @@
                 </div>
             </div>
 
-            <button class="btn" id="confirmPaymentBtn">Use this payment type</button>
+            <!-- <button class="btn" id="confirmPaymentBtn">Use this payment type</button>-->
         </div>
 
         <!-- 3. Review Items -->
@@ -135,12 +154,11 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Order Summary -->
     <div class="right-column order-summary">
-        <button class="btn-primary">Place your order</button>
+        <button class="btn-primary" id="placeOrderBtn">Place your order</button>
         <h3>Order Summary</h3>
         <p>Items: <span class="price-highlight">$49.99</span></p>
         <p>Shipping & handling: <span class="price-highlight">$0.00</span></p>

@@ -98,17 +98,15 @@ const execPazeWorkflow = async (contact, amount) => {
     }
 
     let pazeCustomerIdentifier = verifyPazeCustomerIdentityType(contact);
-    if (pazeCustomerIdentifier)
-        com.log(`Using provided identity: ${JSON.stringify(pazeCustomerIdentifier)}`, "info");
-    else
-        pazeCustomerIdentifier = {emailAddress: ""}; //TODO  for auto-initiated checkout, email can be undefined, i think ( test this )
+    if (!pazeCustomerIdentifier)
+        pazeCustomerIdentifier = {emailAddress: ""};  //TODO  for auto-initiated checkout, email can be undefined, i think ( test this )
 
     com.log("Starting Paze payment flow...", "info");
     let completeResponse = null;
     try {
         const checkoutBasePayload = {
             sessionId:        "abc123",            // get actual from server
-            actionCode:       'START_FLOW',       // auto-initiate
+            actionCode:       'START_FLOW',        // auto-initiate
             intent:           'EXPRESS_CHECKOUT',
             confirmLaunch:    true,
             transactionValue: {
@@ -125,7 +123,13 @@ const execPazeWorkflow = async (contact, amount) => {
 
         //TODO  decode the checkout response
         //  see -  https://developer.paze.com/design-sandbox/docs/sdk-auto-initiate-with-express-pay
+        com.log("Checkout result: " + JSON.stringify(checkoutResponse, null, 2), "info");
 
+
+        if (checkoutResponse?.result !== "SUCCESS") {
+            com.log("User did NOT confirm payment in Paze", "warning");
+            return;
+        }
 
         const completeBasePayload = {
             transactionType:  "PURCHASE",
@@ -138,7 +142,6 @@ const execPazeWorkflow = async (contact, amount) => {
         completeResponse = await pazeSDK.complete(completeBasePayload);       // returns JWE
         com.log("Paze session completed", "success");
 
-
 /*
         // Send payment to secure processor
         if (completeResponse.securePayload) {
@@ -148,7 +151,6 @@ const execPazeWorkflow = async (contact, amount) => {
         } else
             com.log("No secure payload received in complete response", "error");
 */
-
 
     } catch (err) {
         const msg = `${err.reason}: ${err.message || 'Unknown error'}`;

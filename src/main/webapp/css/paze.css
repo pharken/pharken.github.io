@@ -86,6 +86,21 @@ body {
 }
 .payment-details.active { display: block; }
 .form-group { margin-bottom: 16px; }
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Optional: better mobile stacking for city/state/zip row */
+@media (max-width: 640px) {
+    .form-group[style*="flex"] {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .form-group[style*="flex"] > div {
+        flex: 1 1 100% !important;
+    }
+}
 label {
     display: block;
     margin-bottom: 6px;
@@ -196,3 +211,8 @@ input:invalid:focus {
 .status-type-info { color: #60a5fa; }
 .status-type-success { color: #34d399; }
 .status-type-error { color: #f87171; }
+
+.highlight-auto {
+    background-color: rgba(16, 185, 129, 0.15); /* light green flash */
+    transition: background-color 1.5s;
+}

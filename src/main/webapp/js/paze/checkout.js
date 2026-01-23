@@ -9,7 +9,7 @@ let placeOrderBtn;
 // Page init
 window.addEventListener('load', async () => {
     com.log("Page loaded. Initializing Paze SDK...", "info");
-    const merchantName = 'Acme'
+    const merchantName = 'MIT'
     await initPazeSDK(merchantName);
 
     placeOrderBtn = document.getElementById('placeOrderBtn');
@@ -20,7 +20,7 @@ window.addEventListener('load', async () => {
  */
 const customerEmail = document.getElementById('customerEmail');
 const customerPhone = document.getElementById('customerPhone');
-const pazeContact  = document.getElementById('pazeContact');
+const pazeContact   = document.getElementById('pazeContact');
 
 if (customerEmail && pazeContact) {
     customerEmail.addEventListener('input', () => {
@@ -110,6 +110,7 @@ document.getElementById('placeOrderBtn')?.addEventListener('click', async () => 
                 const contactInput = document.getElementById('pazeContact');
                 const contact = contactInput.value.trim();
                 await execPazeWorkflow(contact, amount);
+                showModal();
                 break;
             case 'points':
                 break;
@@ -145,5 +146,17 @@ function updatePlaceOrderButtonText(method) {
             placeOrderBtn.textContent = 'Place your order';
     }
 }
+
+
+const modal = document.getElementById('transactionCompleteModal');
+function showModal() {
+    modal.style.display = 'flex';
+}
+// Click outside content to close
+modal.addEventListener('click', function(e) {
+    if (e.target === modal)
+        modal.style.display = 'none';
+});
+
 
 export { selectPayment }

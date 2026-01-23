@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Acme</title>
+    <title>Express Demo</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="../../css/paze.css" rel="stylesheet">
 
@@ -25,13 +25,13 @@
 <body>
 
 <div class="header">
-    <h1>Acme | Checkout</h1>
+    <h1>Express auto-initiate Demo</h1>
 </div>
 
 <div class="container">
     <div class="left-column">
 
-        <!-- 1. Shipping Address -->
+        <!-- 1. Customer Info -->
         <div class="section">
             <h2>1. Customer Info</h2>
             <p class="secure">Secure form</p>
@@ -46,7 +46,6 @@
                 <input type="text" placeholder="123 Main St" id="address1">
             </div>
 
-            <!-- City, State, ZIP  -->
             <div style="display: flex; gap: 16px; margin-bottom: 16px;">
                 <div class="form-group" style="flex: 2;">
                     <label>City</label>
@@ -80,6 +79,7 @@
             <h2>2. Payment method</h2>
             <p class="secure">Secure form</p>
 
+<!--
             <div class="payment-options">
                 <div class="payment-option selected" onclick="selectPayment('credit')">
                     <input type="radio" name="payment" id="credit" checked>
@@ -94,6 +94,22 @@
                     <label for="points">Use points / rewards</label>
                 </div>
             </div>
+-->
+            <div class="payment-options">
+                <div class="payment-option selected">
+                    <input type="radio" name="payment" id="credit" checked>
+                    <label for="credit">Credit or debit card</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" name="payment" id="paze">
+                    <label for="paze">Paze - Pay securely with your bank wallet</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" name="payment" id="points">
+                    <label for="points">Use points / rewards</label>
+                </div>
+            </div>
+
 
             <!-- Credit Card -->
             <div id="credit-details" class="payment-details active">
@@ -167,6 +183,12 @@
         <p class="total" style="font-size: 20px; border-top: 1px solid #334155; padding-top: 12px;">
             Order total: <span id="totalAmount" class="price-highlight">$53.49</span>
         </p>
+    </div>
+</div>
+
+<div id="transactionCompleteModal" class="modal-overlay">
+    <div class="modal-content">
+        <p class="modal-text"> Paze transaction finished<br>Re-direct to payment completed page</p>
     </div>
 </div>
 

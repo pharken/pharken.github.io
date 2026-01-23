@@ -1,4 +1,5 @@
 import * as com from "./demoCommon.js";
+import {decodeJWS} from "./decoder.js";
 
 
 let pazeSDK = null;
@@ -6,7 +7,6 @@ let pazeSDK = null;
 // ────────────────────────────────────────────────
 // Initialize Paze SDK on page load
 // ────────────────────────────────────────────────
-
 const initPazeSDK = async (merchantName) => {
     try {
         pazeSDK = window.DIGITAL_WALLET_SDK;
@@ -16,15 +16,14 @@ const initPazeSDK = async (merchantName) => {
 
         const initResponse = await pazeSDK.initialize({
             client: {
-                id:    'dummy-client-id-1234567890',
-                profileId:   'dummy-profile-abc123',
+                id:         'SSNYS4XS8O0XZEMQCJ8C13Wd4C94tnSvilwN7jns_IyC7zzmw',
+                profileId:  '460b4f47-f685-4b0c-b250-c897b8ad8cb4',
                 name: merchantName || 'merchant'        // default to 'merchant'
             }
         });
 
         com.log("Paze SDK initialized successfully", "success");
         com.log("Init response: " + JSON.stringify(initResponse, null, 2), "success");
-
     }
     catch (err) {
         const msg = err.message || 'Unknown initialization error';
@@ -32,7 +31,6 @@ const initPazeSDK = async (merchantName) => {
         console.error('Paze init failed:', err);
     }
 }
-
 
 /**
  * <h1>Execute Paze workflow</h1>
@@ -101,7 +99,6 @@ const execPazeWorkflow = async (contact, amount) => {
     if (!pazeCustomerIdentifier)
         pazeCustomerIdentifier = {emailAddress: ""};  //TODO  for auto-initiated checkout, email can be undefined, i think ( test this )
 
-    com.log("Starting Paze payment flow...", "info");
     let completeResponse = null;
     try {
         const checkoutBasePayload = {
@@ -117,17 +114,14 @@ const execPazeWorkflow = async (contact, amount) => {
         const checkoutPayload = {...checkoutBasePayload, ...pazeCustomerIdentifier};  // add email or mobile
         com.log(JSON.stringify(checkoutPayload, null, 2));
 
-        const checkoutResponse = await pazeSDK.checkout(checkoutPayload);
-        com.log("Paze checkout finished", "success");
+        const checkoutObj = await pazeSDK.checkout(checkoutPayload);   // returns JWS
+        com.log("Paze checkout request finished", "success");
 
-
-        //TODO  decode the checkout response
-        //  see -  https://developer.paze.com/design-sandbox/docs/sdk-auto-initiate-with-express-pay
-        com.log("Checkout result: " + JSON.stringify(checkoutResponse, null, 2), "info");
-
-
-        if (checkoutResponse?.result !== "SUCCESS") {
-            com.log("User did NOT confirm payment in Paze", "warning");
+        let jws = null
+        if (checkoutObj?.result === "COMPLETE")
+            parsePazeResponse( checkoutObj.checkoutResponse );
+        else {
+            com.log("Paze checkout did not complete", "warning");
             return;
         }
 
@@ -137,34 +131,31 @@ const execPazeWorkflow = async (contact, amount) => {
             transactionValue: {
                 transactionCurrencyCode: "USD",
                 transactionAmount:       amount
-            }
+            },
+            transactionOptions: {
+                payloadTypeIndicator: "PAYMENT",
+                billingPreference: "ALL"
+            },
         }
-        completeResponse = await pazeSDK.complete(completeBasePayload);       // returns JWE
+        const completeObj = await pazeSDK.complete(completeBasePayload);
+        com.log("Paze complete request finished", "info");
+        parsePazeResponse( completeObj.completeResponse );
         com.log("Paze session completed", "success");
 
-/*
-        // Send payment to secure processor
-        if (completeResponse.securePayload) {
-            const short = completeResponse.securePayload.substring(0, 80) + "...";
-            com.log(`Secure payload received (length: ${completeResponse.securePayload.length})`, "success");
-            com.log(`Payload sample: ${short}`, "success");
-        } else
-            com.log("No secure payload received in complete response", "error");
-*/
-
-    } catch (err) {
+        //TODO redirect
+    }
+    catch (err) {
         const msg = `${err.reason}: ${err.message || 'Unknown error'}`;
         com.log(`Paze flow error: ${msg}`, "error");
         console.error('Paze error:', err);
     }
 
-    //TODO  send to back end for decoding and http request to payment provider
     return completeResponse
 };
 
 
 /**
- *
+ * Validate Paze identity  (email or mobile)
  */
 const verifyPazeCustomerIdentityType = (contact) => {
     com.log("Validating email or phone number", "info");
@@ -180,6 +171,17 @@ const verifyPazeCustomerIdentityType = (contact) => {
     com.log(`Using provided contact: ${JSON.stringify(identityType)}`, "info");
 
     return identityType
+}
+
+
+const parsePazeResponse = (encryptedJWS) => {
+    if (encryptedJWS) {
+        const jws = decodeJWS(encryptedJWS);
+        if (jws) {
+            com.log(`header:  ${JSON.stringify(jws.header)}`, "info");
+            com.log(`payload: ${JSON.stringify(jws.payload)}`, "info");
+        }
+    }
 }
 
 

@@ -216,3 +216,34 @@ input:invalid:focus {
     background-color: rgba(16, 185, 129, 0.15); /* light green flash */
     transition: background-color 1.5s;
 }
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.modal-content {
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    max-width: 480px;
+    width: 90%;
+    position: relative;
+    font-family: system-ui, sans-serif;
+}
+.modal-title {
+    margin: 0 0 1.2rem;
+    font-size: 1.6rem;
+    color: #111;
+}
+.modal-text {
+    margin: 0 0 1.8rem;
+    color: #444;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}

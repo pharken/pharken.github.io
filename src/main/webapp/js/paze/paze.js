@@ -22,7 +22,7 @@ const initPazeSDK = async (merchantName) => {
             }
         });
 
-        com.log("Paze SDK initialized successfully", "success");
+        com.log("Paze SDK initialized successfully", "info");
         com.log("Init response: " + JSON.stringify(initResponse, null, 2), "success");
     }
     catch (err) {

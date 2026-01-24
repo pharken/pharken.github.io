@@ -149,18 +149,25 @@ input:invalid:focus {
     cursor: not-allowed;
     opacity: 0.7;
 }
-.btn-primary {
-    background-color: #059669;
+#placeOrderBtn {
     width: 100%;
     padding: 16px;
     font-size: 18px;
     font-weight: 600;
+    border: none;
+    border-radius: 5px;
 }
-.btn-primary:hover { background-color: #047857; }
+.placeOrderBtn-color {
+    background-color: #059669;
+    color: #e0e0e0;
+}
+#placeOrderBtn-color:hover { background-color: #047857; }
+.color-paze {
+    color: #FFFFFF;
+    background-color: #0F32F8;
+}
 .secure { color: #10b981; font-weight: 600; }
 .price-highlight { color: #34d399; }
-
-/* Scrolling Status Window */
 #status-window {
     position: fixed;
     bottom: 20px;
@@ -216,7 +223,6 @@ input:invalid:focus {
     background-color: rgba(16, 185, 129, 0.15); /* light green flash */
     transition: background-color 1.5s;
 }
-
 .modal-overlay {
     position: fixed;
     inset: 0;

@@ -4,9 +4,12 @@ import {decodeJWS} from "./decoder.js";
 
 let pazeSDK = null;
 
-// ────────────────────────────────────────────────
-// Initialize Paze SDK on page load
-// ────────────────────────────────────────────────
+/**
+ * Initialize Paze SDK on page load
+ *
+ * @param merchantName
+ * @returns {Promise<void>}
+ */
 const initPazeSDK = async (merchantName) => {
     try {
         pazeSDK = window.DIGITAL_WALLET_SDK;
@@ -37,53 +40,26 @@ const initPazeSDK = async (merchantName) => {
  *
  * -- -- -- -- ---- -- -- -- ---- -- -- -- ---- -- -- -- ---- -- -- -- ---- -- -- -- ---- -- -- -- ---- -- -- -- --
  *
- * <h5>PAZE.CHECKOUT PAYLOAD OBJECT FIELDS (AUTO-INITIATED):</h5>
+ * <h5>CHECKOUT - PAYLOAD</h5>
  *
- * <h6>Identity and session</h6>
- * <li>emailAddress: "CUSTOMER_EMAIL@example.com",  Preferred: Required if lookup by email (email OR phone)</li>
- * <li>mobileNumber: "CUSTOMER_MOBILE_NUMBER",     Conditional: Required if lookup by phone (email OR phone)</li>
- * <li>sessionId: "YOUR_SESSION_ID",               Recommended: same value per session that is used to link the transaction in your system</li>
- *
- * <h6>Flow control (for modifying how the Paze Experience works)</h6>
- * <li>actionCode: "START_FLOW",       ptional: START_FLOW (default and option required for Auto Initiate)</li>
- * <li>intent: "EXPRESS_CHECKOUT",     Required: EXPRESS_CHECKOUT required for Express Pay Flow</li>
- * <li>confirmLaunch: true,            Recommended: Show consent screen before Paze launches (default = false)</li>
- *
- * <li>transactionValue: {
- *     </br>Required as it renders transaction values in Paze Experience
- *     </br>transactionCurrencyCode: "USD", // Conditional with transactionValue
- *     </br>transactionAmount: "149.99",    // Conditional with transactionValue
- * </br>}</li>
- *
- * <h6>Address and card controls</h6>
- * <li>shippingPreference: "ALL",   Optional: ALL (default) | NONE</li>
+ * <li>emailAddress: "CUSTOMER_EMAIL@example.com",/li>
+ * <li>mobileNumber: "CUSTOMER_MOBILE_NUMBER",</li>
+ * <li>sessionId: "YOUR_SESSION_ID",/li>
+ * <li>actionCode: "START_FLOW",</li>
+ * <li>intent: "EXPRESS_CHECKOUT",/li>
+ * <li>confirmLaunch: true,</li>
+ * <li>transactionValue: { transactionCurrencyCode: "USD", transactionAmount: "149.99" }</li>
+ * <li>shippingPreference: "ALL"</li>
  *
  * -- -- -- -- ---- -- -- -- ---- -- -- -- ---- -- -- -- ---- -- -- -- ---- -- -- -- ---- -- -- -- ---- -- -- -- --
  *
- * <h5>PAZE.COMPLETE PAYLOAD OBJECT FIELDS (AUTO-INITIATED):</h5>
+ * <h5>COMPLETE - PAYLOAD</h5>
  *
- * <li>transactionType: "PURCHASE",      // Required: "PURCHASE" | "CARD_ON_FILE" (store/manage for later use) | "BOTH" (CARD_ON_FILE + PURCHASE)</li>
- * <li>sessionId: "YOUR_SESSION_ID",     // Recommended: same value per session</li>
- *
- * <li>transactionValue: {
- *     </br>Conditional: Required if transactionType is "PURCHASE" or "BOTH"
- *     </br>transactionCurrencyCode: "USD",  Required with transactionValue
- *     </br>transactionAmount: "149.99",     Required with transactionValue
- * </br>}</li>
- *
- * <h6>Output behavior</h6>
- * <li>(optional) transactionOptions: {
- *     </br>payloadTypeIndicator: "PAYMENT",  Optional: "ID"  | "PAYMENT" (returns JWE )
- *     </br>billingPreference: "ALL",    Optional: "ALL" | "NONE"
- * </br>}</li>
- *
- * <h6>Additional metadata (used for Paze Fraud Liability Shift Program)</h6>
- * <li>(optional) enhancedTransactionData: {
- *     </br>orderId: "ORDER-12345",
- *     </br>riskScore: 42,
- *     </br>channel: "ECOMMERCE"
- * </br>}</li>
- *
+ * <li>transactionType: "PURCHASE",</li>
+ * <li>sessionId: "YOUR_SESSION_ID",</li>
+ * <li>transactionValue: { transactionCurrencyCode: "USD", transactionAmount: "149.99" }</li>
+ * <li>transactionOptions: { payloadTypeIndicator: "PAYMENT", billingPreference: "ALL" }</li>
+ * </br><h6>Additional metadata (Optional: for Paze Fraud Liability Shift Program)</h6>
  *
  * @returns {Promise<void>}
  */
@@ -91,15 +67,15 @@ const execPazeWorkflow = async (contact, amount) => {
 
     com.log("Execute Paze workflow", "info");
     if (!pazeSDK) {
-        com.log("Paze SDK not available – cannot proceed", "error");
+        com.log("Paze SDK not unavailable", "error");
         return;
     }
 
     let pazeCustomerIdentifier = verifyPazeCustomerIdentityType(contact);
     if (!pazeCustomerIdentifier)
-        pazeCustomerIdentifier = {emailAddress: ""};  //TODO  for auto-initiated checkout, email can be undefined, i think ( test this )
+        pazeCustomerIdentifier = {emailAddress: ""};
 
-    let completeResponse = null;
+    let completeResponse = false;
     try {
         const checkoutBasePayload = {
             sessionId:        "abc123",            // get actual from server
@@ -118,8 +94,10 @@ const execPazeWorkflow = async (contact, amount) => {
         com.log("Paze checkout request finished", "success");
 
         let jws = null
-        if (checkoutObj?.result === "COMPLETE")
-            parsePazeResponse( checkoutObj.checkoutResponse );
+        if (checkoutObj?.result === "COMPLETE") {
+            com.log(`Checkout response raw JWS: ${checkoutObj.checkoutResponse}`, "warning");
+            parsePazeResponse(checkoutObj.checkoutResponse);
+        }
         else {
             com.log("Paze checkout did not complete", "warning");
             return;
@@ -135,14 +113,13 @@ const execPazeWorkflow = async (contact, amount) => {
             transactionOptions: {
                 payloadTypeIndicator: "PAYMENT",
                 billingPreference: "ALL"
-            },
+            }
         }
         const completeObj = await pazeSDK.complete(completeBasePayload);
         com.log("Paze complete request finished", "info");
         parsePazeResponse( completeObj.completeResponse );
         com.log("Paze session completed", "success");
-
-        //TODO redirect
+        completeResponse = true;
     }
     catch (err) {
         const msg = `${err.reason}: ${err.message || 'Unknown error'}`;

@@ -92,10 +92,7 @@ document.getElementById('placeOrderBtn')?.addEventListener('click', async () => 
         com.log("No payment method selected", "error");
         return;
     }
-
     placeOrderBtn.disabled = true;
-    const originalButtonText = placeOrderBtn.textContent;
-    placeOrderBtn.textContent = "Processing...";
 
     const paymentMethod = selected.id;
     com.log(`Confirming payment method: ${paymentMethod}`, "info");
@@ -124,7 +121,6 @@ document.getElementById('placeOrderBtn')?.addEventListener('click', async () => 
     }
     finally {
         placeOrderBtn.disabled = false;
-        placeOrderBtn.textContent = originalButtonText;
     }
 });
 
@@ -132,18 +128,25 @@ document.getElementById('placeOrderBtn')?.addEventListener('click', async () => 
 function updatePlaceOrderButtonText(method) {
     if (!placeOrderBtn) return;
 
+    // const orderBtn = document.getElementById('placeOrderBtn')
     switch (method) {
         case 'credit':
             placeOrderBtn.textContent = 'Place credit card order';
+            placeOrderBtn.classList.replace("color-paze", "placeOrderBtn-color");
             break;
         case 'paze':
-            placeOrderBtn.textContent = 'Place Paze order';
+            placeOrderBtn.textContent = 'Checkout with Paze';
+            placeOrderBtn.classList.replace("placeOrderBtn-color", "color-paze");
             break;
         case 'points':
             placeOrderBtn.textContent = 'Place order with Points';
+            placeOrderBtn.classList.replace("color-paze", "placeOrderBtn-color");
+
             break;
         default:
             placeOrderBtn.textContent = 'Place your order';
+            placeOrderBtn.classList.replace("color-paze", "placeOrderBtn-color");
+
     }
 }
 

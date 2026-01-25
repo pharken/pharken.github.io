@@ -85,68 +85,52 @@ const selectPayment = (method) =>{
 }
 
 
-// Place order confirmation
-document.getElementById('placeOrderBtn')?.addEventListener('click', async () => {
-    const selected = document.querySelector('input[name="payment"]:checked');
-    if (!selected) {
-        com.log("No payment method selected", "error");
-        return;
-    }
-    placeOrderBtn.disabled = true;
-
-    const paymentMethod = selected.id;
-    com.log(`Confirming payment method: ${paymentMethod}`, "info");
-
-    try {
-        switch (paymentMethod) {
-            case 'credit':
-                break;
-            case 'paze':
+/**
+ *  Place Paze order
+ */
+document.querySelectorAll('paze-button').forEach(pb => {
+        pb.addEventListener("click", async () => {
+            try {
                 let amount = document.getElementById('totalAmount').textContent;
                 amount = amount.replaceAll("$", "");
                 const contactInput = document.getElementById('pazeContact');
                 const contact = contactInput.value.trim();
                 await execPazeWorkflow(contact, amount);
                 showModal();
-                break;
-            case 'points':
-                break;
-            default:
-                com.log("No payment method selected", "error");
-        }
+            } catch (err) {
+                com.log(`Error while clicking Paze button: ${err.message}`, "error");
+            }
+        })
     }
-    catch (err) {
-        com.log(`Order placement failed: ${err.message || 'Unknown error'}`, "error");
-        console.error(err);
-    }
-    finally {
-        placeOrderBtn.disabled = false;
-    }
-});
+);
+
 
 
 function updatePlaceOrderButtonText(method) {
     if (!placeOrderBtn) return;
 
-    // const orderBtn = document.getElementById('placeOrderBtn')
+    const pazeBtn = document.getElementById('pazeBtnWrapper');
     switch (method) {
         case 'credit':
             placeOrderBtn.textContent = 'Place credit card order';
-            placeOrderBtn.classList.replace("color-paze", "placeOrderBtn-color");
+            pazeBtn.classList.replace("show", "hidden");
+            placeOrderBtn.classList.replace("hidden", "show");
             break;
         case 'paze':
-            placeOrderBtn.textContent = 'Checkout with Paze';
-            placeOrderBtn.classList.replace("placeOrderBtn-color", "color-paze");
+            placeOrderBtn.textContent = 'Check out with Paze';
+            placeOrderBtn.classList.replace("show", "hidden");
+            pazeBtn.classList.replace("hidden", "show");
             break;
         case 'points':
             placeOrderBtn.textContent = 'Place order with Points';
-            placeOrderBtn.classList.replace("color-paze", "placeOrderBtn-color");
+            pazeBtn.classList.replace("show", "hidden");
+            placeOrderBtn.classList.replace("hidden", "show");
 
             break;
         default:
             placeOrderBtn.textContent = 'Place your order';
-            placeOrderBtn.classList.replace("color-paze", "placeOrderBtn-color");
-
+            pazeBtn.classList.replace("show", "hidden");
+            placeOrderBtn.classList.replace("hidden", "show");
     }
 }
 

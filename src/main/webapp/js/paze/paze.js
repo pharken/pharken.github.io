@@ -10,18 +10,19 @@ let pazeSDK = null;
  * @param merchantName
  * @returns {Promise<void>}
  */
-const initPazeSDK = async (merchantName) => {
+const initPazeSDK = async () => {
     try {
         pazeSDK = window.DIGITAL_WALLET_SDK;
         if (!pazeSDK) throw new Error("SDK script loaded but DIGITAL_WALLET_SDK not found");
 
         com.log("Paze SDK detected – initializing...", "info");
 
+        // init with merchant data
         const initResponse = await pazeSDK.initialize({
             client: {
                 id:         'SSNYS4XS8O0XZEMQCJ8C13Wd4C94tnSvilwN7jns_IyC7zzmw',
                 profileId:  '460b4f47-f685-4b0c-b250-c897b8ad8cb4',
-                name: merchantName || 'merchant'        // default to 'merchant'
+                name:       'MIT'
             }
         });
 
@@ -74,6 +75,7 @@ const execPazeWorkflow = async (contact, amount) => {
     let pazeCustomerIdentifier = verifyPazeCustomerIdentityType(contact);
     if (!pazeCustomerIdentifier)
         pazeCustomerIdentifier = {emailAddress: ""};
+
 
     let completeResponse = false;
     try {

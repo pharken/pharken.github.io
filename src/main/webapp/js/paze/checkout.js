@@ -4,13 +4,19 @@ import * as com from "./demoCommon.js";
 import { initPazeSDK, execPazeWorkflow } from "./paze.js";
 
 let placeOrderBtn;
-
+let isPazeIntiailize = null;
 
 // Page init
 window.addEventListener('load', async () => {
     com.log("Page loaded. Initializing Paze SDK...", "info");
-    const merchantName = 'MIT'
-    await initPazeSDK(merchantName);
+    isPazeIntiailize = false
+    try {
+        await initPazeSDK();
+        isPazeIntiailize = true;
+    }
+    catch (err) {
+        com.log(`Paze initialize error:: ${err.message}`, "error");
+    }
 
     placeOrderBtn = document.getElementById('placeOrderBtn');
 });
@@ -95,9 +101,10 @@ document.querySelectorAll('paze-button').forEach(pb => {
                 amount = amount.replaceAll("$", "");
                 const contactInput = document.getElementById('pazeContact');
                 const contact = contactInput.value.trim();
-                await execPazeWorkflow(contact, amount);
-                showModal();
-            } catch (err) {
+                if ( await execPazeWorkflow(contact, amount) )
+                    showModal();
+            }
+            catch (err) {
                 com.log(`Error while clicking Paze button: ${err.message}`, "error");
             }
         })
@@ -117,7 +124,7 @@ function updatePlaceOrderButtonText(method) {
             placeOrderBtn.classList.replace("hidden", "show");
             break;
         case 'paze':
-            placeOrderBtn.textContent = 'Check out with Paze';
+            //TODO check isPazeInitialize
             placeOrderBtn.classList.replace("show", "hidden");
             pazeBtn.classList.replace("hidden", "show");
             break;

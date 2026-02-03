@@ -65,12 +65,7 @@ const initPazeSDK = async () => {
  * @returns {Promise<void>}
  */
 const execPazeWorkflow = async (contact, amount) => {
-
     com.log("Execute Paze workflow", "info");
-    if (!pazeSDK) {
-        com.log("Paze SDK not unavailable", "error");
-        return;
-    }
 
     let pazeCustomerIdentifier = verifyPazeCustomerIdentityType(contact);
     if (!pazeCustomerIdentifier)
@@ -80,8 +75,8 @@ const execPazeWorkflow = async (contact, amount) => {
     let completeResponse = false;
     try {
         const checkoutBasePayload = {
-            sessionId:        "abc123",            // get actual from server
-            actionCode:       'START_FLOW',        // auto-initiate
+            sessionId:        "abc123",             // get actual from server
+            actionCode:       'START_FLOW',
             intent:           'EXPRESS_CHECKOUT',
             confirmLaunch:    true,
             transactionValue: {
@@ -117,7 +112,7 @@ const execPazeWorkflow = async (contact, amount) => {
                 billingPreference: "ALL"
             }
         }
-        const completeObj = await pazeSDK.complete(completeBasePayload);
+        const completeObj = await pazeSDK.complete(completeBasePayload);    // returns JWS
         com.log("Paze complete request finished", "info");
         parsePazeResponse( completeObj.completeResponse );
         com.log("Paze session completed", "success");

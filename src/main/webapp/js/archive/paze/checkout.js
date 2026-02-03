@@ -4,15 +4,15 @@ import * as com from "./demoCommon.js";
 import { initPazeSDK, execPazeWorkflow } from "./paze.js";
 
 let placeOrderBtn;
-let isPazeIntiailize = null;
+let isPazeInit = null;
 
 // Page init
 window.addEventListener('load', async () => {
     com.log("Page loaded. Initializing Paze SDK...", "info");
-    isPazeIntiailize = false
+    isPazeInit = false
     try {
         await initPazeSDK();
-        isPazeIntiailize = true;
+        isPazeInit = true;
     }
     catch (err) {
         com.log(`Paze initialize error:: ${err.message}`, "error");

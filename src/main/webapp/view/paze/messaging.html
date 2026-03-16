@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../../css/paze/demoDefault.css" rel="stylesheet">
+
+    <!-- Paze SDK - Dev/Sandbox -->
+    <script src="https://checkout.wallet.cat.earlywarning.io/web/resources/js/digitalwallet-sdk.js" type="text/javascript" async></script>
+
+</head>
+<body>
+
+<div class="page-layout">
+
+    <div class="top-section">
+
+        <!-- Column 1: Customer Info -->
+        <div class="column">
+            <div class="section">
+                <h2>1. Customer Info</h2>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="patrick@paze.com" value="patrick@paze.com" id="customerEmail" autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone number</label>
+                    <input type="tel" placeholder="+1 (555) 123-4567" id="customerPhone" autocomplete="tel">
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 2: Payment Method -->
+        <div class="column">
+            <div class="section">
+                <h2>2. Payment method</h2>
+
+                <div class="payment-options">
+                    <div class="payment-option selected">
+                        <input type="radio" name="payment" id="credit" checked>
+                        <label for="credit">Credit or debit card</label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" name="payment" id="paze">
+                        <label for="paze">Paze - Pay securely with your bank wallet</label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" name="payment" id="points">
+                        <label for="points">Use points / rewards</label>
+                    </div>
+                </div>
+
+                <div id="credit-details" class="payment-details active">
+                    <div class="form-group">
+                        <label>Card number</label>
+                        <input type="text" placeholder="4111 1111 1111 1111">
+                    </div>
+                    <div class="form-group">
+                        <label>Name on card</label>
+                        <input type="text" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Expiration (MM/YY)</label>
+                        <input type="text" placeholder="12/28">
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" placeholder="123" style="width: 70px;">
+                    </div>
+                </div>
+
+                <div id="paze-details" class="payment-details">
+                    <p>Use Paze for faster, more secure checkout.</p>
+                    <div class="form-group">
+                        <label>Email or phone number</label>
+                        <input type="text" placeholder="you@example.com or +15551234567" id="pazeContact">
+                    </div>
+                </div>
+
+                <div id="points-details" class="payment-details">
+                    <p>Use your available rewards points.</p>
+                    <div class="form-group">
+                        <label>Available points</label>
+                        <p style="font-size: 13px; font-weight: 600; color: #34d399;">1,250 points ≈ $12.50</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 3: Review & Place Order -->
+        <div class="column">
+            <div class="section" style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="flex: 1;">
+                    <h2>3. Review & Place Order</h2>
+
+                    <div class="product-info">
+                        <strong>Sample Product</strong>
+                        <span>Qty: 1</span>
+                        <span>Delivery: Feb 20–22</span>
+                    </div>
+                </div>
+
+                <div class="order-summary">
+                    <button id="placeOrderBtn" class="placeOrderBtn-color show">Place your order</button>
+                    <div id="pazeBtnWrapper" class="hidden">
+                        <paze-button shape="rectangle" label="checkout"></paze-button>
+                    </div>
+
+                    <h3>Order Summary</h3>
+                    <p>Items: <span class="price-highlight">$49.99</span></p>
+                    <p>Shipping & handling: <span class="price-highlight">$0.00</span></p>
+                    <p>Total before tax: <span class="price-highlight">$49.99</span></p>
+                    <p>Estimated tax: <span class="price-highlight">$3.50</span></p>
+                    <p class="total">
+                        Order total: <span id="totalAmount" class="price-highlight">$53.49</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom 60% – Status Log (now properly scrollable) -->
+    <div class="bottom-section">
+        <div id="status-window">
+            <div id="status-window-content"></div>
+        </div>
+    </div>
+
+</div>
+
+<div id="transactionCompleteModal" class="modal-overlay">
+    <div class="modal-content">
+        <p class="modal-text">Paze transaction finished<br>Re-direct to payment completed page</p>
+    </div>
+</div>
+
+<script type="module">
+    import {selectPayment} from '../../js/paze/checkout.js';
+
+    document.querySelectorAll('input[name="payment"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            selectPayment(radio.id);
+        });
+    });
+
+</script>
+
+</body>
+</html>

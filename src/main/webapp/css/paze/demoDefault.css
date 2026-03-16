@@ -1,0 +1,227 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #0f1115;
+    font-family: 'Inter', sans-serif;
+    color: #e0e0e0;
+}
+
+.page-layout {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.top-section {
+    flex: 0 0 40%;
+    display: flex;
+    gap: 16px;
+    padding: 20px 20px 10px 20px;
+    box-sizing: border-box;
+    background: #0f1115;
+    overflow: hidden;
+}
+
+.top-section > .column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.section {
+    flex: 1;
+    background-color: #1a1f2e;
+    border: 1px solid #334155;
+    border-radius: 7px;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.section h2 {
+    margin: 0 0 10px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+    color: #d1d5db;
+    font-size: 11.5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+    width: 100%;
+    padding: 7px 9px;
+    border: 1px solid #4b5563;
+    border-radius: 5px;
+    background: #111827;
+    color: #e0e0e0;
+    font-size: 12.5px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16,185,129,0.25);
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.payment-options {
+    margin: 8px 0;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border: 1px solid #334155;
+    border-radius: 5px;
+    margin-bottom: 7px;
+    background: #111827;
+    cursor: pointer;
+    font-size: 12.5px;
+}
+
+.payment-option.selected {
+    border-color: #10b981;
+    background: #064e3b;
+}
+
+.payment-details {
+    display: none;
+    margin-top: 8px;
+    padding: 12px;
+    background: #0f172a;
+    border-radius: 5px;
+    border: 1px solid #334155;
+    font-size: 12.5px;
+}
+
+.payment-details.active {
+    display: block;
+}
+
+.payment-details p {
+    margin: 0 0 10px 0;
+    font-size: 12px;
+}
+
+.placeOrderBtn-color {
+    background: #059669;
+    color: white;
+    border: none;
+    padding: 11px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.placeOrderBtn-color:hover {
+    background: #047857;
+}
+
+.order-summary h3 {
+    margin: 6px 0;
+    font-size: 13.5px;
+}
+
+.order-summary p {
+    margin: 4px 0;
+    font-size: 12.5px;
+}
+
+.price-highlight {
+    color: #34d399;
+    font-weight: 500;
+}
+
+.total {
+    border-top: 1px solid #334155;
+    padding-top: 8px;
+    font-size: 14.5px;
+    font-weight: 600;
+}
+
+.bottom-section {
+    flex: 0 0 60%;
+    background: #0a0e14;
+    padding: 0 20px 20px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+#status-window {
+    flex: 1 1 auto;
+    min-height: 0;
+    border: 1px solid #334155;
+    border-radius: 7px;
+    background: #111827;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+#status-window-content {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 10px 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 12px;
+    line-height: 1.45;
+    color: #e2e8f0;
+}
+
+#status-window-content::-webkit-scrollbar {
+    width: 6px;
+}
+#status-window-content::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+#status-window-content::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 3px;
+}
+#status-window-content::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+.hidden { display: none !important; }
+
+.product-info {
+    margin: 10px 0;
+    font-size: 12.5px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .top-section {
+        flex-direction: column;
+        gap: 12px;
+        padding: 14px;
+    }
+}

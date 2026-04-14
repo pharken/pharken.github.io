@@ -1,7 +1,7 @@
 'use strict';
 
 import * as com from "./demoCommon.js";
-import { initPazeSDK, execPazeWorkflow } from "./paze.js";
+import { initPazeSDK, execPazeWorkflow } from "./pazeSdkCheckout.js";
 
 let placeOrderBtn;
 let isPazeInit = null;

@@ -27,16 +27,7 @@ let acct = accounts.tracfoneQA.accountId;
 
 const URLS = {
     bearerToken         : `https://va.agentvep.liveperson.net/api/account/${acct}/login`,
-    campaigns           : `${domain}/api/account/${acct}/configuration/le-campaigns/campaigns`,
-    engagements         : `${domain}/api/account/${acct}/configuration/le-campaigns/campaigns/{campaignId}`,
-    engagementWindows   : `${domain}/api/account/${acct}/configuration/engagement-window/window-confs`,
-    engagementWindow    : `${domain}/api/account/${acct}/configuration/engagement-window/window-confs/{engagementId}`,
-    entryPoints         : `${domain}/api/account/${acct}/configuration/le-targeting/onsite-locations`,
-    entryPoint          : `${domain}/api/account/${acct}/configuration/le-targeting/onsite-locations/{entryPointId}`,
-    visitorBehaviors    : `${domain}/api/account/${acct}/configuration/le-targeting/visitor-behaviors`,
-    visitorBehavior     : `${domain}/api/account/${acct}/configuration/le-targeting/visitor-behaviors/{visitorBehaviorId}`,
-    messageHistory      : `https://va.msghist.liveperson.net/messaging_history/api/account/${acct}/conversations/search`
-
+    campaigns           : `${domain}/api/account/${acct}/configuration/le-campaigns/campaigns`
 }
 
 
@@ -90,93 +81,6 @@ async function getCampaign( campaignId ) {
     }
 }
 
-async function getEngagementWindows() {
-    try {
-        return axios({
-            method: 'GET',
-            url: URLS.engagementWindows,
-            params: { v: '2.0' },
-            headers: { Authorization: `Bearer ${bearerToken}`}
-        });
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-
-async function getEngagementWindow( engagementId ) {
-    try {
-        let url = URLS.engagementWindow.replace('{engagementId}', engagementId);
-        return axios({
-            method: 'GET',
-            url: url,
-            params: { v: '2.0' },
-            headers: { Authorization: `Bearer ${bearerToken}`}
-        });
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-
-async function getEntryPoints() {
-    try {
-        return axios({
-            method: 'GET',
-            url: URLS.entryPoints,
-            params: { v: '3.0' },
-            headers: { Authorization: `Bearer ${bearerToken}`}
-        });
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-
-async function getEntryPoint( entryPointId ) {
-    try {
-        let url = URLS.entryPoint.replace('{entryPointId}', entryPointId);
-        return axios({
-            method: 'GET',
-            url: url,
-            params: { v: '3.0' },
-            headers: { Authorization: `Bearer ${bearerToken}`}
-        });
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-
-async function getVisitorBehaviors() {
-    try {
-        return axios({
-            method: 'GET',
-            url: URLS.visitorBehaviors,
-            params: { v: '2.0' },
-            headers: { Authorization: `Bearer ${bearerToken}`}
-        });
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-
-async function getVisitorBehavior( visitorBehaviorId ) {
-    try {
-        let url = URLS.visitorBehavior.replace('{visitorBehaviorId}', visitorBehaviorId);
-        return axios({
-            method: 'GET',
-            url: url,
-            params: { v: '3.0' },
-            headers: { Authorization: `Bearer ${bearerToken}`}
-        });
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-
 
 /*
 * TEST
@@ -194,21 +98,6 @@ const main = async function () {
     let engagementName = campaignResp.data.name;
     let engagementIds = campaignResp.data.engagementIds;
 
-    let entryPointsResp = await getEntryPoints();
-    let entryPoints = entryPointsResp.data.xxxxxxxxxxxxxxxxxx;
-
-    let entryPointId = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-    let entryPointResp = await getEntryPoint(entryPointId);
-    let entryPointSectionValues = entryPointsResp.data.xxxxxxxxxxxxxxxxx;
-
-    let visitorBehaviorsResp = await getVisitorBehaviors();
-    let visitorBehaviors = visitorBehaviorsResp.data.xxxxxxxxxxxxxxxxx;
-
-    let visitorBehaviorId = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-    let visitorBehaviorResp = await getVisitorBehavior(visitorBehaviorId);
-    let visitorBehavior = visitorBehaviorResp.data.xxxxxxxxxxxxxxxxx;
-
-
 
     console.log(`Engagement: ${engagementName}, ${JSON.stringify(engagementIds)}`);
 };
@@ -223,13 +112,7 @@ $( function() {
 export {
     getBearerToken,
     getCampaigns,
-    getCampaign,
-    getEngagementWindows,
-    getEngagementWindow,
-    getEntryPoints,
-    getEntryPoint,
-    getVisitorBehaviors,
-    getVisitorBehavior
+    getCampaign
 }
 
 

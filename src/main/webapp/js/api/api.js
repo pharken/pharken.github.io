@@ -3,61 +3,33 @@
 
 */
 
-// secret key:  maven-api-key
+
+import {getCampaign} from "./cc-ui-api";
+
 let accounts = {
     SANDBOX: {
         accountId: '49985427',
         baseUrl: 'https://z1.context.liveperson.net',
         'maven-api-key': 'hNzTR1BjI3NDk5ODU0Mjc='
-    },
-    VBG: {
-        accountId: '22209379',
-        baseUrl: 'https://z1.context.liveperson.net',
-        'maven-api-key': 'kq9tMnO5BCMjIyMDkzNzk='
-    },
-    FAST: {
-        accountId: '17276385',
-        baseUrl: 'https://z1.context.liveperson.net',
-        'maven-api-key': 'RsVgzBjLAeMTcyNzYzODU='
-    },
-    FAST_PROD: {
-        accountId: '88102062',
-        baseUrl: 'https://va-e.c.liveperson.net',
-        'maven-api-key': 's3TyAVOLl4ODgxMDIwNjI='
     }
 }
 
 
 // ***********    Set the account    ***********
 let base = accounts.SANDBOX.baseUrl;
-let acct = accounts.SANDBOX.accountId;
-let mvnApiKey = accounts.SANDBOX["maven-api-key"]
-
-
-const namespace = 'messagingQueueHealth';
 
 
 const lpUrl = {
     base: `${base}`,
     getNamespaces: `/v1/account/${acct}`,
-    createNamespace: `/v1/account/${acct}`,
     updateNamespaceProperty: `/v1/account/${acct}/${namespace}/properties`,
-    getNamespaceProperties: `/v1/account/${acct}/${namespace}/properties`,
-    deleteNamespace: ''
+
 }
 
 const COMMON_HEADER = {
     'maven-api-key': `${mvnApiKey}`,
     'Content-Type': 'application/json'
 }
-
-
-
-const bindButtons = function () {
-    let getNamespaceBtn = document.getElementById('getNamespaceBtn');
-    getNamespaceBtn.addEventListener("click", getNamespaces );
-}
-
 
 
 
@@ -112,28 +84,36 @@ async function getRequest( url ) {
 }
 
 
-
-
-
-const createNamespace = function() {
-
-    let payload = JSON.stringify({ "name": namespace } );
-
-    fetch(lpUrl.base + lpUrl.createNamespace, {
-        method:  'POST',
-        body: payload,
-        headers: {
-            'maven-api-key': `${mvnApiKey}`,
-            'Content-Type': 'application/json' }
-    })
-        .then(resp => {
-            return resp.json()
-        })
-        .then(data => {
-            console.log(`success`)
-        })
-        .catch( err => console.log('something went wrong', err) );
+async function getCampaigns() {
+    try {
+        return axios({
+            method: 'GET',
+            url: URLS.campaigns,
+            params: { v: '3.4', fields: ['id', 'name', 'description', 'expirationDate', 'goalId', 'lobId', 'status', 'engagementIds', 'type'] },
+            headers: { Authorization: `Bearer ${bearerToken}`}
+        });
+    }
+    catch (error) {
+        console.error(error);
+    }
 }
+
+
+async function getBearerToken() {
+    try {
+        return axios({
+            method: 'POST',
+            url: URLS.bearerToken,
+            params: { v: '1.3' },
+            headers: { Authorization: apiAuth},
+            data: loginCredentials
+        });
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+
 
 
 const updateNamespaceProperty = function() {
@@ -167,36 +147,33 @@ const updateNamespaceProperty = function() {
 }
 
 
-const getNamespaceProperties = function () {
-    fetch(lpUrl.base + lpUrl.getNamespaceProperties, {
-        method:  'GET',
-        headers: {
-            'maven-api-key': `${mvnApiKey}`,
-            'Content-Type': 'application/json' }
-    })
-        .then(resp => {
-            return resp.json()
-        })
-        .then(nsProperties => {
-            console.log(`success`);
-            console.log(`namespace properties: ${JSON.stringify(nsProperties)}`)
-        })
-        .catch( err => console.log('something went wrong', err) );
-}
-
-
 let apiMain = function () {
 
     displayInfo( "API begin" );
     displayInfo(`base: ${base}, account ID: ${acct}`);
 
     bindButtons();
-    bindLpEvents();
     // getNamespaces();
-    // createNamespace();
     // updateNamespaceProperty();
-    // getNamespaceProperties();
+
 }
+
+
+const main = async function () {
+
+    let loginResp = await getBearerToken();
+    bearerToken = loginResp.data.bearer;
+
+    let campaignsResp = await getCampaigns();
+    let campaigns = campaignsResp.data;
+
+    console.log(`Engagement: ${engagementName}, ${JSON.stringify(engagementIds)}`);
+};
+
+
+
+
+
 
 
 $(function() {

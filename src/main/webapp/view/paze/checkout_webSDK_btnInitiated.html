@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paze Demo</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../../css/paze/pazeCheckout.css" rel="stylesheet">
+
+    <!-- Paze SDK - Dev/Sandbox -->
+    <script src="https://checkout.wallet.cat.earlywarning.io/web/resources/js/digitalwallet-sdk.js" type="text/javascript" async></script>
+
+</head>
+<body>
+
+<div class="header">
+    <h1>Web SDK - Button Initiated</h1>
+</div>
+
+<div class="container">
+    <div class="left-column">
+
+        <!-- 1. Customer Info -->
+        <div class="section">
+            <h2>1. Customer Info</h2>
+            <p class="secure">Secure form</p>
+
+            <div class="form-group">
+                <label>Full name</label>
+                <input type="text" placeholder="John Doe" id="fullName">
+            </div>
+
+            <div class="form-group">
+                <label>Address line 1</label>
+                <input type="text" placeholder="123 Main St" id="address1">
+            </div>
+
+            <div style="display: flex; gap: 16px; margin-bottom: 16px;">
+                <div class="form-group" style="flex: 2;">
+                    <label>City</label>
+                    <input type="text" placeholder="Thornton" id="city">
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label>State</label>
+                    <input type="text" placeholder="IL" id="state" maxlength="2">
+                </div>
+                <div class="form-group" style="flex: 1.2;">
+                    <label>ZIP code</label>
+                    <input type="text" placeholder="60476" id="zip" maxlength="10">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="you@example.com" id="customerEmail" autocomplete="email">
+            </div>
+
+            <div class="form-group">
+                <label>Phone number</label>
+                <input type="text" placeholder="+1 (555) 123-4567" id="customerPhone" autocomplete="tel">
+            </div>
+
+            <button class="btn">Use this address</button>
+        </div>
+
+        <!-- 2. Payment Method -->
+        <div class="section">
+            <h2>2. Payment method</h2>
+            <p class="secure">Secure form</p>
+            <div class="payment-options">
+                <div class="payment-option selected">
+                    <input type="radio" name="payment" id="credit" checked>
+                    <label for="credit">Credit or debit card</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" name="payment" id="paze">
+                    <label for="paze">Paze - Pay securely with your bank wallet</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" name="payment" id="points">
+                    <label for="points">Use points / rewards</label>
+                </div>
+            </div>
+
+
+            <!-- Credit Card -->
+            <div id="credit-details" class="payment-details active">
+                <div class="form-group">
+                    <label>Card number</label>
+                    <input type="text" placeholder="4111 1111 1111 1111">
+                </div>
+                <div class="form-group">
+                    <label>Name on card</label>
+                    <input type="text" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Expiration (MM/YY)</label>
+                    <input type="text" placeholder="12/28">
+                </div>
+                <div class="form-group">
+                    <label>CVV</label>
+                    <input type="text" placeholder="123" style="width: 80px;">
+                </div>
+            </div>
+
+            <!-- Paze -->
+            <div id="paze-details" class="payment-details">
+                <p>Use Paze for faster, more secure checkout without entering full card details.</p>
+                <div class="form-group">
+                    <label>Email or phone number</label>
+                    <input type="text" placeholder="you@example.com or +15551234567" id="pazeContact" autocomplete="tel email">
+                </div>
+            </div>
+
+            <!-- Points -->
+            <div id="points-details" class="payment-details">
+                <p>Use your available rewards points.</p>
+                <div class="form-group">
+                    <label>Available points</label>
+                    <p style="font-size: 18px; font-weight: 600; color: #34d399;">1,250 points ≈ $12.50</p>
+                </div>
+                <div class="form-group">
+                    <label>Points to use</label>
+                    <input type="number" placeholder="0" min="0">
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Review Items -->
+        <div class="section">
+            <h2>3. Review items and shipping</h2>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <div>
+                    <strong>Sample Product</strong><br>
+                    Qty: 1<br>
+                    Delivery: Feb 20–22
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="right-column order-summary">
+        <button id="placeOrderBtn" class="placeOrderBtn-color show">Place your order</button>
+        <div id="pazeBtnWrapper" class="hidden">
+            <paze-button shape="rectangle" label="checkout"></paze-button>
+        </div>
+        <h3>Order Summary</h3>
+        <p>Items: <span class="price-highlight">$49.99</span></p>
+        <p>Shipping & handling: <span class="price-highlight">$0.00</span></p>
+        <p>Total before tax: <span class="price-highlight">$49.99</span></p>
+        <p>Estimated tax: <span class="price-highlight">$3.50</span></p>
+        <p class="total" style="font-size: 20px; border-top: 1px solid #334155; padding-top: 12px;">
+            Order total: <span id="totalAmount" class="price-highlight">$53.49</span>
+        </p>
+    </div>
+</div>
+
+<div id="transactionCompleteModal" class="modal-overlay">
+    <div class="modal-content">
+        <p class="modal-text"> Paze transaction finished<br>Re-direct to payment completed page</p>
+    </div>
+</div>
+
+<!-- Scrolling Status Window -->
+<div id="status-window">
+    <div id="status-window-header">Status Log</div>
+    <div id="status-window-content"></div>
+</div>
+
+
+<script type="module">
+    import {selectPayment} from '../../js/paze/checkout.js';
+
+    document.querySelectorAll('input[name="payment"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            selectPayment(radio.id);
+        });
+    });
+
+</script>
+
+</body>
+</html>

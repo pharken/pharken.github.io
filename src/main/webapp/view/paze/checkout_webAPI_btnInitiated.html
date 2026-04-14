@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paze Demo</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../../css/paze/pazeCheckout.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+    <h1>Web API - Button Initiated</h1>
+</div>
+
+<div class="container">
+    <div class="left-column">
+        <div class="section">
+            <h2>1. Customer Info</h2>
+            <p class="secure">Secure form</p>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="you@example.com" id="customerEmail" autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label>Phone number</label>
+                <input type="text" placeholder="+1 (555) 123-4567" id="customerPhone" autocomplete="tel">
+            </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="section">
+            <div class="right-column order-summary">
+                <div id="pazeBtnWrapper" class="hidden">
+                    <paze-button shape="rectangle" label="checkout"></paze-button>
+                </div>
+                <h3>Order Summary</h3>
+                <p>Items: <span class="price-highlight">$49.99</span></p>
+                <p>Shipping & handling: <span class="price-highlight">$0.00</span></p>
+                <p>Total before tax: <span class="price-highlight">$49.99</span></p>
+                <p>Estimated tax: <span class="price-highlight">$3.50</span></p>
+                <p class="total" style="font-size: 20px; border-top: 1px solid #334155; padding-top: 12px;">
+                    Order total: <span id="totalAmount" class="price-highlight">$53.49</span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="right-column">
+        <!-- Scrolling Status Window -->
+<!--        <div id="status-window">-->
+            <div id="status-window-header">Status Log</div>
+            <div id="status-window-content"></div>
+<!--        </div>-->
+    </div>
+
+</div>
+
+<div id="transactionCompleteModal" class="modal-overlay">
+    <div class="modal-content">
+        <p class="modal-text"> Paze transaction finished<br>Re-direct to payment completed page</p>
+    </div>
+</div>
+
+
+<script type="module" src="../../js/paze/pazeApiCheckout.js"></script>
+
+
+</body>
+</html>

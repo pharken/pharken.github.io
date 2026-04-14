@@ -7,9 +7,9 @@
 */
 'use strict';
 
-import * as lpInfo from "../livepersonScripts/lpInfoDisplay.js";
-import * as lpTagUtil from "../livepersonScripts/lpTagUtil";
-import * as lpEvents from "../livepersonScripts/lpEvents";
+import * as lpInfo from "../lpInfoDisplay.js";
+import * as lpTagUtil from "../lpTagUtil";
+import * as lpEvents from "../lpEvents";
 
 
 const ROUTING_ENGAGEMENT_ID = '3955040638';

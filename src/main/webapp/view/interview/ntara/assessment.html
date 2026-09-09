@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <title>49985427</title>
+
+    <!-- LivePerson Monitor | playground  -->
+    <script type="text/javascript">window.lpTag=window.lpTag||{},'undefined'==typeof window.lpTag._tagCount?(window.lpTag={wl:lpTag.wl||null,scp:lpTag.scp||null,site:'49985427'||'',section:lpTag.section||'',tagletSection:lpTag.tagletSection||null,autoStart:lpTag.autoStart!==!1,ovr:lpTag.ovr||{},_v:'1.10.0',_tagCount:1,protocol:'https:',events:{bind:function(t,e,i){lpTag.defer(function(){lpTag.events.bind(t,e,i)},0)},trigger:function(t,e,i){lpTag.defer(function(){lpTag.events.trigger(t,e,i)},1)}},defer:function(t,e){0===e?(this._defB=this._defB||[],this._defB.push(t)):1===e?(this._defT=this._defT||[],this._defT.push(t)):(this._defL=this._defL||[],this._defL.push(t))},load:function(t,e,i){var n=this;setTimeout(function(){n._load(t,e,i)},0)},_load:function(t,e,i){var n=t;t||(n=this.protocol+'//'+(this.ovr&&this.ovr.domain?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site);var o=document.createElement('script');o.setAttribute('charset',e?e:'UTF-8'),i&&o.setAttribute('id',i),o.setAttribute('src',n),document.getElementsByTagName('head').item(0).appendChild(o)},init:function(){this._timing=this._timing||{},this._timing.start=(new Date).getTime();var t=this;window.attachEvent?window.attachEvent('onload',function(){t._domReady('domReady')}):(window.addEventListener('DOMContentLoaded',function(){t._domReady('contReady')},!1),window.addEventListener('load',function(){t._domReady('domReady')},!1)),'undefined'===typeof window._lptStop&&this.load()},start:function(){this.autoStart=!0},_domReady:function(t){this.isDom||(this.isDom=!0,this.events.trigger('LPT','DOM_READY',{t:t})),this._timing[t]=(new Date).getTime()},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],hooks:lpTag.hooks||[],identities:lpTag.identities||[],ev:lpTag.ev||[]},lpTag.init()):window.lpTag._tagCount+=1;</script>
+
+    <link href="../../../css/interview/ntara.css" rel="stylesheet">
+    <script src="../../../js/interview/ntara.js" type="module"></script>
+</head>
+
+<nav class="toc">
+    <h3>Assessment Sections</h3>
+    <ol>
+        <li><a href="#section1">Assignment 1: System Architecture &amp; Solutioning</a></li>
+        <li><a href="#section2">Assignment 2: Technical Evaluation &amp; Data Modelling</a></li>
+        <li><a href="#section3">Assignment 3: Client Communication (Soft Skills)</a></li>
+        <li><a href="#section4">Assignment 4: Hands-on Problem Solving</a></li>
+        <li><a href="#section5">Assignment 5: Professional Presentation</a></li>
+        <li><a href="#section6">Assignment 6: Culture &amp; Values Alignment</a></li>
+    </ol>
+</nav>
+
+<!-- ========== SECTION 1 ========== -->
+<section id="section1" class="section">
+    <h2>1. Architecture Overview</h2>
+    <h3>1. Architecture Diagram</h3>
+    <p>This architecture unifies product lifecycle and content delivery. ERP and DAM remain systems of record for master data and assets. PIM owns taxonomy, marketing content, completeness workflows and syndication. An optional Event Broker provides reliable pub/sub for webhooks. Downstream consumers are Adobe AEM (CMS), Salesforce Commerce Cloud (B2C) and other channels.</p>
+    </br>
+    <p class="hint">Hover over elements in the diagram to view role, data flow, and integration.</p>
+
+    <div class="diagram-wrapper">
+        <img src="../../../img/Architecture.png" alt="Architecture Diagram" width="672" height="448">
+
+        <div class="hotspot hotspot-erp"    data-component="erp"    title="ERP" tabindex="0" role="button" aria-label="ERP"></div>
+        <div class="hotspot hotspot-dam"    data-component="dam"    title="DAM" tabindex="0" role="button" aria-label="DAM"></div>
+        <div class="hotspot hotspot-pim"    data-component="pim"    title="PIM" tabindex="0" role="button" aria-label="PIM"></div>
+        <div class="hotspot hotspot-broker" data-component="broker" title="Event Broker" tabindex="0" role="button" aria-label="Event Broker"></div>
+        <div class="hotspot hotspot-aem"    data-component="aem"    title="Adobe AEM" tabindex="0" role="button" aria-label="Adobe AEM"></div>
+        <div class="hotspot hotspot-sfcc"   data-component="sfcc"   title="Salesforce Commerce Cloud" tabindex="0" role="button" aria-label="Salesforce Commerce Cloud"></div>
+        <div class="hotspot hotspot-other"  data-component="other"  title="Other Channels" tabindex="0" role="button" aria-label="Other Channels"></div>
+
+        <!-- Data-flow arrow hotspots -->
+        <div class="hotspot hotspot-flow-erp-pim"   data-component="flow-erp-pim"   title="ERP → PIM data flow" tabindex="0" role="button" aria-label="ERP to PIM data flow"></div>
+        <div class="hotspot hotspot-flow-dam-pim"   data-component="flow-dam-pim"   title="DAM → PIM data flow" tabindex="0" role="button" aria-label="DAM to PIM data flow"></div>
+        <div class="hotspot hotspot-flow-cloud-dam" data-component="flow-cloud-dam" title="API Endpoint ↔ DAM data flow" tabindex="0" role="button" aria-label="API Endpoint to DAM data flow"></div>
+        <div class="hotspot hotspot-flow-pim-aem"   data-component="flow-pim-aem"   title="PIM → Adobe AEM data flow" tabindex="0" role="button" aria-label="PIM to Adobe AEM data flow"></div>
+        <div class="hotspot hotspot-flow-pim-sfcc"  data-component="flow-pim-sfcc"  title="PIM → Salesforce Commerce Cloud data flow" tabindex="0" role="button" aria-label="PIM to Salesforce Commerce Cloud data flow"></div>
+        <div class="hotspot hotspot-flow-pim-other" data-component="flow-pim-other" title="PIM → Other Channels data flow" tabindex="0" role="button" aria-label="PIM to Other Channels data flow"></div>
+    </div>
+    </br>
+
+    <h3>2. Source-of-Truth Model</h3>
+    <p>Each data domain has a single system of record. The PIM ingests everything it does not itself own, and is the source that pushes enriched, syndication-ready records back out to the other systems.</p>
+    <table class="data-table">
+        <thead>
+        <tr>
+            <th>Data domain</th>
+            <th>System of record</th>
+            <th>Direction relative to PIM</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Product master data</td>
+            <td>ERP</td>
+            <td>Ingested into PIM — ERP is the source of truth for SKU core specifications</td>
+        </tr>
+        <tr>
+            <td>Inventory</td>
+            <td>ERP</td>
+            <td>Ingested into PIM along with SKU data. Later redistributed by PIM to downstream channels.</td>
+        </tr>
+        <tr>
+            <td>Digital assets</td>
+            <td>DAM</td>
+            <td>Ingested into PIM as references/links; PIM associates each asset to its matching SKU.</td>
+        </tr>
+        <tr>
+            <td>Taxonomy</td>
+            <td>PIM</td>
+            <td>Created and owned in PIM;  Pushed outbound to AEM, Commerce Cloud, and other channels.</td>
+        </tr>
+        <tr>
+            <td>Enhanced content</td>
+            <td>PIM</td>
+            <td>Authored and owned in PIM; Pushed outbound like taxonomy upon approval.</td>
+        </tr>
+        <tr>
+            <td>Marketing descriptions</td>
+            <td>PIM</td>
+            <td>This is enhanced content. See above.</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3>3. Integration Approach</h3>
+    <p><strong>APIs involved:</strong></p> </br>
+    <ul>
+        <li>ERP exposes a REST API for product master data and inventory export</li>
+        <li>DAM exposes a REST API with webhook support for asset metadata and publish events</li>
+        <li>PIM exposes REST/GraphQL APIs for both inbound ingestion and outbound syndication</li>
+        <li>Adobe AEM is integrated via its Content Fragment/Assets APIs;  Salesforce Commerce Cloud via its Product/Inventory APIs</li>
+    </ul>
+    <p><strong>Event-driven or scheduled sends:</strong> ERP → PIM runs primarily on a scheduled batch cadence. (time increments for deltas TBD)  Possible with event-driven pushes reserved for high-priority changes such as price or status. DAM → PIM is event-driven, firing via webhook through the Event Broker whenever an asset is published or updated. PIM → downstream channels (AEM, Commerce Cloud, other) is event-driven on approval for near-real-time updates, backed by a scheduled full-catalog sync (e.g., nightly) as a reconciliation safety net.</p>
+    <p><strong>Webhooks, queues, and middleware:</strong> An Event Broker (e.g., Kafka, AWS EventBridge, or Azure Service Bus) sits between the source systems and their consumers to decouple them — ERP, DAM, and PIM publish to broker topics rather than calling consumers directly. Queues buffer downstream delivery and absorb traffic spikes or temporary outages. A middleware layer can exist to handles protocol translation, field mapping, and orchestration where the systems cannot speak the PIM's native API contract.</p>
+    <p><strong>Error handling, retries, and monitoring:</strong> Every inbound payload is validated at the point of ingestion, returning structured error messages rather than failing silently. Failures can be retried automatically, after which the message is routed to a queue for manual review. All integrations log to a centralized monitoring platform (e.g., Datadog or Splunk) with alerting on elevated error rates, and a daily reconciliation report compares source-system counts against synced counts in PIM to surface silent data loss.</p>
+
+    <h3>4. Assumptions &amp; Risks</h3>
+    <p><strong>Items to clarify with the client:</strong></p>
+    <ul>
+        <li>The expected sync latency/SLA for price and inventory changes — whether near-real-time is required or batch cadences are acceptable.</li>
+        <li>Current and projected SKU/asset volumes, to size batch windows, API rate limits, and Event Broker throughput.</li>
+        <li>The governance and approval workflow for marketing content — who signs off before content is syndicated downstream.</li>
+        <li>Authentication and security requirements (API keys, OAuth, IP allow-listing) for each system in scope.</li>
+        <li>Multi-language and multi-locale requirements for content</li>
+    </ul>
+    <p><strong>Risks that could delay or derail delivery:</strong></p>
+    <ul>
+        <li>ERP API rate limits or missing webhook support could force reliance on slower batch polling, delaying downstream updates.</li>
+        <li>Inconsistent or missing SKU identifiers across ERP and DAM could break entity matching and product/asset association in PIM.</li>
+        <li>High DAM asset volume or file size could strain bandwidth if reference-based linking is not enforced.</li>
+        <li>Pre-existing customizations on any system may middleware additions, cost and schedule risk.</li>
+    </ul>
+</section>
+
+<!-- ========== SECTION 2 ========== -->
+<section id="section2" class="section">
+    <h2>2. Technical Evaluation &amp; Data Modelling</h2>
+    <p><strong>Objective:</strong> Evaluate modeling skills, ETL knowledge, PIM hierarchies and technical precision.</p>
+
+    <h3>Sample raw payload</h3>
+    <div class="code-block">
+        { "item_name": "Ultra HD TV 55-INCH (Black)", "sku": "tv55B",
+        "category": "home &gt; electronics &gt; tvs",
+        "meta": { "resolution": "4K", "hdmi ports": "Four", "smart": "yes" },
+        "dimensions": "55in", "price": "799.99USD" }
+    </div>
+
+    <h3>Required deliverables</h3>
+    <ul>
+        <li>Proposed entity types</li>
+        <li>Product-level vs item-level (variant) fields</li>
+        <li>Cleaned attributes (numeric, normalized Boolean, validated SKU)</li>
+        <li>Category handling &amp; assignment</li>
+        <li>Internationalization (units, currency)</li>
+        <li>Example mapping / transformation table</li>
+        <li>Validation rules (required fields, allowed values)</li>
+        <li>Data transformations &amp; cleanup prior to ingestion</li>
+    </ul>
+    <p>Source files: <code>Shoes.csv</code> and <code>Electronics.csv</code>.</p>
+    </br>
+    </br>
+
+
+    <h3>Entities</h3>
+    <table class="data-table">
+        <caption>Core PIM entities needed to model both files without loss</caption>
+        <thead>
+        <tr><th>Entity</th><th>Represents</th><th>Attributes</th></tr>
+        </thead>
+        <tbody>
+        <tr><td>Product </td><td>The sellable concept shared by all its variants </td><td>brand, categories, marketing description, manufacturer, merchants.name</td></tr>
+        <tr><td>Item / SKU</td><td>A specific purchasable unit</td><td>sizes, colors, manufacturerNumber, dimension, weight</td></tr>
+        <tr><td>Offer / price</td><td>A merchant's price and terms for an item at a point in time — many-to-one with Item.</td><td>prices.amountMin/Max, prices.currency, prices.condition, prices.availability, prices.isSale, prices.merchant, prices.dateSeen</td></tr>
+        <tr><td>Review</td><td>Customer feedback tied to a Product/Item. Informational only</td><td>reviews.rating, reviews.text, reviews.doRecommend, reviews.username</td></tr>
+        </tbody>
+    </table>
+
+    <p><strong>(inRiver) basic data model</strong> :   Product → Item → Resource</p>
+    <p style="margin-left: 210px;">Shoes → variant → Image</p>
+    </h3>
+
+    </br>
+
+
+    <h3>Table normalization / cleaned attributes / validation rules</h3>
+    <ul>
+        <li><strong>Invalid data</strong>Check for nulls, extra spaces, invalid characters</li>
+        <li><strong>Numeric fields:</strong> Number and unit of measure are to be separated.  Currency, length/width/height meausurements, etc.  Example: { "amount": 799.99, "currency": "USD" }</li>
+        <li><strong>Boolean:</strong> Convert all booleans to the preferred common pattern.  "TRUE" / true / 1 / 'yes' </li>
+        <li><strong>Validated known patterns</strong>  Use regex expressions for phone number, SKU Ids, currency, etc.,  especially if this is a to be used as a primary key.</li>
+        <li><strong>Known delimiters</strong> Check for known delimiters for splitting data fields</li>
+        <li><strong>Check known lists with corresponding enums</strong> </li>
+        <li><strong>Check for blank rows / empty JSON values</strong> </li>
+        <li><strong>Check for duplicates</strong> </li>
+        <li><strong>Parse values in known data structures (xml/json)</strong> </li>
+        <li><strong>Identify 'pass through' data</strong> </li>
+        <li><strong>Deal with orphan rows</strong> </li>
+    </ul>
+    </br>
+
+    <h3>Category handling &amp; assignment</h3>
+    <p>These need to split by delimiter to an array/list for use with product searches and breadcrumbs for downstream channels.</p>
+
+    <h3>Internationalization (units &amp; currency)</h3>
+    <ul>
+        <li>Entity attributes will have their fieldType defined to accomodate the units of measure using a CVL.  String will be defined by localeString.</li>
+    </ul>
+
+    <h3>Example mapping / transformation table</h3>
+    <table class="data-table">
+        <caption>Listed below are a few examples.  Not intended to be a comprehensive list</caption>
+        <thead>
+        <tr><th>Source field (raw)</th><th>raw value</th><th>Transformation</th><th>Target field (PIM)</th></tr>
+        </thead>
+        <tbody>
+        <tr><td>price</td><td>"799.99USD"</td><td>Split amount from currency code</td><td>Offer.price = {amount: 799.99, currencyCode: "USD"}</td></tr>
+        <tr><td>colors</td><td>"Red,Black,Sketchy,Yellow"</td><td>Split comma list into array; check case;</td><td>Item.colorOptions = ["Red","Black","Sketchy,"Yellow"]</td></tr>
+        <tr><td>prices.isSale</td><td>"TRUE" / "FALSE"</td><td>Validate with CVL; reject unrecognized values</td><td>Offer.isSale = true/false</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Link type</h3>
+    <table class="data-table">
+        <thead><tr><th>LinkTypeId</th><th>Source EntityType</th><th>Target EntityType</th><th>Cardinality</th></tr></thead>
+        <tbody>
+        <tr><td>ProductItem</td><td>Product</td><td>Item</td><td>1 → N (existing)</td></tr>
+        <tr><td>ItemResource</td><td>Item</td><td>Resource</td><td>1 → N (existing)</td></tr>
+        <tr><td>ResourceFile</td><td>Resource</td><td>File</td><td>1 → 1 (existing)</td></tr>
+        <tr><td>ItemReview</td><td>Item</td><td>Review</td><td>1 → N (new) </td></tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+<!-- ========== SECTION 3 ========== -->
+<section id="section3" class="section">
+    <h2>3. Client Communication (Soft Skills)</h2>
+    <p><strong>Objective:</strong> Clear communication, stakeholder empathy, confidence to control a room.</p>
+
+    <h3>Integration Feasibility Concern</h3>
+    <p>Client: <em>“We want our ERP to drive product data, but we want the PIM to handle marketing content, and Shopify to do inventory rules. Is this possible without duplicating data everywhere?”</em></p>
+    <p>Response must explain feasibility simply, highlight risks, recommend an approach, and keep a confident advisory tone.</p>
+    <div class="answer">
+        <p>Yes — this is a common setup. Each system stays the source of truth for its own piece (ERP = specs, PIM = content, Shopify = inventory rules).  The systems can remain in sync and not duplicate data so long as the records are not being added/updated simultaneously.  Using proper APIs/webhooks while running will help and any manual updates will need to set a flag or observe system events. </p>
+    </div>
+
+    <h3>Technical Constraints for a Non-Technical Stakeholder</h3>
+    <p>Explain API rate limits and their impact on sync times. Include a non-technical analogy, mitigation options, and a recommendation.</p>
+    <div class="answer">
+        <p>Rate limits create a bottleneck for processing APIs.  It's like the drive thru at Chik Fil le.  Only a couple spots to order, and a queue of many cars waiting.  You can get around this by limited batch processing and spacing them out. If you monitor the API response and know the max API limits, the service calls can be made consecutively.  The recommendation is to design the systems with this in mind and stress test it well in advance </p>
+    </div>
+</section>
+
+
+
+
+<!-- ========== SECTION 4 ========== -->
+<section id="section4" class="section">
+    <h2>4. Hands-on Problem Solving</h2>
+    <p><strong>Objective:</strong> Real-world SE problem solving and issue diagnosis.</p>
+
+    <h3>Scenario 1 – API Endpoint Design</h3>
+    <p>Write pseudocode for an endpoint that accepts product data, validates fields, returns structured errors, and submits valid data to a PIM ingestion API. Bonus: add rate-limit logic.</p>
+    <div class="answer">
+        <p>[POST]  /company/pim/product  </br>
+            payload:  json </p>
+        <p>validPayloadResponse= validate(payload)</p>
+        <p>if validPayloadResponse.isValid, then </p>
+        <p style="margin-left: 10px;">normalizeProduct(validPayloadResponse.product)</p>
+        <p style="margin-left: 10px;">pushProductToPIM(validPayloadResponse.product)     &nbsp;&nbsp;&nbsp;&nbsp;// → checkRateLimit</p>
+        <p style="margin-left: 10px;">return 200; </p>
+        <p>else</p>
+        <p style="margin-left: 10px;">return { result: 422,  validPayloadResponse.reason }</p>
+    </div>
+
+    <h3>Scenario 2 – Troubleshooting Scenario</h3>
+    <p>PIM → Shopify outbound integration fails intermittently (429s, occasional 500s, some products missing required data).</p>
+    <ul>
+        <li>Troubleshooting process + remediation plan for a Developer</li>
+        <li>Same information in a format suitable for a non-technical Client</li>
+    </ul>
+    <div class="answer">
+        <p><strong>For the Developer:</strong> Check the logs during the issues timeframe and check error messages.  Validate the rate limiting issue and Shopify issues.  For retries, throttle the send rate.  For the 500s, identify on the Shopify side before determining the course of action.   Identify possible race condition.  Assuming rate limiting has been moved to error queue and can be retried.  Make any necessary fixes that can prevent this before further batches are sent</p>
+        <p><strong>For the Client:</strong> A few products were sent to Shopify faster than it could accept them, and a handful were missing information before they went out. We've slowed the sync down to stay within Shopify's limits and added a check to catch incomplete products earlier — this should close the gaps without needing a manual re-sync.</p>
+    </div>
+</section>
+
+<!-- ========== SECTION 5 ========== -->
+<section id="section5" class="section">
+    <h2>5. Professional Presentation</h2>
+    <p><strong>Objective:</strong> Client-facing presentations that communicate with clarity.</p>
+    <p>Create a 3–5 slide deck covering:</p>
+    <ul>
+        <li>Technical areas you specialize in (APIs, PIM, CMS, ecommerce…)</li>
+        <li>A system or project you architected</li>
+        <li>How you approach client communication</li>
+        <li>How you ensure delivery quality</li>
+        <li>Your philosophy for bridging technical + business stakeholders</li>
+    </ul>
+    <p>PowerPoint, Google Slides or similar. Optional short video of yourself presenting is welcomed.</p>
+    <div class="answer">
+        <p><strong>Outline:</strong></p>
+        <ol>
+            <li>Intro</li>
+            <li>Project spotlight</li>
+            <li>Client communication</li>
+            <li>Delivery quality</li>
+        </ol>
+        <p><strong>Deck:</strong> <a href="https://1drv.ms/p/c/a9209810cd521c66/IQBOqLp4CysVRoRXY2hqt8C_ARSOWvZGEvIAyCdy6Xalgbs?e=Tsh9nT" target="_blank" rel="noopener">View presentation</a></p>
+    </div>
+</section>
+
+<!-- ========== SECTION 6 ========== -->
+<section id="section6" class="section">
+    <h2>6. Culture &amp; Values Alignment</h2>
+    <p><strong>Objective:</strong> Alignment with Ntara’s values of collaboration, transparency, client service, growth mindset and value-driven decisions.</p>
+
+    <h3>Task 1</h3>
+    <p>Describe a time technical correctness conflicted with team alignment or client needs. Cover how you decided, the three-lens test (employee / customer / company), and what you learned.</p>
+    <div class="answer">
+        <p>I'm not sure how applicable this is, but Ive postponed work on a number of occasions in favor of a better design</p>
+        <p>I've done this both as the project architect and as a developer.  The point being that the projected timeline gets pushed in favor of the better end solution.   </p>
+    </div>
+
+    <h3>Task 2</h3>
+    <p>Project is heading toward long-term issues while PM and lead developer are confident. Write how you would raise the concern while upholding collaboration &amp; integrity, building trust, protecting the client/company outcome, and showing a growth mindset.</p>
+    <div class="answer">
+        <p>I would set a meeting and lay it all out.  Face to face is always best for me and is much easier to be pursuasive as a well as being able to read the room and determine if all parties are truly inline.  Meeting invite would be prefaced with detailed notes regarding the issue, pain points, possible options and next steps.</p>
+    </div>
+
+    <h3>Task 3</h3>
+    <p>Pick two values and answer why they resonate, how you have demonstrated them, and how you would apply them as a Solution Engineer.</p>
+    <div class="answer">
+        <p><strong>Clarity</strong> — Resonates because most of my work is translating something complex (an API, a data model, an integration tradeoff) into what a developer, a client, or an exec actually needs to hear. I've demonstrated it across roles as a developer, designer, systems integrator, and instructor — same information, different altitude depending on the room. As an SE I'd apply it by keeping docs and client updates simple enough that nobody needs a follow-up meeting just to understand what was said.</p>
+        <p><strong>Ownership</strong> — Resonates because I don't like handing off a problem half-solved. I've stayed with issues past the point they technically became someone else's, on more than one project where the timeline mattered. As an SE that means following up on open items without being chased for status.</p>
+    </div>
+</section>
+
+<footer>
+    © 2026 Ntara, Inc. Proprietary and confidential. &nbsp;|&nbsp; Solutions Engineer Assessment
+</footer>
+
+<!-- Hover popup (positioned dynamically via JS, offset outside the hovered box) -->
+<div class="hover-popup" id="hoverPopup" role="tooltip">
+    <div class="popup-arrow" id="popupArrow"></div>
+    <div class="popup-title" id="popupTitle"></div>
+    <div class="popup-body" id="popupBody"></div>
+</div>
+
+
+</body>
+</html>

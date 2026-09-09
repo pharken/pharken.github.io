@@ -1,0 +1,248 @@
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    color: #222;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 24px 16px;
+    margin-bottom: 28px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+header h1 { color: #1a3a6b; font-size: 1.8rem; margin-bottom: 6px; }
+header p  { color: #555; }
+
+nav.toc {
+    background: #fff;
+    padding: 16px 24px;
+    border-radius: 8px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+nav.toc h3 { color: #1a5fb4; margin-bottom: 10px; }
+nav.toc ol { margin-left: 22px; }
+nav.toc a  { color: #1a5fb4; text-decoration: none; }
+nav.toc a:hover { text-decoration: underline; }
+
+.section {
+    background: #fff;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-left: 5px solid #1a5fb4;
+}
+.section h2 {
+    color: #1a5fb4;
+    font-size: 1.45rem;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e8f5;
+}
+.section h3 { color: #2c5282; font-size: 1.15rem; margin: 18px 0 8px; }
+.section p, .section li { margin-bottom: 8px; }
+.section ul, .section ol { margin-left: 22px; margin-bottom: 12px; }
+
+/* Diagram – light grey theme */
+.diagram-wrapper {
+    position: relative;
+    max-width: 661px;
+    margin: 0 auto 16px;
+    background: #f0f0f0;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border: 1px solid #d0d0d0;
+}
+.diagram-wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 661px;
+}
+
+/* Clickable hotspots */
+.hotspot {
+    position: absolute;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: border-color 0.2s, background 0.2s;
+    z-index: 10;
+}
+.hotspot:hover {
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.15);
+}
+.hotspot:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* Positions relative to the actual 672×448 Architecture.png, measured pixel-for-pixel
+   against each box's true boundaries so hotspots overlap exactly. */
+.hotspot-erp    { top: 2.23%;  left: 8.93%;  width: 17.86%; height: 13.39%; }
+.hotspot-dam    { top: 2.23%;  left: 52.08%; width: 17.86%; height: 13.39%; }
+.hotspot-pim    { top: 46.88%; left: 31.25%; width: 17.86%; height: 13.39%; }
+.hotspot-broker { top: 44.64%; left: 73.66%; width: 17.86%; height: 13.39%; }
+.hotspot-aem    { top: 75.89%; left: 1.49%;  width: 17.86%; height: 13.39%; }
+.hotspot-sfcc   { top: 75.89%; left: 31.25%; width: 17.86%; height: 13.39%; }
+.hotspot-other  { top: 75.89%; left: 62.5%;  width: 17.86%; height: 13.39%; }
+
+/* Data-flow arrow hotspots — sized and placed over each connecting line/arrow
+   so hovering the line itself (not just the boxes) surfaces a popup. */
+.hotspot-flow-erp-pim   { top: 16.74%; left: 14.88%; width: 16.07%; height: 38.62%; }
+.hotspot-flow-dam-pim   { top: 16.74%; left: 49.85%; width: 20.09%; height: 38.62%; }
+.hotspot-flow-cloud-dam { top: 0.45%;  left: 69.94%; width: 13.39%; height: 12.5%;  }
+.hotspot-flow-pim-aem   { top: 60.49%; left: 9.67%;  width: 26.79%; height: 14.96%; }
+.hotspot-flow-pim-sfcc  { top: 60.49%; left: 37.95%; width: 4.46%;  height: 14.96%; }
+.hotspot-flow-pim-other { top: 60.49%; left: 43.9%;  width: 27.53%; height: 14.96%; }
+
+.hint {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 18px;
+}
+
+/* Hover popup – white bg, blue border, blue text. Appears offset outside the
+   hovered box (never on top of it) and follows whichever box is active. */
+.hover-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    max-width: calc(100vw - 32px);
+    background: #ffffff;
+    border: 2px solid #1a5fb4;
+    border-radius: 10px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+    color: #1a5fb4;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: none;
+}
+.hover-popup.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.hover-popup .popup-title {
+    color: #1a5fb4;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.hover-popup .popup-body p,
+.hover-popup .popup-body li { color: #1a5fb4; font-size: 0.92rem; line-height: 1.5; }
+.hover-popup .popup-body ul { margin: 8px 0 8px 20px; }
+.hover-popup .popup-body p:last-child { margin-bottom: 0; }
+
+/* Directional arrow pointing back at the hovered box */
+.popup-arrow {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    transform: rotate(45deg);
+}
+/* Popup sits below the box → arrow on top edge, pointing up */
+.hover-popup.arrow-top .popup-arrow {
+    top: -8px;
+    border-top: 2px solid #1a5fb4;
+    border-left: 2px solid #1a5fb4;
+}
+/* Popup sits above the box → arrow on bottom edge, pointing down */
+.hover-popup.arrow-bottom .popup-arrow {
+    bottom: -8px;
+    border-bottom: 2px solid #1a5fb4;
+    border-right: 2px solid #1a5fb4;
+}
+
+.code-block {
+    background: #f4f7fb;
+    border: 1px solid #c5d4e8;
+    border-radius: 6px;
+    padding: 14px;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    margin: 12px 0;
+    color: #1e3a5f;
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+@media (max-width: 700px) {
+    .two-col { grid-template-columns: 1fr; }
+    .section { padding: 20px 18px; }
+}
+
+/* Answer box – light shading to separate the response from the question prompt */
+.answer {
+    background: #f4f7fb;
+    border: 1px solid #d7e1f0;
+    border-left: 3px solid #1a5fb4;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 8px 0 16px;
+}
+.answer p, .answer li { margin-bottom: 6px; }
+.answer p:last-child, .answer li:last-child { margin-bottom: 0; }
+.answer ol, .answer ul { margin-left: 20px; }
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 18px;
+    font-size: 0.92rem;
+}
+.data-table caption {
+    caption-side: top;
+    text-align: left;
+    color: #555;
+    font-style: italic;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+.data-table th, .data-table td {
+    border: 1px solid #d7e1f0;
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: top;
+}
+.data-table th {
+    background: #eaf1fb;
+    color: #1a5fb4;
+}
+.data-table tr:nth-child(even) td {
+    background: #f8fafd;
+}
+@media (max-width: 700px) {
+    .data-table { font-size: 0.85rem; }
+    .data-table th, .data-table td { padding: 6px 8px; }
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 0.85rem;
+}
+
